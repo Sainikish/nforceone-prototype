@@ -1,0 +1,50 @@
+/** Telecom deep-domain story: PRD §9 (TEL-001, TEL-002). */
+export const telecomAreas = [
+  {
+    id: "oss-bss",
+    name: "OSS/BSS Transformation",
+    story:
+      "Order management, billing, provisioning, customer management, service activation and network systems, modernised and integrated end to end.",
+    points: ["Order management", "Billing", "Provisioning", "Customer management", "Service activation", "Network systems"],
+  },
+  {
+    id: "quality",
+    name: "Quality Engineering",
+    story:
+      "End-to-end telecom testing across the full order-to-bill chain, with system integration, automation, performance and regression built into every release.",
+    points: ["End-to-end telecom testing", "System integration testing", "Automation", "Performance", "Regression"],
+  },
+  {
+    id: "cx",
+    name: "AI & Customer Experience",
+    story:
+      "AI virtual agents, Voice AI and IVR that resolve customer needs, validated call by call before they reach subscribers.",
+    points: ["AI virtual agents", "Voice AI", "IVR", "Agentic AI", "Customer-service automation", "Call validation"],
+  },
+  {
+    id: "network",
+    name: "Network & Field Operations",
+    story:
+      "Network operations and field-service workflows, automated for operational efficiency from the NOC to the field.",
+    points: ["Network operations", "Field-service workflows", "Automation", "Operational efficiency"],
+  },
+  {
+    id: "data",
+    name: "Data & Automation",
+    story: "Telecom data engineering and analytics that power intelligent automation and predictive operations.",
+    points: ["Telecom data engineering", "Analytics", "Intelligent automation", "Predictive operations"],
+  },
+] as const;
+
+export type TelecomAreaId = (typeof telecomAreas)[number]["id"];
+
+/** Layers shown in the interactive architecture, each mapped to a capability area. */
+export const telecomLayers: { label: string; area: TelecomAreaId }[] = [
+  { label: "Customer", area: "cx" },
+  { label: "CX · IVR · Voice AI", area: "cx" },
+  { label: "OSS / BSS", area: "oss-bss" },
+  { label: "Network", area: "network" },
+  { label: "Field Operations", area: "network" },
+  { label: "Data", area: "data" },
+  { label: "Automation", area: "data" },
+];

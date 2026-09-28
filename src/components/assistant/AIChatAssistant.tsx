@@ -106,12 +106,23 @@ export function AIChatAssistant() {
         onClick={() => (open ? setOpen(false) : show())}
         aria-expanded={open}
         aria-controls="nf-assistant"
-        className={`group fixed right-4 bottom-4 z-40 flex h-11 items-center gap-2.5 rounded-sm border border-white/15 bg-black pr-4 pl-3.5 text-[14px] font-medium text-white shadow-[0_8px_24px_-8px_rgb(0_0_0/0.45)] transition-[opacity,transform] duration-(--duration-slow) ease-(--ease-out) md:right-6 md:bottom-6 ${
+        aria-label="Ask NForce AI"
+        className={`group fixed right-4 bottom-4 z-40 flex h-11 items-center rounded-sm border border-white/15 bg-black px-3.5 text-[14px] font-medium text-white shadow-[0_8px_24px_-8px_rgb(0_0_0/0.45)] transition-[opacity,transform,visibility] duration-(--duration-slow) ease-(--ease-out) md:right-6 md:bottom-6 ${
           open ? "pointer-events-none translate-y-2 opacity-0" : ""
-        } ${pastHero ? "" : "max-sm:invisible max-sm:translate-y-2 max-sm:opacity-0"} transition-[opacity,transform,visibility]`}
+        } ${pastHero ? "" : "max-sm:invisible max-sm:translate-y-2 max-sm:opacity-0"}`}
       >
-        <Spark size={16} className="text-red-on-dark transition-transform duration-(--duration-slow) group-hover:rotate-45" />
-        Ask NForce AI
+        <Spark size={16} className="shrink-0 text-red-on-dark transition-transform duration-(--duration-slow) group-hover:rotate-45" />
+        {/* Past the hero the launcher collapses to an icon so it never covers content; the label returns on hover/focus */}
+        <span
+          aria-hidden
+          className={`overflow-hidden whitespace-nowrap transition-[max-width,opacity,margin] duration-(--duration-slow) ease-(--ease-out) ${
+            pastHero
+              ? "ml-0 max-w-0 opacity-0 group-hover:ml-2.5 group-hover:max-w-[120px] group-hover:opacity-100 group-focus-visible:ml-2.5 group-focus-visible:max-w-[120px] group-focus-visible:opacity-100"
+              : "ml-2.5 max-w-[120px] opacity-100"
+          }`}
+        >
+          Ask NForce AI
+        </span>
       </button>
 
       <section

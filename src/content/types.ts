@@ -26,6 +26,10 @@ export type Pillar = {
   technologies?: string[];
   related: { industries: string[]; caseStudies: string[] };
   cta: { label: string; intent: Intent };
+  /** Pillar-specific section headings, so the four pages don't read as one template. */
+  headings: { services: string; how: string; why: string };
+  /** Page-specific closing CTA copy. */
+  closing: { title: string; lead: string };
   seo: { title: string; description: string };
 };
 

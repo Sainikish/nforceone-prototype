@@ -9,6 +9,8 @@ import type { Pillar } from "./types";
 export const pillars: Pillar[] = [
   {
     slug: "ai-agentic-solutions",
+    headings: { services: "What we build", how: "How an AI agent works", why: "Why NForce One for AI" },
+    closing: { title: "Put AI to work inside your workflows.", lead: "Tell us where AI could take on real work, and we'll show you how we'd build it, ground it and assure it." },
     pitch: "AI agents and generative AI applications that run inside real enterprise workflows, grounded in your data and validated before they act.",
     highlights: ["Agentic AI", "Generative AI", "RAG Solutions", "Voice AI"],
     index: "01",
@@ -87,6 +89,8 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "quality-engineering-ai-assurance",
+    headings: { services: "What we test and assure", how: "From requirement to release confidence", why: "Why NForce One for quality" },
+    closing: { title: "Ship every release with confidence.", lead: "Get an expert view of your test estate or AI systems, and where automation and assurance pay off first." },
     pitch: "The quality engineering heritage we started with, extended to assure the AI systems enterprises are adopting next.",
     highlights: ["Automation Testing", "Performance Testing", "LLM Evaluation", "Voice / IVR Testing"],
     index: "02",
@@ -177,6 +181,8 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "digital-engineering",
+    headings: { services: "What we build and modernise", how: "A typical architecture we deliver", why: "Why NForce One for engineering" },
+    closing: { title: "Let's build your next application.", lead: "From new products to modernising what you already run, scope it with a team that tests as it builds." },
     pitch: "We build and modernise the applications enterprises run on, and the APIs and services behind them.",
     highlights: ["Application Modernization", "Web & Mobile Applications", "Microservices", "Product Engineering"],
     index: "03",
@@ -235,6 +241,8 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "data-cloud-enterprise-platforms",
+    headings: { services: "What we engineer", how: "From source to insight", why: "Why NForce One for platforms" },
+    closing: { title: "Build the foundation your AI needs.", lead: "Talk through your data, cloud and platform roadmap with engineers who connect it end to end." },
     pitch: "The data, cloud and enterprise platforms every AI and digital program depends on, connected into one whole.",
     highlights: ["Data Engineering", "Cloud Transformation", "DevOps", "SAP & Pega"],
     index: "04",

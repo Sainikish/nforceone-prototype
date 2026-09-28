@@ -17,8 +17,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Let's build what's next."
-        lead="Tell us what you're working on. We'll route your message to the right team: AI, Quality Engineering, Digital Engineering, Data & Cloud or Telecom."
+        title="Talk to the right team."
+        lead="Tell us what you're working on. Your message goes straight to our AI, Quality Engineering, Digital Engineering, Data & Cloud or Telecom specialists."
       />
 
       <section aria-label="Contact NForce One" className="bg-white py-16 md:py-24">

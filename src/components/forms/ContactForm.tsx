@@ -218,7 +218,10 @@ export function ContactForm() {
       )}
 
       <Button type="submit" size="lg" disabled={state === "sending"} className="w-full sm:w-auto">
-        {state === "sending" ? "Sending…" : (intents.find((i) => i.id === intent)?.label ?? "Send")}
+        {state === "sending" ? "Sending…" : (() => {
+          const i = intents.find((x) => x.id === intent);
+          return i?.submit ?? i?.label ?? "Send";
+        })()}
       </Button>
     </form>
   );

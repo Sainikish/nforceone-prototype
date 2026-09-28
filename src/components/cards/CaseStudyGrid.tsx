@@ -15,6 +15,7 @@ export function CaseStudyGrid({ items }: { items: { c: CaseStudy; href?: string 
       <div role="group" aria-label="Filter case studies" className="no-scrollbar -mx-(--gutter) flex gap-2 overflow-x-auto px-(--gutter) pb-1">
         {caseFilters.map((f) => {
           const count = f === "All" ? items.length : items.filter(({ c }) => c.categories.includes(f)).length;
+          if (count === 0) return null;
           return (
             <button
               key={f}

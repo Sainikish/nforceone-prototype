@@ -3,31 +3,10 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { ArchitectureDiagram } from "@/components/diagrams/ArchitectureDiagram";
+import { FlowGrid } from "@/components/diagrams/FlowGrid";
 import { ArrowRight } from "@/components/ui/icons";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { pillars } from "@/content/capabilities";
-
-/** Compact, static process view used inside the explorer (motion is reserved for hero + Telecom). */
-function FlowGrid({ steps }: { steps: { label: string; line: string }[] }) {
-  return (
-    <ol className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-3">
-      {steps.map((s, i) => {
-        const last = i === steps.length - 1;
-        return (
-          <li key={s.label} className={`flex min-h-[112px] flex-col justify-between p-4 ${last ? "bg-black text-white" : "bg-white"}`}>
-            <span aria-hidden className={`text-[12px] ${last ? "text-red-on-dark" : "text-gray-500"}`}>
-              {last ? "●" : "→"}
-            </span>
-            <span>
-              <span className="block text-[15px] font-semibold tracking-[-0.01em]">{s.label}</span>
-              <span className={`mt-1 block text-[12.5px] leading-snug ${last ? "text-gray-400" : "text-gray-600"}`}>{s.line}</span>
-            </span>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
 
 /**
  * "What we do": the four capability pillars as one tabbed explorer (WAI-ARIA tabs pattern).

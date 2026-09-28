@@ -1,9 +1,11 @@
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHero } from "@/components/sections/PageHero";
 import { Testimonial } from "@/components/sections/Testimonial";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "@/components/ui/icons";
 import { CountUp } from "@/components/ui/CountUp";
-import { PendingBadge, ReviewOnly } from "@/components/ui/Pending";
+import { ContentChecklist } from "@/components/ui/ContentChecklist";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { culture, values } from "@/content/careers";
@@ -59,6 +61,14 @@ export default function AboutPage() {
               title={<span id="who">A technology partner, not a staffing company.</span>}
               lead="We take responsibility for outcomes: designing, building, testing, modernising and operating the systems enterprises depend on."
             />
+            <ul className="mt-10 border-t border-line">
+              {story.map((st) => (
+                <li key={st.title} className="border-b border-line py-5">
+                  <h3 className="text-[16px] font-semibold">{st.title}</h3>
+                  <p className="mt-1 t-small text-gray-600">{st.line}</p>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="grid grid-cols-6 gap-3 lg:col-span-7">
             <PhotoSlot brief="Hyderabad engineering team collaborating at the delivery center" image={stock.teamAroundScreen} treatment="Full colour" ratio="4/5" className="col-span-4" />
@@ -67,22 +77,6 @@ export default function AboutPage() {
               <PhotoSlot brief="Whiteboard / design session" image={stock.workshopBoard} treatment="Grayscale + accent" ratio="1/1" sizes="25vw" />
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Story */}
-      <section aria-labelledby="story" className="bg-paper-50 py-20 md:py-28">
-        <div className="container-x">
-          <SectionHeading eyebrow="Our story" title={<span id="story">How NForce One works</span>} />
-          <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-            {story.map((s, i) => (
-              <li key={s.title} data-reveal style={{ "--reveal-i": i } as React.CSSProperties} className="border-t border-black pt-6">
-                <span className="t-label text-gray-500">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="t-h4 mt-4 text-[20px]">{s.title}</h3>
-                <p className="mt-3 t-body text-gray-600">{s.line}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
@@ -117,45 +111,37 @@ export default function AboutPage() {
               <div key={o.city} className="bg-white p-8 md:p-10">
                 <p className="t-label text-gray-500">{o.label}</p>
                 <p className="t-h3 mt-4">{o.city}</p>
-                <address className="mt-4 t-small not-italic text-gray-600">
-                  {o.lines.map((l) => (
-                    <span key={l} className="block">
-                      {l}
-                    </span>
-                  ))}
-                </address>
                 <p className="mt-8 border-t border-line pt-5 t-small">
                   <span className="font-semibold">{where[i].name}.</span> <span className="text-gray-600">{where[i].line}</span>
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-4 rounded-md bg-paper-50 px-8 py-5 t-small">
-            <span className="font-semibold">{where[2].name}.</span> <span className="text-gray-600">{where[2].line}</span>
-          </p>
+          <div className="mt-4 flex flex-col justify-between gap-3 rounded-md bg-paper-50 px-8 py-5 t-small sm:flex-row sm:items-center">
+            <p>
+              <span className="font-semibold">{where[2].name}.</span> <span className="text-gray-600">{where[2].line}</span>
+            </p>
+            <Link href="/contact" className="group inline-flex items-center gap-2 font-medium">
+              Office addresses <ArrowRight className="arrow" size={14} />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Leadership (ABOUT-002) */}
-      <ReviewOnly>
-        <section aria-labelledby="lead" className="bg-paper-50 py-20 md:py-28">
-          <div className="container-x">
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <SectionHeading eyebrow="Leadership" title={<span id="lead">The people accountable for delivery</span>} />
-              <PendingBadge>Names, titles and photos required</PendingBadge>
-            </div>
-            <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {[1, 2, 3, 4].map((n) => (
-                <li key={n}>
-                  <PhotoSlot brief="Leadership portrait (consented), consistent backdrop" treatment="Black & white" ratio="4/5" />
-                  <p className="mt-4 text-[16px] font-semibold text-gray-500">Name</p>
-                  <p className="t-small text-gray-500">Title</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      </ReviewOnly>
+      {/* Leadership (ABOUT-002): profiles publish once supplied; until then one compact checklist */}
+      <section aria-label="Leadership" className="bg-white pb-20 md:pb-28">
+        <div className="container-x">
+          <ContentChecklist
+            title="Leadership profiles in preparation"
+            intro="The people accountable for delivery will be introduced here with approved names, titles and photography."
+            items={[
+              { title: "Names & titles", need: "Leadership team members approved for publication." },
+              { title: "Portraits", need: "Consented, consistently lit portraits (black & white treatment)." },
+              { title: "Short bios", need: "Two or three lines each on experience and focus." },
+            ]}
+          />
+        </div>
+      </section>
 
       {/* Culture & values */}
       <section aria-labelledby="culture" className="bg-white py-20 md:py-28">
@@ -191,7 +177,10 @@ export default function AboutPage() {
       </section>
 
       <Testimonial items={employeeTestimonials} label="Employee voices" context="careers" more />
-      <FinalCTA />
+      <FinalCTA
+        title="Let's talk about your next program."
+        lead="We'll bring the right people and the delivery model to match: onshore, offshore or hybrid."
+      />
     </>
   );
 }

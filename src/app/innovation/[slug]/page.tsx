@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHero } from "@/components/sections/PageHero";
 import { Button } from "@/components/ui/Button";
-import { PendingBadge, PendingField } from "@/components/ui/Pending";
+import { ContentChecklist } from "@/components/ui/ContentChecklist";
+import { PendingBadge } from "@/components/ui/Pending";
 import { TrackView } from "@/components/ui/TrackView";
 import { getProduct, productTemplate, products } from "@/content/innovation";
 import { isVisible } from "@/lib/content";
@@ -51,34 +52,27 @@ export default async function ProductPage({ params }: PageProps<"/innovation/[sl
             <Button href="/contact?intent=demo" tone="dark" size="lg" track={`product_${p.slug}_demo`}>
               Request a Demo
             </Button>
-            {p.status !== "approved" && <PendingBadge tone="dark">Publication status: approval pending</PendingBadge>}
+            {p.status !== "approved" && (
+              <span className="self-start sm:self-center">
+                <PendingBadge tone="dark">Publication status: approval pending</PendingBadge>
+              </span>
+            )}
           </>
         }
       />
 
-      <article className="bg-white py-20 md:py-28">
+      {/* Product stories publish section by section (Appendix B); until then one checklist replaces eight empty blocks */}
+      <section aria-label="Product story" className="bg-white py-16 md:py-24">
         <div className="container-x">
-          {productTemplate.map((s, i) => (
-            <section
-              key={s.key}
-              aria-labelledby={`s-${s.key}`}
-              className="grid gap-6 border-t border-line py-12 first:border-t-0 first:pt-0 lg:grid-cols-12 lg:gap-8"
-            >
-              <div className="lg:col-span-4">
-                <span className="t-label text-gray-500">{String(i + 1).padStart(2, "0")}</span>
-                <h2 id={`s-${s.key}`} className="t-h3 mt-3">
-                  {s.title}
-                </h2>
-              </div>
-              <div className="lg:col-span-7 lg:col-start-6">
-                <PendingField need={s.need} />
-              </div>
-            </section>
-          ))}
+          <ContentChecklist
+            title="Product story in preparation"
+            intro={`The full ${p.name} case study follows the PRD product template. These sections are needed before it can be published.`}
+            items={productTemplate}
+          />
         </div>
-      </article>
+      </section>
 
-      <FinalCTA title={`See ${p.name} in action.`} />
+      <FinalCTA title={`See ${p.name} in action.`} lead="Book a walkthrough with the team that built it." primary="demo" />
     </>
   );
 }

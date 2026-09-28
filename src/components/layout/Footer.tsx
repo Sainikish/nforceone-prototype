@@ -18,7 +18,7 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-black text-white">
       <div className="container-x">
-        <div className="border-t border-white/10 pt-14 pb-10 md:pt-16">
+        <div className="border-t border-white/10 pt-14 pb-24 md:pt-16">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <Image src="/brand/nforceone-logo.webp" alt="NForce One: Let's Do IT!" width={640} height={365} className="h-auto w-[132px]" />
@@ -66,17 +66,11 @@ export function Footer() {
                   </a>
                 </li>
               </ul>
-              <ul className="mt-8 space-y-6">
+              <ul className="mt-8 space-y-4">
                 {site.offices.map((o) => (
                   <li key={o.city}>
                     <p className="t-small text-white">{o.city}</p>
-                    <address className="mt-1 t-small not-italic text-gray-500">
-                      {o.lines.slice(0, 2).map((l) => (
-                        <span key={l} className="block">
-                          {l}
-                        </span>
-                      ))}
-                    </address>
+                    <p className="mt-0.5 t-small text-gray-500">{o.label}</p>
                   </li>
                 ))}
               </ul>

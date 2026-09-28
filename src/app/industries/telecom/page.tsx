@@ -45,7 +45,7 @@ export default function TelecomPage() {
             / Telecom
           </>
         }
-        title="Engineering the systems behind connected experiences."
+        title="Telecom, engineered end to end."
         lead="Telecom is where NForce One's AI, Quality Engineering and engineering depth come together, from the subscriber's first call to the billing run and the field visit."
         actions={
           <>
@@ -138,7 +138,11 @@ export default function TelecomPage() {
       </section>
 
       <Testimonial items={clientTestimonials} label="Telecom client voice" context="telecom" />
-      <FinalCTA title="Discuss your telecom transformation." />
+      <FinalCTA
+        title="Discuss your telecom transformation."
+        lead="OSS/BSS, customer experience, network or data: talk to our telecom team about where to start."
+        primary="telecom"
+      />
     </>
   );
 }

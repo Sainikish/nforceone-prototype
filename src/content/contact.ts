@@ -12,11 +12,11 @@ export const interests = [
   "Other",
 ] as const;
 
-export const intents: { id: Intent; label: string; interest?: (typeof interests)[number] }[] = [
+export const intents: { id: Intent; label: string; submit?: string; interest?: (typeof interests)[number] }[] = [
   { id: "expert", label: "Talk to an Expert" },
   { id: "project", label: "Discuss Your Project" },
   { id: "demo", label: "Request a Demo", interest: "Innovation & Products" },
   { id: "assessment", label: "Request an AI / QA Assessment", interest: "Quality Engineering & AI Assurance" },
-  { id: "telecom", label: "Telecom Transformation", interest: "Telecom" },
-  { id: "careers", label: "Careers", interest: "Careers" },
+  { id: "telecom", label: "Telecom Transformation", submit: "Discuss Your Telecom Transformation", interest: "Telecom" },
+  { id: "careers", label: "Careers", submit: "Send My Details", interest: "Careers" },
 ];

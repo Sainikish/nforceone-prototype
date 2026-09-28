@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHero } from "@/components/sections/PageHero";
-import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/icons";
 import { PendingBadge } from "@/components/ui/Pending";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { otherIndustries } from "@/content/industries";
 import { telecomAreas } from "@/content/telecom";
 import { visible } from "@/lib/content";
@@ -42,7 +40,7 @@ export default function IndustriesPage() {
                   Telecom
                 </h2>
                 <p className="t-lead mt-6 max-w-[30rem] text-gray-400">
-                  Engineering the systems behind connected experiences.
+                  OSS/BSS, customer experience, network operations and data, engineered end to end.
                 </p>
               </div>
               <span className="inline-flex items-center gap-2 text-sm font-medium">
@@ -64,38 +62,40 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {others.length > 0 && (
-        <section aria-labelledby="other-ind" className="bg-paper-50 py-20 md:py-28">
-          <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-5">
-              <SectionHeading
-                eyebrow="Other sectors"
-                title={<span id="other-ind">Other industries we support</span>}
-                lead="Our capabilities apply across sectors. Dedicated industry stories are published as we document proven delivery."
-              />
-              <PendingBadge>Confirm proven experience before publishing</PendingBadge>
-            </div>
-            <ul className="grid gap-px self-start overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:col-span-6 lg:col-start-7">
-              {others.map((i) => (
-                <li key={i.name} className="sm:[&:last-child:nth-child(odd)]:col-span-2 bg-white px-6 py-5 text-[15px] font-medium">
-                  {i.name}
-                </li>
-              ))}
-            </ul>
+      {/* Other sectors: one compact band until proven-experience stories are approved (PRD §6) */}
+      <section aria-labelledby="other-ind" className="border-t border-line bg-white pb-20 md:pb-28">
+        <div className="container-x grid gap-8 pt-14 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <h2 id="other-ind" className="t-h3">
+              Other sectors, on request
+            </h2>
+            <p className="mt-3 t-small text-gray-600">
+              Our capabilities travel. Dedicated industry stories are published as we document proven delivery.
+            </p>
           </div>
-        </section>
-      )}
-
-      <section className="bg-white py-20">
-        <div className="container-x flex flex-col items-start justify-between gap-8 border-t border-line pt-12 md:flex-row md:items-center">
-          <p className="t-h3 max-w-[28ch]">Don&apos;t see your industry? Our capabilities travel.</p>
-          <Button href="/contact?intent=expert" track="industries_talk">
-            Talk to an Expert
-          </Button>
+          <div className="lg:col-span-8">
+            {others.length > 0 && (
+              <>
+                <ul className="flex flex-wrap gap-2">
+                  {others.map((i) => (
+                    <li key={i.name} className="rounded-sm border border-line px-3.5 py-2 text-[14px] text-gray-700">
+                      {i.name}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4">
+                  <PendingBadge>Confirm proven experience before publishing</PendingBadge>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </section>
 
-      <FinalCTA />
+      <FinalCTA
+        title="Bring us your industry's hardest problem."
+        lead="Our capabilities travel. Tell us where you operate and what's in the way."
+      />
     </>
   );
 }

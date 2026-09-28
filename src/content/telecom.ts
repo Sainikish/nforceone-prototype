@@ -4,7 +4,7 @@ export const telecomAreas = [
     id: "oss-bss",
     name: "OSS/BSS Transformation",
     story:
-      "Order management, billing, provisioning, customer management, service activation and network systems, modernised and integrated end to end.",
+      "Order management, billing, provisioning, customer management, service activation and network systems, modernized and integrated end to end.",
     points: ["Order management", "Billing", "Provisioning", "Customer management", "Service activation", "Network systems"],
   },
   {
@@ -61,17 +61,17 @@ export const telecomSolutions = [
   },
   {
     name: "Predictive Network Maintenance",
-    line: "Telemetry and AI analytics detect network anomalies before failures occur, minimising downtime, optimising resource deployment and improving SLA compliance.",
+    line: "Telemetry and AI analytics detect network anomalies before failures occur, minimizing downtime, optimizing resource deployment and improving SLA compliance.",
     area: "network",
   },
   {
-    name: "5G & Edge Infrastructure Modernisation",
-    line: "Scale to 5G by integrating edge computing nodes, virtualised network functions (VNFs) and real-time orchestration, bringing new services to market faster with lower latency.",
+    name: "5G & Edge Infrastructure Modernization",
+    line: "Scale to 5G by integrating edge computing nodes, virtualized network functions (VNFs) and real-time orchestration, bringing new services to market faster with lower latency.",
     area: "network",
   },
   {
     name: "Real-Time Subscriber Analytics & Churn Reduction",
-    line: "Customer data platforms deliver real-time insight into usage, sentiment and service quality, helping providers anticipate churn, personalise offers and retain high-value subscribers.",
+    line: "Customer data platforms deliver real-time insight into usage, sentiment and service quality, helping providers anticipate churn, personalize offers and retain high-value subscribers.",
     area: "data",
   },
 ] as const satisfies readonly { name: string; line: string; area: TelecomAreaId }[];

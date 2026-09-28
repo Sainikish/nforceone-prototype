@@ -30,7 +30,7 @@ export const pillars: Pillar[] = [
         title: "Build",
         items: [
           { name: "Agentic AI", line: "Goal-driven agents that plan, use tools and complete multi-step work." },
-          { name: "Generative AI", line: "Content, summarisation and reasoning capabilities built into your products." },
+          { name: "Generative AI", line: "Content, summarization and reasoning capabilities built into your products." },
           { name: "AI Agents", line: "Task-specific agents with memory, function calling and guardrails." },
           { name: "RAG Solutions", line: "Retrieval-augmented generation grounded in your approved knowledge." },
           { name: "AI Application Development", line: "Production AI applications, from interface to model integration." },
@@ -98,7 +98,7 @@ export const pillars: Pillar[] = [
     short: "Quality Engineering",
     tagline: "Release confidence for the systems you run and the AI you adopt.",
     summary:
-      "Quality Engineering is where NForce One started. We test the platforms enterprises depend on today, and we bring the same rigour to the AI systems they are adopting next.",
+      "Quality Engineering is where NForce One started. We test the platforms enterprises depend on today, and we bring the same rigor to the AI systems they are adopting next.",
     problems: [
       "Release cycles slowed by manual regression",
       "Integration defects discovered in production, not before",
@@ -113,7 +113,7 @@ export const pillars: Pillar[] = [
           { name: "Automation Testing", line: "Maintainable suites that run on every build and release." },
           { name: "API Testing", line: "Contract, functional and negative testing for services and integrations." },
           { name: "Performance Testing", line: "Load, stress and scalability testing against real-world conditions." },
-          { name: "QA Consulting & Transformation", line: "Assess QA maturity, modernise test strategy, set automation roadmaps and strengthen governance." },
+          { name: "QA Consulting & Transformation", line: "Assess QA maturity, modernize test strategy, set automation roadmaps and strengthen governance." },
           { name: "Managed QA Services", line: "Onshore, offshore and hybrid QA teams owning end-to-end testing, automation, reporting and delivery support." },
         ],
       },
@@ -123,7 +123,7 @@ export const pillars: Pillar[] = [
           { name: "Autonomous Test Case Generation", line: "Agents read user stories, requirements and the live application to generate test cases, including the edge cases teams miss." },
           { name: "Self-Healing Test Automation", line: "When a locator or workflow changes, agents detect it and repair the affected scripts automatically." },
           { name: "Autonomous Exploratory Testing", line: "Agents follow unscripted paths and probe unexpected inputs to surface defects scripts can't find." },
-          { name: "Intelligent Regression Testing", line: "Agents analyse each code change and select the regression tests that actually matter for it." },
+          { name: "Intelligent Regression Testing", line: "Agents analyze each code change and select the regression tests that actually matter for it." },
           { name: "Agentic API & Integration Testing", line: "Agents inspect API contracts and generate request chains, negative cases and boundary tests." },
           { name: "Synthetic Test Data Generation", line: "Realistic, compliant test data on demand, covering scenarios production data rarely contains." },
           { name: "Continuous Quality Monitoring", line: "Agents run inside CI/CD, triage failures, group duplicate defects and flag genuine regressions." },
@@ -132,10 +132,10 @@ export const pillars: Pillar[] = [
       {
         title: "AI Assurance",
         items: [
-          { name: "AI Testing & Agentic AI Testing", line: "Behaviour, tool use and task completion validated for agents." },
+          { name: "AI Testing & Agentic AI Testing", line: "Behavior, tool use and task completion validated for agents." },
           { name: "LLM Evaluation", line: "Accuracy, relevance, safety and consistency scored systematically." },
           { name: "RAG & Hallucination Testing", line: "Retrieval quality and groundedness of every answer." },
-          { name: "Prompt Regression Testing", line: "Catch behaviour changes when prompts, models or data change." },
+          { name: "Prompt Regression Testing", line: "Catch behavior changes when prompts, models or data change." },
           { name: "Voice / IVR Testing", line: "Call flows, recognition and resolution tested end to end." },
           { name: "Model Evaluation & Benchmarking", line: "Compare models against your tasks before you commit." },
           { name: "AI Security Testing", line: "Prompt injection, data leakage and misuse resistance." },
@@ -195,16 +195,16 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "digital-engineering",
-    headings: { services: "What we build and modernise", how: "A typical architecture we deliver", why: "Why NForce One for engineering" },
-    closing: { title: "Let's build your next application.", lead: "From new products to modernising what you already run, scope it with a team that tests as it builds." },
-    pitch: "We build and modernise the applications enterprises run on, and the APIs and services behind them.",
+    headings: { services: "What we build and modernize", how: "A typical architecture we deliver", why: "Why NForce One for engineering" },
+    closing: { title: "Let's build your next application.", lead: "From new products to modernizing what you already run, scope it with a team that tests as it builds." },
+    pitch: "We build and modernize the applications enterprises run on, and the APIs and services behind them.",
     highlights: ["Application Modernization", "Web & Mobile Applications", "Microservices", "Product Engineering"],
     index: "03",
     name: "Digital Engineering",
     short: "Digital Engineering",
     tagline: "Modern applications, engineered to last.",
     summary:
-      "We build and modernise the applications enterprises run on, from customer-facing web and mobile products to the APIs, services and enterprise systems behind them.",
+      "We build and modernize the applications enterprises run on, from customer-facing web and mobile products to the APIs, services and enterprise systems behind them.",
     problems: [
       "Legacy applications that slow every change",
       "Product roadmaps waiting on engineering capacity",
@@ -222,7 +222,7 @@ export const pillars: Pillar[] = [
         ],
       },
       {
-        title: "Modernise & Run",
+        title: "Modernize & Run",
         items: [
           { name: "Application Modernization", line: "Incremental migration from legacy to modern architectures." },
           { name: "API Development", line: "Well-designed APIs that make systems composable." },
@@ -277,7 +277,7 @@ export const pillars: Pillar[] = [
         items: [
           { name: "Data Engineering", line: "Reliable pipelines that make data usable for analytics and AI." },
           { name: "Analytics", line: "From operational dashboards to predictive models." },
-          { name: "Cloud Transformation", line: "Migration and modernisation on AWS, Azure and GCP." },
+          { name: "Cloud Transformation", line: "Migration and modernization on AWS, Azure and GCP." },
           { name: "DevOps", line: "CI/CD, infrastructure as code, observability and environment automation." },
         ],
       },

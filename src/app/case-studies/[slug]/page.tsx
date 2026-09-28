@@ -155,7 +155,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/case-studies
             <div className={c.image && reviewMode ? "lg:col-span-7" : "lg:col-span-12"}>
               <ContentChecklist
                 title="Case study in preparation"
-                intro="The client name and these sections will be published once they are validated and approved (PRD §10.1, Appendix A)."
+                intro="The client name and these sections will be published once they are validated and approved."
                 items={missing}
               />
             </div>

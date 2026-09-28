@@ -101,7 +101,7 @@ export const stock = {
     src: "/stock/network-cabling.jpg",
     width: 2000,
     height: 1122,
-    alt: "Structured network cabling in a data-centre rack",
+    alt: "Structured network cabling in a data-center rack",
     credit: "Taylor Vick",
     source: u("M5tzZtFCOfs"),
     license: "Unsplash License",

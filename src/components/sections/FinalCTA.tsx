@@ -21,7 +21,7 @@ const secondaryOrder: CtaIntent[] = ["demo", "project", "assessment", "expert"];
  */
 export function FinalCTA({
   title = "Let's build what's next.",
-  lead = "Tell us what you are building, testing or modernising, and the right NForce One team will get back to you.",
+  lead = "Tell us what you are building, testing or modernizing, and the right NForce One team will get back to you.",
   primary = "expert",
   primaryLabel,
   prompts,

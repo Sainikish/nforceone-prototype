@@ -2,10 +2,10 @@ import Image from "next/image";
 import type { StockImage } from "@/content/media";
 import { reviewMode } from "@/lib/content";
 
-type Treatment = "Full colour" | "Black & white" | "Grayscale + accent" | "Monochrome overlay";
+type Treatment = "Full color" | "Black & white" | "Grayscale + accent" | "Monochrome overlay";
 
 const filters: Record<Treatment, string> = {
-  "Full colour": "",
+  "Full color": "",
   "Black & white": "grayscale contrast-[1.05]",
   "Grayscale + accent": "grayscale",
   "Monochrome overlay": "grayscale brightness-[0.85]",
@@ -20,7 +20,7 @@ const filters: Record<Treatment, string> = {
 export function PhotoSlot({
   brief,
   image,
-  treatment = "Full colour",
+  treatment = "Full color",
   ratio = "4/3",
   tone = "light",
   sizes = "(min-width: 1024px) 50vw, 100vw",
@@ -51,7 +51,7 @@ export function PhotoSlot({
         {treatment === "Grayscale + accent" && <span aria-hidden className="absolute inset-x-0 bottom-0 h-[3px] bg-red" />}
         <figcaption className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xs bg-black/70 px-1.5 py-1 text-[10px] font-medium uppercase tracking-[0.04em] text-white backdrop-blur-sm">
           <span aria-hidden className="size-1 rounded-full bg-red-on-dark" />
-          Stock · {image.credit}
+          Stock<span className="hidden md:inline"> · {image.credit}</span>
           <span className="sr-only"> (Unsplash). Placeholder for: {brief}</span>
         </figcaption>
       </figure>

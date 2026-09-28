@@ -7,6 +7,8 @@ export type Role = {
   status: Status;
   overview?: string;
   requirements?: string[];
+  /** Description written for the new site (the official page lists only the title). HR to review before launch. */
+  draft?: boolean;
 };
 
 /**
@@ -47,18 +49,98 @@ export const roles: Role[] = [
       "Build and maintain low-code UI automation in Mabl, including auto-healing configuration and failure triage.",
       "Automate functional and regression testing for Pega applications: case lifecycles, work objects, portals and dynamic UI.",
       "Integrate agentic AI into the testing lifecycle: AI-assisted test generation, self-healing locators, intelligent test selection and root cause analysis.",
-      "Develop API automation for REST and SOAP services (Postman, ReadyAPI, SoapUI, REST Assured or Playwright), including contract validation and service virtualisation.",
-      "Script and analyse performance and load tests with NeoLoad, LoadRunner or JMeter.",
-      "Own the test automation CI/CD pipeline: parallel and cross-browser runs, containerised execution and consolidated reporting.",
+      "Develop API automation for REST and SOAP services (Postman, ReadyAPI, SoapUI, REST Assured or Playwright), including contract validation and service virtualization.",
+      "Script and analyze performance and load tests with NeoLoad, LoadRunner or JMeter.",
+      "Own the test automation CI/CD pipeline: parallel and cross-browser runs, containerized execution and consolidated reporting.",
       "Define test strategy for new features and track quality metrics such as coverage, flakiness, escaped defects and mean time to detection.",
       "Share automation practices and modern AI-assisted testing workflows with the wider QA team.",
     ],
   },
-  { title: "Senior Automation Tester", team: "Quality Engineering", location: "Hyderabad", status: "approved" },
-  { title: "Performance Tester", team: "Quality Engineering", location: "Hyderabad", status: "approved" },
-  { title: "QA Manager", team: "Quality Engineering", location: "Hyderabad", status: "approved" },
-  { title: "PEGA Developer", team: "Enterprise Platforms", location: "Hyderabad", status: "approved" },
-  { title: "Associate Engineer Intern", team: "Engineering", location: "Hyderabad", status: "approved" },
+  {
+    title: "Senior Automation Tester",
+    team: "Quality Engineering",
+    location: "Hyderabad",
+    status: "approved",
+    draft: true,
+    overview:
+      "A hands-on automation engineer who designs, builds and maintains the test suites our clients' releases depend on. You will own automation for web, mobile and API layers, keep suites reliable as applications change, and bring AI-assisted testing practices into everyday delivery.",
+    requirements: [
+      "Design, build and maintain automation frameworks using Selenium, Playwright or Appium.",
+      "Automate API testing with Postman, REST Assured or similar tools, including contract and negative tests.",
+      "Integrate automated suites into CI/CD pipelines (for example Jenkins) with clear, actionable reporting.",
+      "Define automation scope and test strategy with developers and business analysts.",
+      "Investigate failures, reduce flakiness and drive defects to closure with reproducible evidence.",
+      "Apply AI-assisted and self-healing automation techniques where they add value.",
+      "Mentor junior testers and contribute to shared automation standards and accelerators.",
+    ],
+  },
+  {
+    title: "Performance Tester",
+    team: "Quality Engineering",
+    location: "Hyderabad",
+    status: "approved",
+    draft: true,
+    overview:
+      "An engineer who makes sure applications hold up at scale. You will plan, script, run and analyze load and performance tests, find bottlenecks before users do, and give teams clear evidence about capacity and risk.",
+    requirements: [
+      "Script and execute load, stress, soak and scalability tests using JMeter, LoadRunner, NeoLoad or Gatling.",
+      "Build realistic workload models from business volumes and production usage.",
+      "Monitor and analyze results with tools such as Grafana, Prometheus or Datadog.",
+      "Identify bottlenecks across application, API, database and infrastructure layers.",
+      "Report response-time trends, capacity limits and risks in a way stakeholders can act on.",
+      "Integrate performance checks into CI/CD pipelines where appropriate.",
+    ],
+  },
+  {
+    title: "QA Manager",
+    team: "Quality Engineering",
+    location: "Hyderabad",
+    status: "approved",
+    draft: true,
+    overview:
+      "A quality leader who owns test strategy and delivery across client programs. You will lead QA teams working onshore, offshore and hybrid, set the automation roadmap, and make release quality visible and measurable.",
+    requirements: [
+      "Own test strategy, planning and quality gates across functional, automation, API and performance testing.",
+      "Lead and grow QA teams, including hiring, coaching and allocation across programs.",
+      "Define and track quality metrics such as coverage, defect leakage and release readiness.",
+      "Drive automation and AI-assisted testing adoption with a clear roadmap.",
+      "Work with client stakeholders, delivery leads and engineering teams on scope, risk and priorities.",
+      "Establish governance, reporting and continuous improvement across QA practices.",
+    ],
+  },
+  {
+    title: "PEGA Developer",
+    team: "Enterprise Platforms",
+    location: "Hyderabad",
+    status: "approved",
+    draft: true,
+    overview:
+      "A developer who designs and builds enterprise applications on Pega. You will deliver case management and workflow automation solutions that streamline how our clients' teams and customers work.",
+    requirements: [
+      "Design and build Pega applications: case types, flows, data models, UI and business rules.",
+      "Work in App Studio and Dev Studio, following Pega guardrails and best practices.",
+      "Integrate Pega with external systems through REST and SOAP services.",
+      "Write and maintain PegaUnit tests and support functional and regression testing.",
+      "Support deployments using Pega Deployment Manager and CI/CD practices.",
+      "Troubleshoot and tune application performance and resolve production issues.",
+    ],
+  },
+  {
+    title: "Associate Engineer Intern",
+    team: "Engineering",
+    location: "Hyderabad",
+    status: "approved",
+    draft: true,
+    overview:
+      "An internship for early-career engineers who want real experience. You will learn by working alongside our teams on client and product work across Quality Engineering, AI and software development.",
+    requirements: [
+      "Learn and apply software testing fundamentals, including manual and automated testing.",
+      "Write code in at least one language such as Python, Java or JavaScript.",
+      "Contribute to real projects under the guidance of senior engineers.",
+      "Explore AI and automation tools used across our engineering practice.",
+      "Communicate clearly, ask questions and take ownership of assigned tasks.",
+    ],
+  },
 ];
 
 /** NForce One core values ("GROW"), as published on the official About page. */

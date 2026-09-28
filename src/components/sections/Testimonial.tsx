@@ -55,7 +55,7 @@ export function Testimonial({
               <PendingBadge>Awaiting approved testimonial</PendingBadge>
               <p className="t-h2 mt-8 max-w-[22ch] font-medium text-gray-500">“An approved testimonial will appear here.”</p>
               <p className="mt-8 max-w-[40rem] t-small text-gray-600">
-                Reserved for a real, attributed quote with written permission to publish (PRD §11).
+                Reserved for a real, attributed quote with written permission to publish.
               </p>
             </div>
           )}

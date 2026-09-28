@@ -134,7 +134,7 @@ export function ContactForm() {
 
   return (
     <form ref={formRef} onSubmit={onSubmit} onFocus={onStart} noValidate className="space-y-8">
-      <fieldset>
+      <fieldset hidden={careers && !!role}>
         <legend className="t-label text-gray-600">I would like to</legend>
         <div className="mt-4 flex flex-wrap gap-2">
           {intents.map((i) => (
@@ -230,7 +230,7 @@ export function ContactForm() {
             rows={5}
             required
             defaultValue={role ? `I'm interested in the ${role} role.` : undefined}
-            placeholder={careers ? "Tell us about yourself and the role you're interested in" : "What are you building, testing or modernising?"}
+            placeholder={careers ? "Tell us about yourself and the role you're interested in" : "What are you building, testing or modernizing?"}
             className={`${field} border-line py-3`}
             {...a("message")}
           />

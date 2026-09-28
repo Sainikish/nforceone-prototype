@@ -3,7 +3,7 @@ import type { CaseStudy, Product } from "./types";
 
 /**
  * Client engagements from the official nforceone.com About page. Solution text is taken from that
- * page (lightly edited and anonymised). The live site already names these clients; set
+ * page (lightly edited and anonymized). The live site already names these clients; set
  * `nameApproved: true` once that is confirmed for this site (CASE-002). Challenge and measured
  * outcomes stay empty until the delivery team supplies validated content (CASE-003).
  */
@@ -22,7 +22,7 @@ export const caseStudies: CaseStudy[] = [
       "Quality assurance delivered across every stage of the software lifecycle, managing and executing dozens of parallel projects with precision, consistency and enterprise-grade accountability.",
     categories: ["Client", "Telecom", "Quality Engineering"],
     capabilities: ["quality-engineering-ai-assurance"],
-    visual: "Sanitised test-architecture diagram or delivery dashboard, approved by the client",
+    visual: "Sanitized test-architecture diagram or delivery dashboard, approved by the client",
     image: stock.fiberSwitch,
   },
   {
@@ -68,7 +68,7 @@ export const caseFilters = ["All", "Client", "Product", "Telecom", "AI", "Qualit
 /** Appendix A: the sections every client case study must cover. */
 export const caseTemplate = [
   { key: "challenge", title: "Business Challenge", need: "The business, operational, quality, customer or technology problem." },
-  { key: "solution", title: "NForce One Solution", need: "What NForce One designed, built, tested, modernised, automated or operated." },
+  { key: "solution", title: "NForce One Solution", need: "What NForce One designed, built, tested, modernized, automated or operated." },
   { key: "technology", title: "Capabilities & Technology", need: "Relevant AI, QA, cloud, data, application, telecom and platform technologies." },
   { key: "deliveryModel", title: "Delivery Model", need: "Onshore, Offshore, Hybrid, Managed Delivery, SOW or T&M." },
   { key: "outcomes", title: "Business Outcomes", need: "Validated, measurable impact approved for external use." },

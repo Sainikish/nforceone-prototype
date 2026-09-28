@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { HeroSystem } from "@/components/diagrams/HeroSystem";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHero } from "@/components/sections/PageHero";
 import { Button } from "@/components/ui/Button";
@@ -30,11 +29,6 @@ export default function InnovationPage() {
             Request a Product Demo
           </Button>
         }
-        aside={
-          <div className="mx-auto max-w-[420px] opacity-90">
-            <HeroSystem />
-          </div>
-        }
       />
 
       <section aria-labelledby="areas" className="bg-white py-20 md:py-28">
@@ -42,7 +36,7 @@ export default function InnovationPage() {
           <SectionHeading eyebrow="Where we innovate" title={<span id="areas">Seven areas of engineering innovation</span>} />
           <ol className="mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {innovationAreas.map((a, i) => (
-              <li key={a.name} data-reveal style={{ "--reveal-i": i % 4 } as React.CSSProperties} className="flex min-h-[200px] flex-col justify-between bg-white p-6 md:p-8">
+              <li key={a.name} data-reveal style={{ "--reveal-i": i % 4 } as React.CSSProperties} className="flex flex-col justify-between gap-6 bg-white p-6 sm:min-h-[200px] md:p-8">
                 <span className="t-label text-gray-500">{String(i + 1).padStart(2, "0")}</span>
                 <span>
                   <span className="block text-[18px] font-semibold leading-snug tracking-[-0.015em]">{a.name}</span>
@@ -50,7 +44,7 @@ export default function InnovationPage() {
                 </span>
               </li>
             ))}
-            <li className="flex min-h-[200px] flex-col justify-between bg-black p-6 text-white md:p-8">
+            <li className="flex flex-col justify-between gap-6 bg-black p-6 text-white sm:min-h-[200px] md:p-8">
               <span className="t-label text-gray-500">Client products</span>
               <span>
                 <span className="block text-[18px] font-semibold">Built with clients</span>
@@ -87,7 +81,7 @@ export default function InnovationPage() {
                     </span>
                   </>
                 );
-                const cls = "flex h-full min-h-[160px] flex-col justify-between bg-ink-900 p-6";
+                const cls = "flex h-full flex-col justify-between gap-5 bg-ink-900 p-6 sm:min-h-[160px]";
                 return (
                   <li key={p.slug}>
                     {p.status === "approved" ? (

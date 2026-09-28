@@ -39,10 +39,45 @@ const variants: Record<"digital" | "data", { title: string; boxes: Box[]; links:
   },
 };
 
+/** Phone layout: the same architecture as a readable vertical flow (the SVG would shrink to ~4px labels). */
+const stacked: Record<"digital" | "data", { label: string; items: string[]; strong?: boolean }[]> = {
+  digital: [
+    { label: "Channels", items: ["Web", "Mobile", "Partners"] },
+    { label: "API Layer", items: ["Gateway"], strong: true },
+    { label: "Services", items: ["Microservices", "Enterprise apps (ERP · CRM · Core)"] },
+  ],
+  data: [
+    { label: "Sources", items: ["Applications", "Devices & network", "Partners"] },
+    { label: "Integrate", items: ["APIs", "Events"] },
+    { label: "Cloud Platform", items: ["AWS · Azure · GCP", "Pipelines · Analytics · AI/ML · DevOps"], strong: true },
+  ],
+};
+
+function Stacked({ variant }: { variant: "digital" | "data" }) {
+  const steps = stacked[variant];
+  return (
+    <ol className="sm:hidden" aria-label={variants[variant].title}>
+      {steps.map((st, i) => (
+        <li key={st.label}>
+          <div className={`rounded-sm border p-4 ${st.strong ? "border-black bg-black text-white" : "border-black/15 bg-white text-black"}`}>
+            <p className="text-[15px] font-semibold">{st.label}</p>
+            <p className={`mt-1 text-[13px] ${st.strong ? "text-gray-400" : "text-gray-600"}`}>{st.items.join(" · ")}</p>
+          </div>
+          {i < steps.length - 1 && (
+            <span aria-hidden className="mx-auto block h-5 w-px bg-red" />
+          )}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export function ArchitectureDiagram({ variant, animate = true }: { variant: "digital" | "data"; animate?: boolean }) {
   const v = variants[variant];
   return (
-    <svg viewBox="0 0 520 236" role="img" aria-label={v.title} className="h-auto w-full">
+    <>
+    <Stacked variant={variant} />
+    <svg viewBox="0 0 520 236" role="img" aria-label={v.title} className="hidden h-auto w-full sm:block">
       <g fill="none" stroke="#000" strokeOpacity="0.18">
         {v.links.map((d) => (
           <path key={d} d={d} />
@@ -97,5 +132,6 @@ export function ArchitectureDiagram({ variant, animate = true }: { variant: "dig
         </g>
       )}
     </svg>
+    </>
   );
 }

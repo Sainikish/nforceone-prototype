@@ -26,7 +26,7 @@ export function CaseVisual({ c, large = false }: { c: CaseStudy; large?: boolean
           <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
           <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xs bg-black/70 px-1.5 py-1 text-[10px] font-medium uppercase tracking-[0.04em] text-white">
             <span aria-hidden className="size-1 rounded-full bg-red-on-dark" />
-            Stock · {c.image.credit}
+            Stock<span className="hidden md:inline"> · {c.image.credit}</span>
           </span>
         </>
       )}

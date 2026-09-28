@@ -29,7 +29,7 @@ const story = [
   },
   {
     title: "AI as the next layer",
-    line: "We build AI agents and generative AI applications, and we assure them with the same rigour we bring to enterprise software.",
+    line: "We build AI agents and generative AI applications, and we assure them with the same rigor we bring to enterprise software.",
   },
   {
     title: "Services and products, together",
@@ -59,7 +59,7 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="Who we are"
               title={<span id="who">A technology partner, not a staffing company.</span>}
-              lead="We take responsibility for outcomes: designing, building, testing, modernising and operating the systems enterprises depend on."
+              lead="We take responsibility for outcomes: designing, building, testing, modernizing and operating the systems enterprises depend on."
             />
             <ul className="mt-10 border-t border-line">
               {story.map((st) => (
@@ -71,7 +71,7 @@ export default function AboutPage() {
             </ul>
           </div>
           <div className="grid grid-cols-6 gap-3 lg:col-span-7">
-            <PhotoSlot brief="Hyderabad engineering team collaborating at the delivery center" image={stock.teamAroundScreen} treatment="Full colour" ratio="4/5" className="col-span-4" />
+            <PhotoSlot brief="Hyderabad engineering team collaborating at the delivery center" image={stock.teamAroundScreen} treatment="Full color" ratio="4/5" className="col-span-4" />
             <div className="col-span-2 flex flex-col gap-3">
               <PhotoSlot brief="Team members reviewing work together" image={stock.colleaguesLaptop} treatment="Black & white" ratio="3/4" sizes="25vw" />
               <PhotoSlot brief="Whiteboard / design session" image={stock.workshopBoard} treatment="Grayscale + accent" ratio="1/1" sizes="25vw" />
@@ -169,7 +169,7 @@ export default function AboutPage() {
               ))}
             </ol>
             <div className="mt-3 grid grid-cols-2 gap-3">
-              <PhotoSlot brief="Team event or celebration, Hyderabad" image={stock.celebration} treatment="Full colour" ratio="3/2" sizes="25vw" />
+              <PhotoSlot brief="Team event or celebration, Hyderabad" image={stock.celebration} treatment="Full color" ratio="3/2" sizes="25vw" />
               <PhotoSlot brief="Training / innovation session" image={stock.whiteboard} treatment="Monochrome overlay" ratio="3/2" sizes="25vw" />
             </div>
           </div>

@@ -36,7 +36,7 @@ export function CapabilityExplorer() {
             </h2>
           </div>
           <p data-reveal className="t-lead text-gray-600 lg:col-span-4">
-            Four capability pillars. One standard of engineering rigour.
+            Four capability pillars. One standard of engineering rigor.
           </p>
         </div>
 

@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: PageProps<"/innovation/[sl
         <div className="container-x">
           <ContentChecklist
             title="Product story in preparation"
-            intro={`The full ${p.name} case study follows the PRD product template. These sections are needed before it can be published.`}
+            intro={`The full ${p.name} case study covers these sections. Each is needed before it can be published.`}
             items={productTemplate}
           />
         </div>

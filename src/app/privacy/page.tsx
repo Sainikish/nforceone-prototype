@@ -7,11 +7,11 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy notice"
-      need="Approved privacy notice from NForce One legal, covering website forms, analytics cookies and AI assistant data handling and retention (PRD CHAT-011, LEAD-006)."
+      need="Approved privacy notice from NForce One legal, covering website forms, analytics cookies and AI assistant data handling and retention."
       facts={[
         "Contact form submissions are used only to respond to your enquiry.",
         "The website assistant answers from approved NForce One information and does not store conversation content.",
-        "Analytics, when enabled, measure page views and interactions such as CTA clicks and form submissions.",
+        "Analytics, when enabled, measure page views and interactions such as button clicks and form submissions.",
       ]}
     />
   );

@@ -44,11 +44,11 @@ export default function CareersPage() {
         <div className="container-x">
           <SectionHeading eyebrow="Life at NForce One" title={<span id="life">We put our people first.</span>} />
           <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4">
-            <PhotoSlot brief="Engineers pairing at a workstation" image={stock.engineersCoding} treatment="Full colour" ratio="4/5" className="col-span-2 md:row-span-2 md:aspect-auto! md:h-full" />
+            <PhotoSlot brief="Engineers pairing at a workstation" image={stock.engineersCoding} treatment="Full color" ratio="4/5" className="col-span-2 md:row-span-2 md:aspect-auto! md:h-full" />
             <PhotoSlot brief="QA team stand-up" image={stock.colleaguesLaptop} treatment="Black & white" ratio="1/1" sizes="25vw" />
-            <PhotoSlot brief="Hyderabad team working session" image={stock.teamMeeting} treatment="Full colour" ratio="1/1" sizes="25vw" />
+            <PhotoSlot brief="Hyderabad team working session" image={stock.teamMeeting} treatment="Full color" ratio="1/1" sizes="25vw" />
             <PhotoSlot brief="Learning session / workshop" image={stock.whiteboard} treatment="Grayscale + accent" ratio="1/1" sizes="25vw" />
-            <PhotoSlot brief="Team celebration" image={stock.celebration} treatment="Full colour" ratio="1/1" sizes="25vw" />
+            <PhotoSlot brief="Team celebration" image={stock.celebration} treatment="Full color" ratio="1/1" sizes="25vw" />
           </div>
         </div>
       </section>

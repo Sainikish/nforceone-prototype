@@ -1,7 +1,25 @@
+/**
+ * Canonical origin for metadata, sitemap and Open Graph. Tolerates an empty or protocol-less
+ * NEXT_PUBLIC_SITE_URL, then falls back to the Vercel production domain, then nforceone.com.
+ */
+function resolveSiteUrl(): string {
+  const candidates = [process.env.NEXT_PUBLIC_SITE_URL, process.env.VERCEL_PROJECT_PRODUCTION_URL];
+  for (const raw of candidates) {
+    const v = raw?.trim();
+    if (!v) continue;
+    try {
+      return new URL(/^https?:\/\//.test(v) ? v : `https://${v}`).origin;
+    } catch {
+      // invalid value: try the next candidate
+    }
+  }
+  return "https://www.nforceone.com";
+}
+
 export const site = {
   name: "NForce One",
   legalName: "NForce One",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.nforceone.com",
+  url: resolveSiteUrl(),
   positioning: ["AI.", "Quality Engineering.", "Digital Transformation.", "Built to Scale at Speed."],
   positioningLine: "AI. Quality Engineering. Digital Transformation. Built to Scale at Speed.",
   description:

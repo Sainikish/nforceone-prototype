@@ -24,20 +24,22 @@ export const site = {
   positioningLine: "AI. Quality Engineering. Digital Transformation. Built to Scale at Speed.",
   description:
     "NForce One is a technology and delivery partner combining AI, Quality Engineering, Digital Engineering and deep Telecom expertise, delivered at scale from the US and India.",
-  // PRD footer address. Confirm lead-routing owner (LEAD-004).
+  // Matches the official nforceone.com footer. Confirm lead-routing owner (LEAD-004).
   email: "contact@nforceone.com",
-  // From the live site header. Validate before launch.
-  phone: { display: "1-800-356-8933", href: "tel:+18003568933" },
+  // Job applications, as listed on the official careers page.
+  careersEmail: "admin@nforceone.com",
   offices: [
     {
       city: "Plano, Texas",
       label: "United States · Associate Brand Office",
       lines: ["5700 Tennyson Parkway, Suite 300", "Plano, Texas 75024", "United States"],
+      phone: { display: "+1 (972) 499-6667", href: "tel:+19724996667" },
     },
     {
       city: "Hyderabad",
       label: "India · Delivery Center",
       lines: ["4th Floor, Sanali Spazio, Inorbit Mall Rd", "Madhapur, Hyderabad, Telangana 500081", "India"],
+      phone: { display: "+91 93469 34833", href: "tel:+919346934833" },
     },
   ],
   social: [

@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { pillars } from "@/content/capabilities";
 import { site } from "@/content/site";
+import { CopyEmail } from "@/components/ui/CopyEmail";
 import { ArrowUpRight } from "@/components/ui/icons";
+import { Phone } from "@/components/ui/Phone";
 
 const company = [
   { label: "Industries", href: "/industries" },
@@ -56,14 +58,7 @@ export function Footer() {
               <h2 className="t-label text-gray-500">Contact</h2>
               <ul className="mt-5 space-y-3 t-small">
                 <li>
-                  <a href={`mailto:${site.email}`} className="text-white hover:text-gray-400">
-                    {site.email}
-                  </a>
-                </li>
-                <li>
-                  <a href={site.phone.href} className="text-gray-400 hover:text-white">
-                    {site.phone.display}
-                  </a>
+                  <CopyEmail email={site.email} tone="dark" />
                 </li>
               </ul>
               <ul className="mt-8 space-y-4">
@@ -71,6 +66,9 @@ export function Footer() {
                   <li key={o.city}>
                     <p className="t-small text-white">{o.city}</p>
                     <p className="mt-0.5 t-small text-gray-500">{o.label}</p>
+                    <span className="mt-1 block t-small text-gray-400">
+                      <Phone display={o.phone.display} href={o.phone.href} className="hover:text-white" />
+                    </span>
                   </li>
                 ))}
               </ul>

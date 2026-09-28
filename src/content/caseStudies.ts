@@ -2,9 +2,10 @@ import { stock } from "./media";
 import type { CaseStudy, Product } from "./types";
 
 /**
- * Client engagements referenced on the legacy About page. Names stay anonymised until
- * written approval exists (CASE-002). Challenge, solution and outcomes stay empty until the
- * delivery team supplies validated content (CASE-003). Nothing here is invented.
+ * Client engagements from the official nforceone.com About page. Solution text is taken from that
+ * page (lightly edited and anonymised). The live site already names these clients; set
+ * `nameApproved: true` once that is confirmed for this site (CASE-002). Challenge and measured
+ * outcomes stay empty until the delivery team supplies validated content (CASE-003).
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -17,6 +18,8 @@ export const caseStudies: CaseStudy[] = [
     industry: "Telecom",
     year: "2025",
     title: "End-to-end quality engineering for a US telecom provider",
+    solution:
+      "Quality assurance delivered across every stage of the software lifecycle, managing and executing dozens of parallel projects with precision, consistency and enterprise-grade accountability.",
     categories: ["Client", "Telecom", "Quality Engineering"],
     capabilities: ["quality-engineering-ai-assurance"],
     visual: "Sanitised test-architecture diagram or delivery dashboard, approved by the client",
@@ -32,6 +35,8 @@ export const caseStudies: CaseStudy[] = [
     industry: "Technology",
     year: "2024",
     title: "AI-driven outreach",
+    solution:
+      "An AI-driven outreach system that now handles all of the client's outbound communications, enabling them to connect with more potential customers.",
     categories: ["Client", "AI"],
     capabilities: ["ai-agentic-solutions"],
     visual: "Product UI screenshot of the outreach workflow",
@@ -47,6 +52,8 @@ export const caseStudies: CaseStudy[] = [
     industry: "Travel",
     year: "2024",
     title: "AI travel planner",
+    solution:
+      "A scalable multi-agent AI system that automated complex workflows, improved turnaround time and reduced operational overhead across key functions.",
     categories: ["Client", "AI", "Digital Engineering"],
     capabilities: ["ai-agentic-solutions", "digital-engineering"],
     visual: "Mobile / web screens of the trip-planning experience",

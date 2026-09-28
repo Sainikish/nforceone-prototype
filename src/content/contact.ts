@@ -18,5 +18,5 @@ export const intents: { id: Intent; label: string; submit?: string; interest?: (
   { id: "demo", label: "Request a Demo", interest: "Innovation & Products" },
   { id: "assessment", label: "Request an AI / QA Assessment", interest: "Quality Engineering & AI Assurance" },
   { id: "telecom", label: "Telecom Transformation", submit: "Discuss Your Telecom Transformation", interest: "Telecom" },
-  { id: "careers", label: "Careers", submit: "Send My Details", interest: "Careers" },
+  { id: "careers", label: "Careers", submit: "Submit Application", interest: "Careers" },
 ];

@@ -37,6 +37,13 @@ const orgJsonLd = {
   email: site.email,
   description: site.description,
   sameAs: site.social.map((s) => s.href),
+  contactPoint: site.offices.map((o) => ({
+    "@type": "ContactPoint",
+    telephone: o.phone.href.replace("tel:", ""),
+    contactType: "sales",
+    areaServed: o.lines[2],
+    email: site.email,
+  })),
   address: site.offices.map((o) => ({
     "@type": "PostalAddress",
     streetAddress: o.lines[0],

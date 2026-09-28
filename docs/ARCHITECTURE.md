@@ -66,7 +66,7 @@ Photography slots (`<PhotoSlot>`) work the same way. They describe the shot we n
 | Client testimonials | **Samples only** (3): illustrative, no names, marked "Sample", removed in production | TEST-002 |
 | Employee testimonials / photos | **Samples only** (2): no names or photos | EMP-TEST-003 |
 | Photography | **Stock stand-ins** (12, Unsplash License, credits in `src/content/media.ts`), tagged "Stock", removed in production. Leadership portraits intentionally left as briefs | PRD §12 |
-| Open roles (5 titles) | **Pending**: confirm still open | Live Careers page |
+| Open roles (7, incl. 2 with full descriptions) | Approved (published on the official careers page, Sept 2026) | Live Careers page |
 | Leadership names/photos | **None supplied** | ABOUT-002 |
 | Privacy / Terms copy | **None supplied**: legal to provide | — |
 
@@ -232,4 +232,5 @@ headless CMS later only replaces these modules.
 7. Confirm which non-telecom industries have proven delivery experience.
 8. Legal: privacy notice (including assistant data retention, CHAT-011) and terms.
 9. Business sign-off on all draft copy (CONT-005).
-10. Validate the phone number 1-800-356-8933 (taken from the live site header) and both office addresses.
+10. Phone numbers now match the official footer (+1 (972) 499-6667, +91 93469 34833). The live header's 1-800-356-8933 "Client Support" number is a theme leftover and has been removed.
+11. Case-study client names (Atomic, Intripid, Consolidated Communications) are already public on nforceone.com. Confirm, then set `nameApproved: true`.

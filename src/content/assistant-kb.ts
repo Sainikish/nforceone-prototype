@@ -3,7 +3,7 @@ import { caseStudies } from "./caseStudies";
 import { engagementModels } from "./engagement";
 import { innovationAreas } from "./innovation";
 import { site } from "./site";
-import { telecomAreas } from "./telecom";
+import { telecomAreas, telecomSolutions } from "./telecom";
 
 /**
  * Knowledge base for the website assistant (CHAT-002/003). Every answer is composed from
@@ -45,10 +45,10 @@ export const kb: KbEntry[] = [
   })),
   {
     id: "telecom",
-    keywords: ["telecom", "telco", "oss", "bss", "billing", "provisioning", "network", "field", "ivr", "carrier", "operator", "communications"],
+    keywords: ["telecom", "telco", "oss", "bss", "billing", "provisioning", "network", "field", "ivr", "carrier", "operator", "communications", "5g", "edge", "churn", "subscriber", "subscribers", "vnf"],
     answer: `Telecom is NForce One's deep-domain specialism. We work across ${list(
       telecomAreas.map((a) => a.name),
-    )}.\n\n${telecomAreas[0].name}: ${telecomAreas[0].story}`,
+    )}.\n\nTelecom solutions include ${list(telecomSolutions.map((t) => t.name))}.`,
     links: [
       { label: "Telecom", href: "/industries/telecom" },
       { label: "Discuss Your Telecom Transformation", href: "/contact?intent=telecom" },
@@ -87,7 +87,7 @@ export const kb: KbEntry[] = [
   {
     id: "locations",
     keywords: ["where", "location", "locations", "office", "offices", "address", "plano", "texas", "hyderabad", "email", "phone", "contact", "reach"],
-    answer: `NForce One has offices in ${site.offices.map((o) => `${o.city} (${o.lines.join(", ")})`).join(" and ")}. You can email ${site.email}.`,
+    answer: `NForce One has offices in ${site.offices.map((o) => `${o.city} (${o.lines.join(", ")}; ${o.phone.display})`).join(" and ")}. You can email ${site.email}.`,
     links: [{ label: "Contact", href: "/contact" }],
   },
   {

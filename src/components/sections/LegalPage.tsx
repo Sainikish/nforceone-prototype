@@ -1,3 +1,4 @@
+import { CopyEmail } from "@/components/ui/CopyEmail";
 import { PendingField } from "@/components/ui/Pending";
 import { site } from "@/content/site";
 import { PageHero } from "./PageHero";
@@ -20,7 +21,7 @@ export function LegalPage({ title, need, facts = [] }: { title: string; need: st
             </ul>
           )}
           <p className="t-body text-gray-600">
-            Questions: <a href={`mailto:${site.email}`} className="text-black underline underline-offset-4">{site.email}</a>
+            Questions: <CopyEmail email={site.email} />
           </p>
         </div>
       </section>

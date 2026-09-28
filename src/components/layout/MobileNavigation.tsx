@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import { pillars } from "@/content/capabilities";
 import { nav, site } from "@/content/site";
 import { Button } from "@/components/ui/Button";
+import { CopyEmail } from "@/components/ui/CopyEmail";
 import { ArrowRight, Close, Plus } from "@/components/ui/icons";
 import { Logo } from "./Logo";
 
@@ -115,9 +116,9 @@ export function MobileNavigation({
         <Button href="/contact?intent=expert" tone="dark" size="lg" className="w-full" track="mobile_nav_talk_to_expert">
           Talk to an Expert
         </Button>
-        <a href={`mailto:${site.email}`} className="block text-center t-small text-gray-500">
-          {site.email}
-        </a>
+        <div className="flex justify-center t-small">
+          <CopyEmail email={site.email} tone="dark" />
+        </div>
       </div>
     </div>,
     document.body,

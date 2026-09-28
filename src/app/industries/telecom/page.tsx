@@ -10,7 +10,7 @@ import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { pillars } from "@/content/capabilities";
 import { caseStudies } from "@/content/caseStudies";
-import { telecomAreas } from "@/content/telecom";
+import { telecomAreas, telecomSolutions } from "@/content/telecom";
 import { clientTestimonials } from "@/content/testimonials";
 import { visible } from "@/lib/content";
 import { stock } from "@/content/media";
@@ -72,6 +72,26 @@ export default function TelecomPage() {
               <TelecomStack />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Telecom solutions (official site content) */}
+      <section aria-labelledby="tel-solutions" className="bg-white py-20 md:py-28">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Telecom solutions"
+            title={<span id="tel-solutions">Built for how operators run today.</span>}
+            lead="Modernising infrastructure, automating customer service and turning network data into decisions, as 5G, AI and automation reshape the industry."
+          />
+          <ul className="mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2">
+            {telecomSolutions.map((sol, i) => (
+              <li key={sol.name} data-reveal style={{ "--reveal-i": i % 2 } as React.CSSProperties} className="flex flex-col bg-white p-8 md:p-10">
+                <span className="t-label text-red">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="t-h4 mt-5 text-[20px]">{sol.name}</h3>
+                <p className="mt-3 t-body text-gray-600">{sol.line}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

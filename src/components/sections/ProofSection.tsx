@@ -48,6 +48,7 @@ export function ProofSection() {
                   </div>
                   <h3 className="t-h3 mt-3 max-w-[24ch]">{c.title}</h3>
                   <p className="mt-2 t-small text-gray-600">{clientLabel(c)}</p>
+                  {c.solution && <p className="mt-4 max-w-[36rem] t-small text-gray-700">{c.solution}</p>}
                 </div>
                 <span className="grid size-10 shrink-0 place-items-center rounded-sm border border-line transition-colors group-hover:border-black group-hover:bg-black group-hover:text-white">
                   <ArrowRight className="arrow" size={15} />

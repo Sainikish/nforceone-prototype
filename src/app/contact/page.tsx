@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import { AskButton } from "@/components/assistant/AskButton";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { CopyEmail } from "@/components/ui/CopyEmail";
+import { Phone } from "@/components/ui/Phone";
 import { PageHero } from "@/components/sections/PageHero";
 import { site } from "@/content/site";
 import { pageMeta } from "@/lib/seo";
@@ -12,13 +14,19 @@ export const metadata = pageMeta({
   path: "/contact",
 });
 
-export default function ContactPage() {
+export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
+  // Candidates arriving from a careers "Apply" link get a careers-specific header
+  const careers = (await searchParams).intent === "careers";
   return (
     <>
       <PageHero
-        eyebrow="Contact"
-        title="Talk to the right team."
-        lead="Tell us what you're working on. Your message goes straight to our AI, Quality Engineering, Digital Engineering, Data & Cloud or Telecom specialists."
+        eyebrow={careers ? "Careers" : "Contact"}
+        title={careers ? "Apply to join NForce One." : "Talk to the right team."}
+        lead={
+          careers
+            ? "Tell us about yourself and the role you're interested in."
+            : "Tell us what you're working on. Your message goes straight to our AI, Quality Engineering, Digital Engineering, Data & Cloud or Telecom specialists."
+        }
       />
 
       <section aria-label="Contact NForce One" className="bg-white py-16 md:py-24">
@@ -33,12 +41,8 @@ export default function ContactPage() {
             <div className="space-y-10 lg:sticky lg:top-28">
               <div>
                 <h2 className="t-label text-gray-600">Email</h2>
-                <a href={`mailto:${site.email}`} className="mt-3 block text-[19px] font-medium tracking-[-0.015em] hover:underline">
-                  {site.email}
-                </a>
-                <a href={site.phone.href} className="mt-1 block t-small text-gray-600 hover:text-black">
-                  {site.phone.display}
-                </a>
+                <CopyEmail email={site.email} className="mt-3 text-[19px] tracking-[-0.015em]" />
+
               </div>
               <div>
                 <h2 className="t-label text-gray-600">Offices</h2>
@@ -54,6 +58,9 @@ export default function ContactPage() {
                           </span>
                         ))}
                       </address>
+                      <span className="mt-2 block t-small font-medium text-black">
+                        <Phone display={o.phone.display} href={o.phone.href} />
+                      </span>
                     </li>
                   ))}
                 </ul>

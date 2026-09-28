@@ -4,11 +4,14 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { CopyEmail } from "@/components/ui/CopyEmail";
 import { intents, interests } from "@/content/contact";
+import { site } from "@/content/site";
 import type { Intent } from "@/content/types";
 import { track } from "@/lib/analytics";
+import { RESUME_ACCEPT, checkResume } from "@/lib/resume";
 
-type Errors = Partial<Record<"name" | "company" | "email" | "interest" | "message" | "consent" | "form", string>>;
+type Errors = Partial<Record<"name" | "company" | "email" | "interest" | "message" | "consent" | "resume" | "form", string>>;
 
 const field =
   "mt-2 block w-full rounded-sm border bg-white px-3.5 text-[15px] text-black transition-colors placeholder:text-gray-400 focus:border-black focus:outline-none aria-[invalid=true]:border-red";
@@ -25,6 +28,8 @@ export function ContactForm() {
   const [interest, setInterest] = useState<string>(intents.find((i) => i.id === initial)?.interest ?? "");
   const [errors, setErrors] = useState<Errors>({});
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
+  const [resume, setResume] = useState<File | null>(null);
+  const resumeInput = useRef<HTMLInputElement>(null);
   const startedAt = useRef<number | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -43,6 +48,16 @@ export function ContactForm() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
+    const isCareers = intent === "careers";
+    if (isCareers) {
+      // Keep a specific reason (too large / wrong type) rather than replacing it with a generic one
+      const problem = resume ? checkResume(resume) : errors.resume ?? (role ? "Please attach your resume." : null);
+      if (problem) {
+        setErrors({ resume: problem });
+        resumeInput.current?.focus();
+        return;
+      }
+    }
     const body = {
       ...Object.fromEntries(fd.entries()),
       interest,
@@ -50,15 +65,25 @@ export function ContactForm() {
       consent: fd.get("consent") === "on",
       startedAt: startedAt.current ?? Date.now() - 10_000,
       source: params.get("source") ?? "contact-form",
+      role: intent === "careers" ? (role ?? "") : "",
     };
     setState("sending");
     setErrors({});
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(body),
-      });
+      let res: Response;
+      if (isCareers) {
+        // Multipart so the resume file travels with the application
+        const mp = new FormData();
+        for (const [k, v] of Object.entries(body)) if (k !== "resume") mp.append(k, String(v));
+        if (resume) mp.append("resume", resume, resume.name);
+        res = await fetch("/api/contact", { method: "POST", body: mp });
+      } else {
+        res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(body),
+        });
+      }
       const data = (await res.json()) as { ok?: boolean; errors?: Errors; error?: string };
       if (!res.ok) {
         setErrors(data.errors ?? { form: data.error ?? "Something went wrong." });
@@ -80,12 +105,19 @@ export function ContactForm() {
     return (
       <div role="status" className="page-in rounded-md border border-line bg-paper-50 p-8 md:p-12">
         <span aria-hidden className="grid size-10 place-items-center rounded-sm bg-black text-white">✓</span>
-        <h2 className="t-h3 mt-8">Thank you. Your message is with our team.</h2>
+        <h2 className="t-h3 mt-8">
+          {intent === "careers" ? "Thank you. Your application is with our hiring team." : "Thank you. Your message is with our team."}
+        </h2>
         <p className="mt-4 t-body text-gray-600">
-          The right NForce One team will get back to you at the email address you provided.
+          {intent === "careers"
+            ? "We'll review your details and get back to you at the email address you provided."
+            : "The right NForce One team will get back to you at the email address you provided."}
         </p>
-        <Link href="/case-studies" className="mt-8 inline-block t-small font-medium underline underline-offset-4">
-          Browse case studies while you wait
+        <Link
+          href={intent === "careers" ? "/careers" : "/case-studies"}
+          className="mt-8 inline-block t-small font-medium underline underline-offset-4"
+        >
+          {intent === "careers" ? "Back to open positions" : "Browse case studies while you wait"}
         </Link>
       </div>
     );
@@ -123,6 +155,12 @@ export function ContactForm() {
         </div>
       </fieldset>
 
+      {careers && role && (
+        <p className="rounded-sm bg-paper-50 px-4 py-3 t-small">
+          <span className="text-gray-600">Applying for</span> <span className="font-semibold">{role}</span>
+        </p>
+      )}
+
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="t-small font-medium">
@@ -131,13 +169,22 @@ export function ContactForm() {
           <input id="name" name="name" autoComplete="name" required className={`${field} h-12 border-line`} {...a("name")} />
           {err("name")}
         </div>
-        <div>
-          <label htmlFor="company" className="t-small font-medium">
-            Company {careers && <span className="font-normal text-gray-500">(optional)</span>}
-          </label>
-          <input id="company" name="company" autoComplete="organization" required={!careers} className={`${field} h-12 border-line`} {...a("company")} />
-          {err("company")}
-        </div>
+        {careers ? (
+          <div>
+            <label htmlFor="profileUrl" className="t-small font-medium">
+              LinkedIn or portfolio <span className="font-normal text-gray-500">(optional)</span>
+            </label>
+            <input id="profileUrl" name="profileUrl" type="url" inputMode="url" placeholder="https://" className={`${field} h-12 border-line`} />
+          </div>
+        ) : (
+          <div>
+            <label htmlFor="company" className="t-small font-medium">
+              Company
+            </label>
+            <input id="company" name="company" autoComplete="organization" required className={`${field} h-12 border-line`} {...a("company")} />
+            {err("company")}
+          </div>
+        )}
         <div>
           <label htmlFor="email" className="t-small font-medium">
             {careers ? "Email" : "Business email"}
@@ -151,7 +198,7 @@ export function ContactForm() {
           </label>
           <input id="phone" name="phone" type="tel" autoComplete="tel" className={`${field} h-12 border-line`} />
         </div>
-        <div className="sm:col-span-2">
+        <div className={`sm:col-span-2 ${careers ? "hidden" : ""}`}>
           <label htmlFor="interest" className="t-small font-medium">
             Area of interest
           </label>
@@ -175,7 +222,7 @@ export function ContactForm() {
         </div>
         <div className="sm:col-span-2">
           <label htmlFor="message" className="t-small font-medium">
-            Message
+            {careers ? "About you" : "Message"}
           </label>
           <textarea
             id="message"
@@ -189,6 +236,70 @@ export function ContactForm() {
           />
           {err("message")}
         </div>
+
+        {careers && (
+          <div className="sm:col-span-2">
+            <span id="resume-label" className="t-small font-medium">
+              Resume {!role && <span className="font-normal text-gray-500">(optional)</span>}
+            </span>
+            <input
+              ref={resumeInput}
+              id="resume"
+              name="resume"
+              type="file"
+              accept={RESUME_ACCEPT}
+              aria-labelledby="resume-label"
+              aria-describedby={errors.resume ? "resume-err resume-help" : "resume-help"}
+              aria-invalid={!!errors.resume}
+              className="peer sr-only"
+              onChange={(e) => {
+                const f = e.target.files?.[0] ?? null;
+                const problem = f ? checkResume(f) : null;
+                setErrors((x) => ({ ...x, resume: problem ?? undefined }));
+                setResume(problem ? null : f);
+                if (problem) e.target.value = "";
+              }}
+            />
+            {resume ? (
+              <div className="mt-2 flex items-center justify-between gap-4 rounded-sm border border-black bg-paper-50 px-4 py-3.5">
+                <span className="flex min-w-0 items-center gap-3">
+                  <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-xs bg-black text-[10px] font-semibold uppercase text-white">
+                    {resume.name.split(".").pop()}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block truncate text-[15px] font-medium">{resume.name}</span>
+                    <span className="block t-small text-gray-600">{resume.size < 1024 * 1024 ? `${Math.max(1, Math.round(resume.size / 1024))} KB` : `${(resume.size / 1024 / 1024).toFixed(1)} MB`}</span>
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setResume(null);
+                    if (resumeInput.current) resumeInput.current.value = "";
+                    resumeInput.current?.focus();
+                  }}
+                  className="shrink-0 t-small font-medium underline underline-offset-4"
+                >
+                  Remove
+                </button>
+              </div>
+            ) : (
+              <label
+                htmlFor="resume"
+                className={`mt-2 flex cursor-pointer flex-col items-center justify-center gap-1 rounded-sm border border-dashed px-4 py-7 text-center transition-colors hover:border-black hover:bg-paper-50 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-red ${
+                  errors.resume ? "border-red" : "border-black/25"
+                }`}
+              >
+                <span className="text-[15px] font-medium">Choose a file to upload</span>
+                <span className="t-small text-gray-600">PDF or Word, up to 4 MB</span>
+              </label>
+            )}
+            {err("resume")}
+            <p id="resume-help" className="mt-3 t-small text-gray-600">
+              Can&apos;t upload? Email your resume to <CopyEmail email={site.careersEmail} />
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Honeypot: hidden from people, tempting to bots */}

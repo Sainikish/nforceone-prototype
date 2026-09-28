@@ -48,3 +48,30 @@ export const telecomLayers: { label: string; area: TelecomAreaId }[] = [
   { label: "Data", area: "data" },
   { label: "Automation", area: "data" },
 ];
+
+/**
+ * Telecom solutions, from the official nforceone.com Telecom page (September 2026).
+ * The live page's "CSAT by over 65%" figure is omitted until it is validated (CONT-003).
+ */
+export const telecomSolutions = [
+  {
+    name: "AI-Powered Virtual Agents & IVR",
+    line: "Natural, real-time support through LLM-powered voice and text agents that handle high-volume queries, billing and technical troubleshooting, and escalate complex cases to human agents.",
+    area: "cx",
+  },
+  {
+    name: "Predictive Network Maintenance",
+    line: "Telemetry and AI analytics detect network anomalies before failures occur, minimising downtime, optimising resource deployment and improving SLA compliance.",
+    area: "network",
+  },
+  {
+    name: "5G & Edge Infrastructure Modernisation",
+    line: "Scale to 5G by integrating edge computing nodes, virtualised network functions (VNFs) and real-time orchestration, bringing new services to market faster with lower latency.",
+    area: "network",
+  },
+  {
+    name: "Real-Time Subscriber Analytics & Churn Reduction",
+    line: "Customer data platforms deliver real-time insight into usage, sentiment and service quality, helping providers anticipate churn, personalise offers and retain high-value subscribers.",
+    area: "data",
+  },
+] as const satisfies readonly { name: string; line: string; area: TelecomAreaId }[];

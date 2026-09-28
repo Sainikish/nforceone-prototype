@@ -41,6 +41,7 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
   const quote = quoteContext ? visible(clientTestimonials).find((t) => t.context.includes(quoteContext)) : undefined;
   const others = pillars.filter((o) => o.slug !== p.slug);
   const proofCount = related.length + (quote ? 1 : 0);
+  const threeGroups = p.groups.length >= 3;
   const diagram =
     p.slug === "digital-engineering" ? "digital" : p.slug === "data-cloud-enterprise-platforms" ? "data" : null;
 
@@ -99,7 +100,7 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
       <section id="services" aria-labelledby="services-title" className="bg-white py-20 md:py-28">
         <div className="container-x">
           <SectionHeading eyebrow="Services" title={<span id="services-title">{p.headings.services}</span>} />
-          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className={`mt-14 grid gap-12 ${threeGroups ? "lg:grid-cols-3 lg:gap-10" : "lg:grid-cols-2 lg:gap-16"}`}>
             {p.groups.map((g) => (
               <div key={g.title}>
                 <h3 className="t-label flex items-center gap-3 text-gray-600">
@@ -108,7 +109,10 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
                 </h3>
                 <ul className="mt-2">
                   {g.items.map((c) => (
-                    <li key={c.name} className="grid gap-1 border-b border-line py-5 sm:grid-cols-[minmax(0,16rem)_1fr] sm:gap-6">
+                    <li
+                      key={c.name}
+                      className={`grid gap-1 border-b border-line py-5 ${threeGroups ? "" : "sm:grid-cols-[minmax(0,16rem)_1fr] sm:gap-6"}`}
+                    >
                       <span className="text-[16px] font-semibold tracking-[-0.01em]">{c.name}</span>
                       <span className="t-small text-gray-600">{c.line}</span>
                     </li>

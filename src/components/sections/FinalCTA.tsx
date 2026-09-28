@@ -13,8 +13,8 @@ const intents = [
 export function FinalCTA({ title = "Let's build what's next.", prompts }: { title?: string; prompts?: readonly string[] }) {
   return (
     <section aria-labelledby="cta-title" className="relative overflow-hidden bg-black text-white">
-      <div aria-hidden className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_20%_100%,black,transparent_60%)]" />
-      <div className="container-x relative grid gap-16 py-24 md:py-32 lg:grid-cols-12 lg:gap-8">
+      <div aria-hidden className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_60%_70%_at_20%_45%,black,transparent_75%)]" />
+      <div className="container-x relative grid gap-16 pt-24 pb-20 md:pt-32 md:pb-24 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-7">
           <h2 id="cta-title" data-reveal className="t-h1 max-w-[12ch] text-balance">
             {title}

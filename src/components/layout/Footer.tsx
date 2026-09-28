@@ -17,20 +17,17 @@ const company = [
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-black text-white">
-      <div className="container-x pt-24 pb-10 md:pt-32">
-        <div className="grid gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <Image src="/brand/nforceone-logo.webp" alt="NForce One: Let's Do IT!" width={640} height={365} className="h-auto w-[168px]" />
-            <p className="mt-10 text-[clamp(1.75rem,1.2rem+1.6vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.035em]">
-              AI.
-              <br />
-              Quality Engineering.
-              <br />
-              <span className="text-gray-500">Digital Transformation.</span>
+      <div className="container-x">
+        <div className="border-t border-white/10 pt-14 pb-10 md:pt-16">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <Image src="/brand/nforceone-logo.webp" alt="NForce One: Let's Do IT!" width={640} height={365} className="h-auto w-[132px]" />
+            <p className="mt-6 max-w-[18rem] t-small text-gray-400">
+              AI. Quality Engineering. Digital Transformation. Built to Scale at Speed.
             </p>
           </div>
 
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-8">
             <div>
               <h2 className="t-label text-gray-500">Capabilities</h2>
               <ul className="mt-5 space-y-3">
@@ -87,7 +84,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-24 flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {site.social.map((s) => (
               <li key={s.href}>
@@ -113,6 +110,7 @@ export function Footer() {
               Terms
             </Link>
           </div>
+        </div>
         </div>
       </div>
       {/* Speed-line motif taken from the logo: a single red hairline */}

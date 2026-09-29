@@ -5,6 +5,8 @@ import { GeistSans } from "geist/font/sans";
 import { AIChatAssistant } from "@/components/assistant/AIChatAssistant";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { BackToTop } from "@/components/ui/BackToTop";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 import { RevealObserver } from "@/components/ui/RevealObserver";
 import { TrackListener } from "@/components/ui/TrackListener";
 import { site } from "@/content/site";
@@ -66,15 +68,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AIChatAssistant />
         <RevealObserver />
         <TrackListener />
+        <BackToTop />
+        <CookieConsent />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd).replace(/</g, "\u003c") }}
         />
         {GA && (
           <>
+            {/* Consent default: denied until user accepts via CookieConsent banner */}
+            <Script id="ga-consent-default" strategy="beforeInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});`}
+            </Script>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA}`} strategy="afterInteractive" />
             <Script id="ga" strategy="afterInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA}');`}
+              {`gtag('js',new Date());gtag('config','${GA}',{send_page_view:false});`}
             </Script>
           </>
         )}

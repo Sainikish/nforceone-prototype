@@ -17,7 +17,7 @@ export function Hero() {
             <span className="block">AI.</span>
             <span className="block">Quality Engineering.</span>
             <span className="block">Digital Transformation.</span>
-            <span className="block text-gray-500">Built to Scale at Speed.</span>
+            <span className="block text-gray-400">Built to Scale at Speed.</span>
           </h1>
 
           <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-400">
@@ -29,7 +29,7 @@ export function Hero() {
             <Button href="/contact?intent=expert" tone="dark" size="lg" track="hero_talk_to_expert" className="max-sm:w-full">
               Talk to an Expert
             </Button>
-            <Button href="/capabilities" tone="dark" variant="ghost" size="lg" track="hero_explore_capabilities">
+            <Button href="/capabilities" tone="dark" variant="secondary" size="lg" track="hero_explore_capabilities">
               Explore Our Capabilities
             </Button>
           </div>

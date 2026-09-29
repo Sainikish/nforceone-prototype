@@ -40,7 +40,7 @@ export function CapabilityExplorer() {
           </p>
         </div>
 
-        <div role="tablist" aria-label="Capability pillars" className="mt-14 grid grid-cols-2 border-t border-line md:mt-16 lg:grid-cols-4">
+        <div role="tablist" aria-label="Capability pillars" className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-line bg-line md:mt-10 lg:grid-cols-4">
           {pillars.map((p, i) => {
             const on = i === active;
             return (
@@ -56,8 +56,8 @@ export function CapabilityExplorer() {
                 tabIndex={on ? 0 : -1}
                 onClick={() => setActive(i)}
                 onKeyDown={(e) => onKey(e, i)}
-                className={`relative -mt-px flex flex-col items-start gap-2 border-t-2 py-5 pr-4 text-left transition-colors duration-(--duration-base) ${
-                  on ? "border-black text-black" : "border-transparent text-gray-500 hover:text-black"
+                className={`relative flex flex-col items-start gap-2 border-t-2 px-5 py-5 text-left transition-colors duration-(--duration-base) ${
+                  on ? "border-red bg-white text-black" : "border-transparent bg-paper-50 text-gray-500 hover:bg-white hover:text-gray-700"
                 }`}
               >
                 <span className={`t-label ${on ? "text-red" : "text-gray-500"}`}>{p.index}</span>
@@ -77,42 +77,45 @@ export function CapabilityExplorer() {
             id={`cap-panel-${p.slug}`}
             aria-labelledby={`cap-tab-${p.slug}`}
             hidden={i !== active}
-            className="page-in mt-10 grid gap-10 lg:grid-cols-12 lg:gap-8"
           >
-            <div className="flex flex-col lg:col-span-5">
-              <h3 className="t-h3 text-balance">{p.tagline}</h3>
-              <p className="mt-4 t-body text-gray-600">{p.pitch}</p>
-              <ul className="mt-8 border-t border-line">
-                {p.highlights.map((h) => (
-                  <li key={h} className="flex items-center gap-3 border-b border-line py-3 text-[15px]">
-                    <span aria-hidden className="size-1 shrink-0 bg-red" />
-                    {h}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href={`/capabilities/${p.slug}`}
-                data-track="capability_view"
-                data-track-label={p.slug}
-                className="group mt-8 inline-flex items-center gap-2 self-start text-sm font-medium"
-              >
-                <span className="underline decoration-current/25 underline-offset-[5px] group-hover:decoration-current">
-                  Explore {p.name}
-                </span>
-                <ArrowRight className="arrow" size={15} />
-              </Link>
-            </div>
-            <div className="lg:col-span-6 lg:col-start-7">
-              <div className="rounded-md bg-paper-50 p-5 md:p-8">
-                {p.slug === "digital-engineering" ? (
-                  <ArchitectureDiagram variant="digital" animate={false} />
-                ) : p.slug === "data-cloud-enterprise-platforms" ? (
-                  <ArchitectureDiagram variant="data" animate={false} />
-                ) : (
-                  <FlowGrid steps={p.flow!} />
-                )}
+          {i === active && (
+            <div key={active} className="page-in mt-10 grid gap-10 lg:grid-cols-12 lg:gap-8">
+              <div className="flex flex-col lg:col-span-5">
+                <h3 className="t-h3 text-balance">{p.tagline}</h3>
+                <p className="mt-4 t-body text-gray-600">{p.pitch}</p>
+                <ul className="mt-8 border-t border-line">
+                  {p.highlights.map((h) => (
+                    <li key={h} className="flex items-center gap-3 border-b border-line py-3 text-[15px]">
+                      <span aria-hidden className="size-1 shrink-0 bg-red" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={`/capabilities/${p.slug}`}
+                  data-track="capability_view"
+                  data-track-label={p.slug}
+                  className="group mt-8 inline-flex items-center gap-2 self-start text-sm font-medium"
+                >
+                  <span className="underline decoration-current/25 underline-offset-[5px] group-hover:decoration-current">
+                    Explore {p.name}
+                  </span>
+                  <ArrowRight className="arrow" size={15} />
+                </Link>
+              </div>
+              <div className="lg:col-span-6 lg:col-start-7">
+                <div className="rounded-md bg-paper-50 p-5 md:p-8">
+                  {p.slug === "digital-engineering" ? (
+                    <ArchitectureDiagram variant="digital" animate={false} />
+                  ) : p.slug === "data-cloud-enterprise-platforms" ? (
+                    <ArchitectureDiagram variant="data" animate={false} />
+                  ) : (
+                    <FlowGrid steps={p.flow!} />
+                  )}
+                </div>
               </div>
             </div>
+          )}
           </div>
         ))}
       </div>

@@ -56,3 +56,8 @@ export const Spark = (p: P) => (
     <path d="M12 3v5M12 16v5M3 12h5M16 12h5M6.5 6.5l2.5 2.5M15 15l2.5 2.5M17.5 6.5 15 9M9 15l-2.5 2.5" />
   </svg>
 );
+export const ArrowUp = (p: P) => (
+  <svg {...base(p)}>
+    <path d="M12 20V4M6 10l6-6 6 6" />
+  </svg>
+);

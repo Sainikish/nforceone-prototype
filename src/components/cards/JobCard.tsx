@@ -14,6 +14,9 @@ const applyHref = (title: string) => `/contact?intent=careers&role=${encodeURICo
  * The Apply link sits outside <summary>, so clicking it never toggles the panel.
  */
 export function JobCard({ role }: { role: Role }) {
+  // Don't show draft descriptions until HR has reviewed them
+  const showDetails = role.overview && !role.draft;
+
   const heading = (
     <div className="min-w-0">
       <h3 className="text-[18px] font-semibold tracking-[-0.015em]">{role.title}</h3>
@@ -40,7 +43,7 @@ export function JobCard({ role }: { role: Role }) {
 
   return (
     <div className="relative border-b border-line">
-      {role.overview ? (
+      {showDetails ? (
         <details className="group/job">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 pr-0 transition-colors hover:bg-paper-50 sm:px-4 sm:pr-[132px] [&::-webkit-details-marker]:hidden">
             {heading}

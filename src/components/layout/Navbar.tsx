@@ -145,7 +145,7 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <Button href="/contact?intent=expert" tone="dark" track="nav_talk_to_expert" className="ml-2 h-9! max-sm:hidden!">
+          <Button href="/contact?intent=expert" tone="dark" track="nav_talk_to_expert" className="ml-2 h-9! sm:inline-flex">
             Talk to an Expert
           </Button>
           <button
@@ -167,5 +167,5 @@ export function Navbar() {
 }
 
 function ActiveDot() {
-  return <span aria-hidden className="absolute bottom-0.5 left-1/2 size-1 -translate-x-1/2 rounded-full bg-red" />;
+  return <span aria-hidden className="absolute bottom-1 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-red" />;
 }

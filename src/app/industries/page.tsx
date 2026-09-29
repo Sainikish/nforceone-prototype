@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHero } from "@/components/sections/PageHero";
+import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/icons";
 import { PendingBadge } from "@/components/ui/Pending";
 import { otherIndustries } from "@/content/industries";
 import { telecomAreas } from "@/content/telecom";
-import { visible } from "@/lib/content";
+import { reviewMode, visible } from "@/lib/content";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
@@ -23,6 +24,11 @@ export default function IndustriesPage() {
         eyebrow="Industries"
         title="Deep domain beats broad claims"
         lead="We focus where we have proven depth. Telecom is our specialism, and it is where AI, Quality Engineering and engineering come together."
+        actions={
+          <Button href="/industries/telecom" tone="dark" size="lg" track="industries_explore_telecom">
+            Explore Telecom
+          </Button>
+        }
       />
 
       <section aria-labelledby="tel-feature" className="bg-white py-20 md:py-28">
@@ -83,9 +89,11 @@ export default function IndustriesPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-4">
-                  <PendingBadge>Confirm proven experience before publishing</PendingBadge>
-                </div>
+                {reviewMode && (
+                  <div className="mt-4">
+                    <PendingBadge>Confirm proven experience before publishing</PendingBadge>
+                  </div>
+                )}
               </>
             )}
           </div>

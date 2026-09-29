@@ -58,6 +58,11 @@ export function ContactForm() {
         return;
       }
     }
+    if (fd.get("consent") !== "on") {
+      setErrors({ consent: "Please tick the box to confirm NForce One may contact you." });
+      formRef.current?.querySelector<HTMLElement>('[name="consent"]')?.focus();
+      return;
+    }
     const body = {
       ...Object.fromEntries(fd.entries()),
       interest,
@@ -164,7 +169,7 @@ export function ContactForm() {
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="t-small font-medium">
-            Name
+            Name <span aria-hidden className="text-red">*</span>
           </label>
           <input id="name" name="name" autoComplete="name" required className={`${field} h-12 border-line`} {...a("name")} />
           {err("name")}
@@ -179,7 +184,7 @@ export function ContactForm() {
         ) : (
           <div>
             <label htmlFor="company" className="t-small font-medium">
-              Company
+              Company <span aria-hidden className="text-red">*</span>
             </label>
             <input id="company" name="company" autoComplete="organization" required className={`${field} h-12 border-line`} {...a("company")} />
             {err("company")}
@@ -187,7 +192,7 @@ export function ContactForm() {
         )}
         <div>
           <label htmlFor="email" className="t-small font-medium">
-            {careers ? "Email" : "Business email"}
+            {careers ? "Email" : "Business email"} <span aria-hidden className="text-red">*</span>
           </label>
           <input id="email" name="email" type="email" autoComplete="email" required className={`${field} h-12 border-line`} {...a("email")} />
           {err("email")}
@@ -200,7 +205,7 @@ export function ContactForm() {
         </div>
         <div className={`sm:col-span-2 ${careers ? "hidden" : ""}`}>
           <label htmlFor="interest" className="t-small font-medium">
-            Area of interest
+            Area of interest <span aria-hidden className="text-red">*</span>
           </label>
           <select
             id="interest"
@@ -222,7 +227,7 @@ export function ContactForm() {
         </div>
         <div className="sm:col-span-2">
           <label htmlFor="message" className="t-small font-medium">
-            {careers ? "About you" : "Message"}
+            {careers ? "About you" : "Message"} <span aria-hidden className="text-red">*</span>
           </label>
           <textarea
             id="message"
@@ -234,6 +239,9 @@ export function ContactForm() {
             className={`${field} border-line py-3`}
             {...a("message")}
           />
+          <p className="mt-1.5 t-small text-gray-500">
+            {careers ? "What you've worked on, what you enjoy, and what you're looking for." : "Share as much as you can — it helps us route to the right specialist."}
+          </p>
           {err("message")}
         </div>
 
@@ -328,11 +336,18 @@ export function ContactForm() {
         </p>
       )}
 
-      <Button type="submit" size="lg" disabled={state === "sending"} className="w-full sm:w-auto">
-        {state === "sending" ? "Sending…" : (() => {
-          const i = intents.find((x) => x.id === intent);
-          return i?.submit ?? i?.label ?? "Send";
-        })()}
+      <Button type="submit" size="lg" arrow={false} disabled={state === "sending"} className="w-full sm:w-auto">
+        {state === "sending" ? (
+          <>
+            <span aria-hidden className="inline-block h-[1em] w-[1em] animate-spin rounded-full border-2 border-current border-t-transparent" />
+            Sending…
+          </>
+        ) : (
+          (() => {
+            const i = intents.find((x) => x.id === intent);
+            return i?.submit ?? i?.label ?? "Send";
+          })()
+        )}
       </Button>
     </form>
   );

@@ -7,6 +7,7 @@ import { ArrowRight } from "@/components/ui/icons";
 import { CountUp } from "@/components/ui/CountUp";
 import { ContentChecklist } from "@/components/ui/ContentChecklist";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
+import { reviewMode } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { culture, values } from "@/content/careers";
 import { engagementModels } from "@/content/engagement";
@@ -128,20 +129,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership (ABOUT-002): profiles publish once supplied; until then one compact checklist */}
-      <section aria-label="Leadership" className="bg-white pb-20 md:pb-28">
-        <div className="container-x">
-          <ContentChecklist
-            title="Leadership profiles in preparation"
-            intro="The people accountable for delivery will be introduced here with approved names, titles and photography."
-            items={[
-              { title: "Names & titles", need: "Leadership team members approved for publication." },
-              { title: "Portraits", need: "Consented, consistently lit portraits (black & white treatment)." },
-              { title: "Short bios", need: "Two or three lines each on experience and focus." },
-            ]}
-          />
-        </div>
-      </section>
+      {/* Leadership (ABOUT-002): profiles publish once supplied; checklist only in review mode */}
+      {reviewMode && (
+        <section aria-label="Leadership" className="bg-white pb-20 md:pb-28">
+          <div className="container-x">
+            <ContentChecklist
+              title="Leadership profiles in preparation"
+              intro="The people accountable for delivery will be introduced here with approved names, titles and photography."
+              items={[
+                { title: "Names & titles", need: "Leadership team members approved for publication." },
+                { title: "Portraits", need: "Consented, consistently lit portraits (black & white treatment)." },
+                { title: "Short bios", need: "Two or three lines each on experience and focus." },
+              ]}
+            />
+          </div>
+        </section>
+      )}
 
       {/* Culture & values */}
       <section aria-labelledby="culture" className="bg-white py-20 md:py-28">
@@ -163,7 +166,9 @@ export default function AboutPage() {
               {values.map((v, i) => (
                 <li key={v.name} className="bg-white p-6 md:p-8">
                   <span className="t-label text-gray-500">{String(i + 1).padStart(2, "0")}</span>
-                  <p className="mt-6 t-h4 text-[20px]">{v.name}</p>
+                  <p className="mt-6 t-h4 text-[20px]">
+                    <span className="text-red">{v.name[0]}</span>{v.name.slice(1)}
+                  </p>
                   <p className="mt-2 t-small text-gray-600">{v.line}</p>
                 </li>
               ))}

@@ -61,7 +61,6 @@ export const roles: Role[] = [
     team: "Quality Engineering",
     location: "Hyderabad",
     status: "approved",
-    draft: true,
     overview:
       "A hands-on automation engineer who designs, builds and maintains the test suites our clients' releases depend on. You will own automation for web, mobile and API layers, keep suites reliable as applications change, and bring AI-assisted testing practices into everyday delivery.",
     requirements: [
@@ -79,7 +78,6 @@ export const roles: Role[] = [
     team: "Quality Engineering",
     location: "Hyderabad",
     status: "approved",
-    draft: true,
     overview:
       "An engineer who makes sure applications hold up at scale. You will plan, script, run and analyze load and performance tests, find bottlenecks before users do, and give teams clear evidence about capacity and risk.",
     requirements: [
@@ -96,7 +94,6 @@ export const roles: Role[] = [
     team: "Quality Engineering",
     location: "Hyderabad",
     status: "approved",
-    draft: true,
     overview:
       "A quality leader who owns test strategy and delivery across client programs. You will lead QA teams working Onshore, Offshore and Hybrid, set the automation roadmap, and make release quality visible and measurable.",
     requirements: [
@@ -113,7 +110,6 @@ export const roles: Role[] = [
     team: "Enterprise Platforms",
     location: "Hyderabad",
     status: "approved",
-    draft: true,
     overview:
       "A developer who designs and builds enterprise applications on Pega. You will deliver case management and workflow automation solutions that streamline how our clients' teams and customers work.",
     requirements: [
@@ -130,7 +126,6 @@ export const roles: Role[] = [
     team: "Engineering",
     location: "Hyderabad",
     status: "approved",
-    draft: true,
     overview:
       "An internship for early-career engineers who want real experience. You will learn by working alongside our teams on client and product work across Quality Engineering, AI and software development.",
     requirements: [

@@ -29,6 +29,7 @@ type Props = {
   className?: string;
   type?: "button" | "submit";
   disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 /**
@@ -46,6 +47,7 @@ export function Button({
   className = "",
   type = "button",
   disabled,
+  onClick,
 }: Props) {
   const cls = [
     "group inline-flex items-center justify-center gap-2.5 rounded-sm font-medium whitespace-nowrap",
@@ -71,7 +73,7 @@ export function Button({
     );
   }
   return (
-    <button type={type} className={cls} disabled={disabled} {...trackProps}>
+    <button type={type} className={cls} disabled={disabled} onClick={onClick} {...trackProps}>
       {inner}
     </button>
   );

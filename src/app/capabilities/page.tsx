@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHero } from "@/components/sections/PageHero";
+import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/icons";
 import { pillars } from "@/content/capabilities";
 import { pageMeta } from "@/lib/seo";
@@ -20,6 +21,11 @@ export default function CapabilitiesPage() {
         eyebrow="Capabilities"
         title="Start from the problem"
         lead="Four capability pillars, one standard of engineering. Find the one that matches what's in your way."
+        actions={
+          <Button href="/contact?intent=expert" tone="dark" size="lg" track="capabilities_talk_to_expert">
+            Talk to an Expert
+          </Button>
+        }
       />
 
       <section aria-label="Which capability fits your problem" className="bg-white py-20 md:py-28">

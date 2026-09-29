@@ -6,7 +6,7 @@ import { ArrowUpRight } from "@/components/ui/icons";
 import { PendingBadge } from "@/components/ui/Pending";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { innovationAreas, products } from "@/content/innovation";
-import { visible } from "@/lib/content";
+import { reviewMode, visible } from "@/lib/content";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
@@ -65,7 +65,7 @@ export default function InnovationPage() {
                 title={<span id="portfolio">NForce One products</span>}
                 lead="Each product has a full case study covering the problem, architecture, AI usage and business value. Stories are published as each product is approved for external visibility."
               />
-              <PendingBadge tone="dark">Publication pending approval</PendingBadge>
+              {reviewMode && <PendingBadge tone="dark">Publication pending approval</PendingBadge>}
             </div>
             <ul className="mt-14 grid gap-px overflow-hidden rounded-md border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
               {list.map((p, i) => {

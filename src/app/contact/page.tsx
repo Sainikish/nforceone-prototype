@@ -40,12 +40,12 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
           <aside className="lg:col-span-4 lg:col-start-9">
             <div className="space-y-10 lg:sticky lg:top-28">
               <div>
-                <h2 className="t-label text-gray-600">Email</h2>
+                <h3 className="t-label text-gray-600">Email</h3>
                 <CopyEmail email={site.email} className="mt-3 text-[19px] tracking-[-0.015em]" />
 
               </div>
               <div>
-                <h2 className="t-label text-gray-600">Offices</h2>
+                <h3 className="t-label text-gray-600">Offices</h3>
                 <ul className="mt-3 divide-y divide-line border-y border-line">
                   {site.offices.map((o) => (
                     <li key={o.city} className="py-5">

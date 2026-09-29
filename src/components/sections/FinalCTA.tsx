@@ -66,7 +66,7 @@ export function FinalCTA({
                 href={`/contact?intent=${i}`}
                 data-track={i === "demo" ? "demo_request" : "cta_click"}
                 data-track-label={catalog[i].label}
-                className="group flex items-center justify-between gap-6 py-6"
+                className="group -mx-3 flex items-center justify-between gap-6 rounded-sm px-3 py-6 transition-colors hover:bg-white/5"
               >
                 <span>
                   <span className="block text-[17px] font-medium tracking-[-0.015em]">{catalog[i].label}</span>

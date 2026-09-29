@@ -32,7 +32,7 @@ export function CapabilityExplorer() {
           <div className="lg:col-span-8">
             <Eyebrow>What we do</Eyebrow>
             <h2 id="wwd-title" data-reveal className="t-h2 mt-6 text-balance">
-              Engineering intelligence into every layer of the enterprise.
+              Engineering intelligence into every layer of the enterprise
             </h2>
           </div>
           <p data-reveal className="t-lead text-gray-600 lg:col-span-4">

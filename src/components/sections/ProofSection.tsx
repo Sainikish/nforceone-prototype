@@ -21,7 +21,7 @@ export function ProofSection() {
           <div>
             <Eyebrow>Real outcomes</Eyebrow>
             <h2 id="proof-title" data-reveal className="t-h2 mt-6">
-              Proof, not promises.
+              Proof, not promises
             </h2>
           </div>
           <ArrowLink href="/case-studies" className="shrink-0" track="home_all_case_studies">

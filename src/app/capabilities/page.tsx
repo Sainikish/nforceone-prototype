@@ -18,7 +18,7 @@ export default function CapabilitiesPage() {
     <>
       <PageHero
         eyebrow="Capabilities"
-        title="Start from the problem."
+        title="Start from the problem"
         lead="Four capability pillars, one standard of engineering. Find the one that matches what's in your way."
       />
 

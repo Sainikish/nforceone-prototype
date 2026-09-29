@@ -4,35 +4,35 @@ export const telecomAreas = [
     id: "oss-bss",
     name: "OSS/BSS Transformation",
     story:
-      "Order management, billing, provisioning, customer management, service activation and network systems, modernized and integrated end to end.",
-    points: ["Order management", "Billing", "Provisioning", "Customer management", "Service activation", "Network systems"],
+      "Order management, provisioning, billing, customer management, service activation and network systems, modernized and integrated end to end.",
+    points: ["Order Management", "Provisioning", "Billing", "Customer Management", "Service Activation", "Network Systems"],
   },
   {
     id: "quality",
     name: "Quality Engineering",
     story:
       "End-to-end telecom testing across the full order-to-bill chain, with system integration, automation, performance and regression built into every release.",
-    points: ["End-to-end telecom testing", "System integration testing", "Automation", "Performance", "Regression"],
+    points: ["End-to-End Telecom Testing", "System Integration Testing", "Automation", "Performance", "Regression"],
   },
   {
     id: "cx",
     name: "AI & Customer Experience",
     story:
       "AI virtual agents, Voice AI and IVR that resolve customer needs, validated call by call before they reach subscribers.",
-    points: ["AI virtual agents", "Voice AI", "IVR", "Agentic AI", "Customer-service automation", "Call validation"],
+    points: ["AI Virtual Agents", "Voice AI", "IVR", "Agentic AI", "Customer-Service Automation", "Call Validation"],
   },
   {
     id: "network",
     name: "Network & Field Operations",
     story:
       "Network operations and field-service workflows, automated for operational efficiency from the NOC to the field.",
-    points: ["Network operations", "Field-service workflows", "Automation", "Operational efficiency"],
+    points: ["Network Operations", "Field-Service Workflows", "Automation", "Operational Efficiency"],
   },
   {
     id: "data",
     name: "Data & Automation",
     story: "Telecom data engineering and analytics that power intelligent automation and predictive operations.",
-    points: ["Telecom data engineering", "Analytics", "Intelligent automation", "Predictive operations"],
+    points: ["Telecom Data Engineering", "Analytics", "Intelligent Automation", "Predictive Operations"],
   },
 ] as const;
 

@@ -72,7 +72,7 @@ export default async function ProductPage({ params }: PageProps<"/innovation/[sl
         </div>
       </section>
 
-      <FinalCTA title={`See ${p.name} in action.`} lead="Book a walkthrough with the team that built it." primary="demo" />
+      <FinalCTA title={`See ${p.name} in action`} lead="Book a walkthrough with the team that built it." primary="demo" />
     </>
   );
 }

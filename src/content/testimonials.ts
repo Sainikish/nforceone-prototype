@@ -35,7 +35,7 @@ export const clientTestimonials: Testimonial[] = [
     sample: true,
     context: ["delivery"],
     quote:
-      "The hybrid model just works: leadership in our time zone, and an engineering team in Hyderabad that owns its work end to end.",
+      "The Hybrid model just works: leadership in our time zone, and an engineering team in Hyderabad that owns its work end to end.",
     name: "Sample attribution",
     role: "CTO",
     company: "US Technology Company",

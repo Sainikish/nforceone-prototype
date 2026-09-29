@@ -12,7 +12,7 @@ export function TelecomSection({ headingLevel = "h2", numbered = true }: { headi
           <div className="max-w-[40rem] xl:sticky xl:top-28">
             <Eyebrow tone="dark">Where we stand apart · Telecom</Eyebrow>
             <H id="tel-title" data-reveal className="t-h2 mt-6 text-balance">
-              Engineering the systems behind connected experiences.
+              Engineering the systems behind connected experiences
             </H>
             <p data-reveal className="t-lead mt-6 text-gray-400">
               Our deepest domain. AI, Quality Engineering and engineering come together across OSS/BSS, customer

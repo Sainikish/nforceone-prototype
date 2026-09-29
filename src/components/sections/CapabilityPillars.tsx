@@ -13,10 +13,10 @@ export function CapabilityPillars() {
           <SectionHeading
             className="lg:col-span-8"
             eyebrow="What we do"
-            title={<span id="wwd-title">Engineering intelligence into every layer of the enterprise.</span>}
+            title={<span id="wwd-title">Engineering intelligence into every layer of the enterprise</span>}
           />
           <p data-reveal className="t-lead text-gray-600 lg:col-span-4">
-            Four capability pillars with one standard of engineering rigor, delivered onshore, offshore or hybrid.
+            Four capability pillars with one standard of engineering rigor, delivered Onshore, Offshore or Hybrid.
           </p>
         </div>
 

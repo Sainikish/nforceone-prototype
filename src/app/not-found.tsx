@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <PageHero
       eyebrow="404"
-      title="This page has moved or no longer exists."
+      title="This page has moved or no longer exists"
       lead="Our site has been reorganized around four capability pillars. Most older service pages now live under Capabilities."
       actions={
         <>

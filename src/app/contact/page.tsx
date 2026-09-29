@@ -21,11 +21,11 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
     <>
       <PageHero
         eyebrow={careers ? "Careers" : "Contact"}
-        title={careers ? "Apply to join NForce One." : "Talk to the right team."}
+        title={careers ? "Apply to join NForce One" : "Talk to the right team"}
         lead={
           careers
-            ? "Tell us about yourself and the role you're interested in."
-            : "Tell us what you're working on. Your message goes straight to our AI, Quality Engineering, Digital Engineering, Data & Cloud or Telecom specialists."
+            ? "Tell us about yourself and the role you're interested in"
+            : "Tell us what you're working on and we'll route it straight to our AI, Quality Engineering, Digital Engineering, Data & Cloud or Telecom specialists"
         }
       />
 

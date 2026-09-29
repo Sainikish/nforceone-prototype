@@ -36,7 +36,7 @@ export const site = {
       phone: { display: "+1 (972) 499-6667", href: "tel:+19724996667" },
     },
     {
-      city: "Hyderabad",
+      city: "Hyderabad, Telangana",
       label: "India · Delivery Center",
       lines: ["4th Floor, Sanali Spazio, Inorbit Mall Rd", "Madhapur, Hyderabad, Telangana 500081", "India"],
       phone: { display: "+91 93469 34833", href: "tel:+919346934833" },

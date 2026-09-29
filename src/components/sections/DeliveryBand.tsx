@@ -15,7 +15,7 @@ export function DeliveryBand() {
           <div className="lg:col-span-7">
             <Eyebrow>US + India delivery</Eyebrow>
             <h2 id="people-title" data-reveal className="t-h2 mt-6 text-balance">
-              Built by people who care about engineering.
+              Built by people who care about engineering
             </h2>
           </div>
           <p data-reveal className="t-lead text-gray-600 lg:col-span-5">

@@ -22,7 +22,7 @@ export default function InnovationPage() {
     <>
       <PageHero
         eyebrow="Innovation & Products"
-        title="Products, platforms and accelerators, built by NForce One."
+        title="Products, platforms and accelerators, built by NForce One"
         lead="NForce One designs, builds and operates its own products, accelerators and AI-driven platforms, and brings what we learn to every client engagement."
         actions={
           <Button href="/contact?intent=demo" tone="dark" size="lg" track="innovation_demo" >
@@ -105,7 +105,7 @@ export default function InnovationPage() {
       )}
 
       <FinalCTA
-        title="See our products in action."
+        title="See our products in action"
         lead="Book a walkthrough of NForce One products, accelerators and AI platforms."
         primary="demo"
       />

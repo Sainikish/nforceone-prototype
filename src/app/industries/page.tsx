@@ -21,7 +21,7 @@ export default function IndustriesPage() {
     <>
       <PageHero
         eyebrow="Industries"
-        title="Deep domain beats broad claims."
+        title="Deep domain beats broad claims"
         lead="We focus where we have proven depth. Telecom is our specialism, and it is where AI, Quality Engineering and engineering come together."
       />
 
@@ -93,7 +93,7 @@ export default function IndustriesPage() {
       </section>
 
       <FinalCTA
-        title="Bring us your industry's hardest problem."
+        title="Bring us your industry's hardest problem"
         lead="Our capabilities travel. Tell us where you operate and what's in the way."
       />
     </>

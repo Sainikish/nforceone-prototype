@@ -43,7 +43,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About NForce One"
-        title="Engineers who build, test and ship."
+        title="Engineers who build, test and ship"
         lead="NForce One is a technology and delivery partner. We combine AI, Quality Engineering, Digital Engineering and deep Telecom expertise, delivered from the United States and India."
         actions={
           <Button href="/careers" tone="dark" variant="secondary" size="lg" track="about_careers">
@@ -58,7 +58,7 @@ export default function AboutPage() {
           <div className="lg:col-span-5">
             <SectionHeading
               eyebrow="Who we are"
-              title={<span id="who">A technology partner, not a staffing company.</span>}
+              title={<span id="who">A technology partner, not a staffing company</span>}
               lead="We take responsibility for outcomes: designing, building, testing, modernizing and operating the systems enterprises depend on."
             />
             <ul className="mt-10 border-t border-line">
@@ -178,8 +178,8 @@ export default function AboutPage() {
 
       <Testimonial items={employeeTestimonials} label="Employee voices" context="careers" more />
       <FinalCTA
-        title="Let's talk about your next program."
-        lead="We'll bring the right people and the delivery model to match: onshore, offshore or hybrid."
+        title="Let's talk about your next program"
+        lead="We'll bring the right people and the delivery model to match: Onshore, Offshore or Hybrid."
       />
     </>
   );

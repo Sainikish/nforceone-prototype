@@ -13,7 +13,7 @@ export function PeopleDelivery() {
           <div className="lg:col-span-7">
             <Eyebrow>People &amp; delivery</Eyebrow>
             <h2 id="people-title" data-reveal className="t-h2 mt-6 text-balance">
-              One team across the US and India.
+              One team across the US and India
             </h2>
           </div>
           <p data-reveal className="t-lead text-gray-600 lg:col-span-4 lg:col-start-9">

@@ -25,7 +25,7 @@ export function OutcomesSection() {
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
             eyebrow="Real outcomes"
-            title={<span id="out-title">Proof, not promises.</span>}
+            title={<span id="out-title">Proof, not promises</span>}
             lead="Real engagements, told plainly. Client names and results appear only once they have been validated and approved for publication."
           />
           <ArrowLink href="/case-studies" className="shrink-0" track="home_all_case_studies">

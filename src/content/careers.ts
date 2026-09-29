@@ -98,7 +98,7 @@ export const roles: Role[] = [
     status: "approved",
     draft: true,
     overview:
-      "A quality leader who owns test strategy and delivery across client programs. You will lead QA teams working onshore, offshore and hybrid, set the automation roadmap, and make release quality visible and measurable.",
+      "A quality leader who owns test strategy and delivery across client programs. You will lead QA teams working Onshore, Offshore and Hybrid, set the automation roadmap, and make release quality visible and measurable.",
     requirements: [
       "Own test strategy, planning and quality gates across functional, automation, API and performance testing.",
       "Lead and grow QA teams, including hiring, coaching and allocation across programs.",
@@ -165,11 +165,11 @@ export const values = [
 
 export const culture = [
   {
-    name: "People first",
+    name: "People First",
     line: "We value team happiness, work/life balance and professional development.",
   },
   {
-    name: "Engineering culture",
+    name: "Engineering Culture",
     line: "Testing, automation and code quality are part of how every team works, not a separate phase.",
   },
   {

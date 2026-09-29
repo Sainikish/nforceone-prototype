@@ -22,7 +22,7 @@ export function Hero() {
 
           <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-400">
             <span className="text-white">Deep Telecom expertise.</span> Engineering rigor from our Quality Engineering
-            heritage. Onshore, offshore or hybrid delivery.
+            heritage. Onshore, Offshore or Hybrid delivery.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">

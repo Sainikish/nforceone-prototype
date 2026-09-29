@@ -10,13 +10,13 @@ export const pillars: Pillar[] = [
   {
     slug: "ai-agentic-solutions",
     headings: { services: "What we build", how: "How an AI agent works", why: "Why NForce One for AI" },
-    closing: { title: "Put AI to work inside your workflows.", lead: "Tell us where AI could take on real work, and we'll show you how we'd build it, ground it and assure it." },
+    closing: { title: "Put AI to work inside your workflows", lead: "Tell us where AI could take on real work, and we'll show you how we'd build it, ground it and assure it." },
     pitch: "AI agents and generative AI applications that run inside real enterprise workflows, grounded in your data and validated before they act.",
     highlights: ["Agentic AI", "Generative AI", "RAG Solutions", "Voice AI"],
     index: "01",
     name: "AI & Agentic Solutions",
     short: "AI & Agentic",
-    tagline: "AI that works inside the enterprise, not beside it.",
+    tagline: "AI that works inside the enterprise, not beside it",
     summary:
       "We design, build and operate AI agents and generative AI applications that run inside real enterprise workflows. They are grounded in your data, integrated with your systems and validated before they act.",
     problems: [
@@ -90,13 +90,13 @@ export const pillars: Pillar[] = [
   {
     slug: "quality-engineering-ai-assurance",
     headings: { services: "What we test and assure", how: "From requirement to release confidence", why: "Why NForce One for quality" },
-    closing: { title: "Ship every release with confidence.", lead: "Get an expert view of your test estate or AI systems, and where automation and assurance pay off first." },
+    closing: { title: "Ship every release with confidence", lead: "Get an expert view of your test estate or AI systems, and where automation and assurance pay off first." },
     pitch: "The quality engineering heritage we started with, extended to assure the AI systems enterprises are adopting next.",
     highlights: ["Automation Testing", "Agentic AI Testing", "LLM Evaluation", "Voice / IVR Testing"],
     index: "02",
     name: "Quality Engineering & AI Assurance",
     short: "Quality Engineering",
-    tagline: "Release confidence for the systems you run and the AI you adopt.",
+    tagline: "Release confidence for the systems you run and the AI you adopt",
     summary:
       "Quality Engineering is where NForce One started. We test the platforms enterprises depend on today, and we bring the same rigor to the AI systems they are adopting next.",
     problems: [
@@ -114,7 +114,7 @@ export const pillars: Pillar[] = [
           { name: "API Testing", line: "Contract, functional and negative testing for services and integrations." },
           { name: "Performance Testing", line: "Load, stress and scalability testing against real-world conditions." },
           { name: "QA Consulting & Transformation", line: "Assess QA maturity, modernize test strategy, set automation roadmaps and strengthen governance." },
-          { name: "Managed QA Services", line: "Onshore, offshore and hybrid QA teams owning end-to-end testing, automation, reporting and delivery support." },
+          { name: "Managed QA Services", line: "Onshore, Offshore and Hybrid QA teams owning end-to-end testing, automation, reporting and delivery support." },
         ],
       },
       {
@@ -196,13 +196,13 @@ export const pillars: Pillar[] = [
   {
     slug: "digital-engineering",
     headings: { services: "What we build and modernize", how: "A typical architecture we deliver", why: "Why NForce One for engineering" },
-    closing: { title: "Let's build your next application.", lead: "From new products to modernizing what you already run, scope it with a team that tests as it builds." },
+    closing: { title: "Let's build your next application", lead: "From new products to modernizing what you already run, scope it with a team that tests as it builds." },
     pitch: "We build and modernize the applications enterprises run on, and the APIs and services behind them.",
     highlights: ["Application Modernization", "Web & Mobile Applications", "Microservices", "Product Engineering"],
     index: "03",
     name: "Digital Engineering",
     short: "Digital Engineering",
-    tagline: "Modern applications, engineered to last.",
+    tagline: "Modern applications, engineered to last",
     summary:
       "We build and modernize the applications enterprises run on, from customer-facing web and mobile products to the APIs, services and enterprise systems behind them.",
     problems: [
@@ -242,7 +242,7 @@ export const pillars: Pillar[] = [
       },
       {
         title: "US + India product teams",
-        line: "Onshore product leadership paired with scalable offshore engineering.",
+        line: "Onshore product leadership paired with scalable Offshore engineering.",
       },
     ],
     related: { industries: ["telecom"], caseStudies: ["ai-travel-planner"] },
@@ -256,13 +256,13 @@ export const pillars: Pillar[] = [
   {
     slug: "data-cloud-enterprise-platforms",
     headings: { services: "What we engineer", how: "From source to insight", why: "Why NForce One for platforms" },
-    closing: { title: "Build the foundation your AI needs.", lead: "Talk through your data, cloud and platform roadmap with engineers who connect it end to end." },
+    closing: { title: "Build the foundation your AI needs", lead: "Talk through your data, cloud and platform roadmap with engineers who connect it end to end." },
     pitch: "The data, cloud and enterprise platforms every AI and digital program depends on, connected into one whole.",
     highlights: ["Data Engineering", "Cloud Transformation", "DevOps", "SAP & Pega"],
     index: "04",
     name: "Data, Cloud & Enterprise Platforms",
     short: "Data & Cloud",
-    tagline: "The foundation every AI and digital initiative depends on.",
+    tagline: "The foundation every AI and digital initiative depends on",
     summary:
       "We engineer the data, cloud and enterprise platforms that AI and digital programs depend on, and connect them into one operating whole.",
     problems: [

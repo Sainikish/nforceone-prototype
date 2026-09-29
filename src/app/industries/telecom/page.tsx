@@ -45,7 +45,7 @@ export default function TelecomPage() {
             / Telecom
           </>
         }
-        title="Telecom, engineered end to end."
+        title="Telecom, engineered end to end"
         lead="Telecom is where NForce One's AI, Quality Engineering and engineering depth come together, from the subscriber's first call to the billing run and the field visit."
         actions={
           <>
@@ -65,7 +65,7 @@ export default function TelecomPage() {
             <SectionHeading
               tone="dark"
               eyebrow="Telecom architecture"
-              title={<span id="tel-arch">We work across the whole stack.</span>}
+              title={<span id="tel-arch">We work across the whole stack</span>}
               lead="Select a layer to see how we engage. Quality Engineering runs end to end, across every layer."
             />
             <div className="mt-14">
@@ -80,7 +80,7 @@ export default function TelecomPage() {
         <div className="container-x">
           <SectionHeading
             eyebrow="Telecom solutions"
-            title={<span id="tel-solutions">Built for how operators run today.</span>}
+            title={<span id="tel-solutions">Built for how operators run today</span>}
             lead="Modernizing infrastructure, automating customer service and turning network data into decisions, as 5G, AI and automation reshape the industry."
           />
           <ul className="mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2">
@@ -159,7 +159,7 @@ export default function TelecomPage() {
 
       <Testimonial items={clientTestimonials} label="Telecom client voice" context="telecom" />
       <FinalCTA
-        title="Discuss your telecom transformation."
+        title="Discuss your telecom transformation"
         lead="OSS/BSS, customer experience, network or data: talk to our telecom team about where to start."
         primary="telecom"
       />

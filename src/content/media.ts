@@ -17,12 +17,12 @@ const u = (id: string) => `https://unsplash.com/photos/${id}`;
 
 export const stock = {
   teamMeeting: {
-    src: "/stock/team-meeting-south-asia.jpg",
+    src: "/stock/team-corporate-office.jpg",
     width: 2000,
-    height: 1333,
-    alt: "Engineering team discussing a project around a meeting table with laptops",
-    credit: "Ngital",
-    source: u("RdEFWm0N84o"),
+    height: 1125,
+    alt: "Business team collaborating around a table in a bright corporate office",
+    credit: "Vitaly Gariev",
+    source: u("_4tpElFQemQ"),
     license: "Unsplash License",
   },
   teamAroundScreen: {

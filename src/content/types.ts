@@ -66,6 +66,8 @@ export type Product = {
   status: Status;
   /** Written only once product owners supply approved copy (PROD-CASE-002). */
   summary?: string;
+  /** Visual stand-in for the product card; shown in production (NForce One owns these products). */
+  image?: StockImage;
 };
 
 export type Testimonial = {

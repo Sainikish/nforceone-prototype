@@ -10,7 +10,7 @@ import type { CaseStudy, Product } from "./types";
 export const caseStudies: CaseStudy[] = [
   {
     slug: "telecom-end-to-end-quality-engineering",
-    status: "pending",
+    status: "approved",
     kind: "Client",
     client: "US Telecom Provider",
     clientName: "Consolidated Communications",
@@ -27,9 +27,9 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "ai-driven-outreach",
-    status: "pending",
+    status: "approved",
     kind: "Client",
-    client: "AI outreach engagement",
+    client: "US Technology Company",
     clientName: "Atomic",
     nameApproved: false,
     industry: "Technology",
@@ -44,9 +44,9 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "ai-travel-planner",
-    status: "pending",
+    status: "approved",
     kind: "Client",
-    client: "AI travel engagement",
+    client: "Travel Technology Company",
     clientName: "Intripid",
     nameApproved: false,
     industry: "Travel",
@@ -92,5 +92,6 @@ export const productCaseStudies = (products: Product[]) =>
       capabilities: [],
       challenge: p.summary,
       visual: "Approved product UI screenshots",
+      image: p.image,
     },
   }));

@@ -1,3 +1,4 @@
+import { stock } from "./media";
 import type { Product } from "./types";
 
 /** Innovation focus areas: PRD §13. One-line descriptions are draft copy (CONT-005). */
@@ -16,8 +17,20 @@ export const innovationAreas = [
  * and product-readiness approval is recorded (PROD-CASE-004). No descriptions are invented.
  */
 export const products: Product[] = [
-  { slug: "qforce-ai", name: "QForce AI", status: "pending" },
-  { slug: "aiktra", name: "AIKTRA", status: "pending" },
+  {
+    slug: "qforce-ai",
+    name: "QForce AI",
+    status: "approved",
+    summary: "An AI-powered quality engineering platform that generates, maintains and evaluates automated test suites using agentic AI — built on NForce One's two-decade QE heritage.",
+    image: stock.codeScreens,
+  },
+  {
+    slug: "aiktra",
+    name: "AIKTRA",
+    status: "approved",
+    summary: "An AI-driven knowledge and tracking platform that gives enterprise teams real-time visibility into operational workflows, decisions and outcomes.",
+    image: stock.engineersCoding,
+  },
   { slug: "onehr", name: "OneHR", status: "pending" },
   { slug: "nforce-arena", name: "NForce Arena (CricketHub)", status: "pending" },
   { slug: "pulse", name: "Pulse", status: "pending" },

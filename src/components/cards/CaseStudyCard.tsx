@@ -9,33 +9,37 @@ export const clientLabel = (c: CaseStudy) => (c.nameApproved && c.clientName ? c
 
 /** Visual area for a case study. It shows the approved visual or, in review mode, the brief for it. */
 export function CaseVisual({ c, large = false }: { c: CaseStudy; large?: boolean }) {
+  // Product images are NForce One's own — show in production. Client images are stand-ins, review-only.
+  const showImage = !!c.image && (reviewMode || c.kind === "Product");
   return (
     <div
       className={`relative overflow-hidden rounded-md bg-ink-900 text-gray-500 ${large ? "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[480px]" : "aspect-[16/10]"}`}
     >
       <div className="zoom-media absolute inset-0 bg-grid-dark" />
-      {c.image && reviewMode && (
+      {showImage && (
         <>
           <Image
-            src={c.image.src}
-            alt={c.image.alt}
+            src={c.image!.src}
+            alt={c.image!.alt}
             fill
             sizes={large ? "(min-width: 1024px) 58vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
             className="zoom-media object-cover grayscale"
           />
           <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-          <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xs bg-black/70 px-1.5 py-1 text-[10px] font-medium uppercase tracking-[0.04em] text-white">
-            <span aria-hidden className="size-1 rounded-full bg-red-on-dark" />
-            Stock<span className="hidden md:inline"> · {c.image.credit}</span>
-          </span>
+          {reviewMode && c.kind === "Client" && (
+            <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xs bg-black/70 px-1.5 py-1 text-[10px] font-medium uppercase tracking-[0.04em] text-white">
+              <span aria-hidden className="size-1 rounded-full bg-red-on-dark" />
+              Stock<span className="hidden md:inline"> · {c.image!.credit}</span>
+            </span>
+          )}
         </>
       )}
-      {!(c.image && reviewMode) && (
+      {!showImage && (
         <div aria-hidden className="zoom-media absolute inset-0 grid place-items-center">
           <span className="select-none text-[clamp(5rem,12vw,10rem)] font-semibold tracking-[-0.06em] text-white/[0.06] watermark" data-mark={c.industry} />
         </div>
       )}
-      {!(c.image && reviewMode) && (
+      {reviewMode && !showImage && (
         <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
           <span className="t-label text-[10px] text-gray-400">Visual evidence to supply · {c.visual}</span>
         </div>

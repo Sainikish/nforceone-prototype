@@ -3,6 +3,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHero } from "@/components/sections/PageHero";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/icons";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { pillars } from "@/content/capabilities";
 import { pageMeta } from "@/lib/seo";
 
@@ -28,9 +29,14 @@ export default function CapabilitiesPage() {
         }
       />
 
-      <section aria-label="Which capability fits your problem" className="bg-white py-20 md:py-28">
+      <section aria-labelledby="cap-choose" className="bg-white py-20 md:py-28">
         <div className="container-x">
-          <div className="hidden grid-cols-12 gap-8 border-b border-black pb-4 lg:grid lg:px-4">
+          <SectionHeading
+            eyebrow="Four pillars"
+            title={<span id="cap-choose">Which capability fits your problem?</span>}
+            lead="Start from the challenge. Each pillar is built for a different kind of work."
+          />
+          <div className="mt-14 hidden grid-cols-12 gap-8 border-b border-black pb-4 lg:grid lg:px-4">
             <p className="t-label col-span-6 text-gray-600">If your challenge is…</p>
             <p className="t-label col-span-6 text-gray-600">…start here</p>
           </div>
@@ -54,7 +60,7 @@ export default function CapabilitiesPage() {
                   <div className="flex items-start justify-between gap-6 lg:col-span-6">
                     <div>
                       <span className="t-label text-gray-500 transition-colors group-hover:text-red">{p.index}</span>
-                      <h2 className="t-h3 mt-2">{p.name}</h2>
+                      <p className="t-h3 mt-2">{p.name}</p>
                       <p className="mt-2 t-body text-gray-600">{p.tagline}</p>
                     </div>
                     <span className="grid size-10 shrink-0 place-items-center rounded-sm border border-line transition-colors group-hover:border-black group-hover:bg-black group-hover:text-white">

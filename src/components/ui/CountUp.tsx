@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 /** Animates an integer up to `to` once, when it enters the viewport. Static under reduced motion. */
 export function CountUp({ to, suffix = "", duration = 1200 }: { to: number; suffix?: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [n, setN] = useState(to);
+  const [n, setN] = useState(0);
 
   useEffect(() => {
     const el = ref.current;

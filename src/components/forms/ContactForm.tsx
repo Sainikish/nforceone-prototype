@@ -42,7 +42,7 @@ export function ContactForm() {
   const chooseIntent = (id: Intent) => {
     setIntent(id);
     const i = intents.find((x) => x.id === id);
-    if (i?.interest) setInterest(i.interest);
+    setInterest(i?.interest ?? "");
   };
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -61,6 +61,22 @@ export function ContactForm() {
     if (fd.get("consent") !== "on") {
       setErrors({ consent: "Please tick the box to confirm NForce One may contact you." });
       formRef.current?.querySelector<HTMLElement>('[name="consent"]')?.focus();
+      return;
+    }
+    const clientErrors: Errors = {};
+    const nameVal = (fd.get("name") as string ?? "").trim();
+    const emailVal = (fd.get("email") as string ?? "").trim();
+    const companyVal = (fd.get("company") as string ?? "").trim();
+    const messageVal = (fd.get("message") as string ?? "").trim();
+    if (!nameVal) clientErrors.name = "Please enter your name.";
+    if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal))
+      clientErrors.email = "Please enter a valid email address.";
+    if (!isCareers && !companyVal) clientErrors.company = "Please enter your company name.";
+    if (messageVal.length < 10) clientErrors.message = "Please tell us a bit more (at least 10 characters).";
+    if (Object.keys(clientErrors).length > 0) {
+      setErrors(clientErrors);
+      const firstKey = Object.keys(clientErrors)[0] as keyof Errors;
+      formRef.current?.querySelector<HTMLElement>(`[name="${firstKey}"]`)?.focus();
       return;
     }
     const body = {
@@ -108,7 +124,7 @@ export function ContactForm() {
 
   if (state === "sent") {
     return (
-      <div role="status" className="page-in rounded-md border border-line bg-paper-50 p-8 md:p-12">
+      <div role="status" aria-label="Form submitted successfully" className="page-in rounded-md border border-line bg-paper-50 p-8 md:p-12">
         <span aria-hidden className="grid size-10 place-items-center rounded-sm bg-black text-white">✓</span>
         <h2 className="t-h3 mt-8">
           {intent === "careers" ? "Thank you. Your application is with our hiring team." : "Thank you. Your message is with our team."}
@@ -119,10 +135,10 @@ export function ContactForm() {
             : "The right NForce One team will get back to you at the email address you provided."}
         </p>
         <Link
-          href={intent === "careers" ? "/careers" : "/case-studies"}
+          href={intent === "careers" ? "/careers" : "/capabilities"}
           className="mt-8 inline-block t-small font-medium underline underline-offset-4"
         >
-          {intent === "careers" ? "Back to open positions" : "Browse case studies while you wait"}
+          {intent === "careers" ? "Back to open positions" : "Explore our capabilities"}
         </Link>
       </div>
     );
@@ -138,7 +154,7 @@ export function ContactForm() {
   const careers = intent === "careers";
 
   return (
-    <form ref={formRef} onSubmit={onSubmit} onFocus={onStart} noValidate className="space-y-8">
+    <form ref={formRef} onSubmit={onSubmit} onFocus={onStart} noValidate aria-busy={state === "sending"} className="space-y-8">
       <fieldset hidden={careers && !!role}>
         <legend className="t-label text-gray-600">I would like to</legend>
         <div className="mt-4 flex flex-wrap gap-2">

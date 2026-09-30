@@ -78,8 +78,8 @@ export function CapabilityExplorer() {
             aria-labelledby={`cap-tab-${p.slug}`}
             hidden={i !== active}
           >
-          {i === active && (
-            <div key={active} className="page-in mt-10 grid gap-10 lg:grid-cols-12 lg:gap-8">
+            {/* key changes when this panel becomes active, triggering the page-in animation re-mount */}
+            <div key={i === active ? `anim-${active}` : `panel-${i}`} className={`mt-10 grid gap-10 lg:grid-cols-12 lg:gap-8 ${i === active ? "page-in" : ""}`}>
               <div className="flex flex-col lg:col-span-5">
                 <h3 className="t-h3 text-balance">{p.tagline}</h3>
                 <p className="mt-4 t-body text-gray-600">{p.pitch}</p>
@@ -109,13 +109,12 @@ export function CapabilityExplorer() {
                     <ArchitectureDiagram variant="digital" animate={false} />
                   ) : p.slug === "data-cloud-enterprise-platforms" ? (
                     <ArchitectureDiagram variant="data" animate={false} />
-                  ) : (
-                    <FlowGrid steps={p.flow!} />
-                  )}
+                  ) : p.flow ? (
+                    <FlowGrid steps={p.flow} />
+                  ) : null}
                 </div>
               </div>
             </div>
-          )}
           </div>
         ))}
       </div>

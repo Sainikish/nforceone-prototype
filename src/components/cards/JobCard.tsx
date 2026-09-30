@@ -75,7 +75,7 @@ export function JobCard({ role }: { role: Role }) {
       )}
 
       {/* Same position for every role: top-right of the row on larger screens, below the row on phones */}
-      <div className="pb-6 sm:absolute sm:right-4 sm:top-[26px] sm:pb-0">{apply}</div>
+      <div className="border-t border-line px-4 py-4 sm:absolute sm:right-4 sm:top-[26px] sm:border-none sm:p-0">{apply}</div>
     </div>
   );
 }

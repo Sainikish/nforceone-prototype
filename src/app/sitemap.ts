@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/careers",
     "/contact",
+    "/privacy",
+    "/terms",
   ];
   return paths.map((p) => ({ url: `${site.url}${p}`, changeFrequency: "monthly", priority: p === "" ? 1 : 0.7 }));
 }

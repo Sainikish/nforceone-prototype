@@ -40,6 +40,7 @@ const story = [
 
 export default function AboutPage() {
   const where = engagementModels.filter((m) => m.group === "Where we deliver");
+  const hybrid = where.find((m) => m.name === "Hybrid") ?? where[2];
   return (
     <>
       <PageHero
@@ -54,12 +55,12 @@ export default function AboutPage() {
       />
 
       {/* Who we are + team photography */}
-      <section aria-labelledby="who" className="bg-white py-20 md:py-28">
+      <section aria-label="Who we are" className="bg-white py-20 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
             <SectionHeading
               eyebrow="Who we are"
-              title={<span id="who">A technology partner, not a staffing company</span>}
+              title="A technology partner, not a staffing company"
               lead="We take responsibility for outcomes: designing, building, testing, modernizing and operating the systems enterprises depend on."
             />
             <ul className="mt-10 border-t border-line">
@@ -100,11 +101,11 @@ export default function AboutPage() {
       </section>
 
       {/* US + India delivery */}
-      <section id="delivery" aria-labelledby="del" className="bg-white py-20 md:py-28">
+      <section id="delivery" aria-label="US + India delivery" className="bg-white py-20 md:py-28">
         <div className="container-x">
           <SectionHeading
             eyebrow="US + India delivery"
-            title={<span id="del">Close to our clients. Built to scale.</span>}
+            title="Close to our clients. Built to scale."
             lead="Client-facing teams in the United States, with scalable engineering and delivery from India, combined in whichever model fits."
           />
           <div className="mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2">
@@ -120,7 +121,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-4 flex flex-col justify-between gap-3 rounded-md bg-paper-50 px-8 py-5 t-small sm:flex-row sm:items-center">
             <p>
-              <span className="font-semibold">{where[2].name}.</span> <span className="text-gray-600">{where[2].line}</span>
+              <span className="font-semibold">{hybrid.name}.</span> <span className="text-gray-600">{hybrid.line}</span>
             </p>
             <Link href="/contact" className="group inline-flex items-center gap-2 font-medium">
               Office addresses <ArrowRight className="arrow" size={14} />
@@ -147,10 +148,10 @@ export default function AboutPage() {
       )}
 
       {/* Culture & values */}
-      <section aria-labelledby="culture" className="bg-white py-20 md:py-28">
+      <section aria-labelledby="about-culture" className="bg-white py-20 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
-            <SectionHeading eyebrow="People & culture" title={<span id="culture">Better together</span>} lead="Work matters, and so do the people doing it." />
+            <SectionHeading eyebrow="People & culture" title={<span id="about-culture">Better together</span>} lead="Work matters, and so do the people doing it." />
             <ul className="mt-10 border-t border-line">
               {culture.map((c) => (
                 <li key={c.name} className="border-b border-line py-5">

@@ -32,7 +32,37 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
       <section aria-label="Contact NForce One" className="bg-white py-16 md:py-24">
         <div className="container-x grid gap-16 lg:grid-cols-12 lg:gap-8">
           <div className="relative lg:col-span-7">
-            <Suspense fallback={<div className="h-[720px]" />}>
+            <noscript>
+              <p className="mb-8 rounded-md border border-line p-6 t-small text-gray-700">
+                JavaScript is required to submit this form. To get in touch, email{" "}
+                <a href={`mailto:${site.email}`} className="font-medium underline underline-offset-4">
+                  {site.email}
+                </a>{" "}
+                directly.
+              </p>
+            </noscript>
+            <Suspense
+              fallback={
+                <div aria-hidden="true" className="animate-pulse space-y-8">
+                  <div className="flex flex-wrap gap-2">
+                    <div className="h-10 w-24 rounded-sm bg-paper-50" />
+                    <div className="h-10 w-32 rounded-sm bg-paper-50" />
+                    <div className="h-10 w-24 rounded-sm bg-paper-50" />
+                    <div className="h-10 w-28 rounded-sm bg-paper-50" />
+                  </div>
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="h-[72px] rounded-sm bg-paper-50" />
+                    <div className="h-[72px] rounded-sm bg-paper-50" />
+                    <div className="h-[72px] rounded-sm bg-paper-50" />
+                    <div className="h-[72px] rounded-sm bg-paper-50" />
+                    <div className="h-[72px] rounded-sm bg-paper-50 sm:col-span-2" />
+                    <div className="h-36 rounded-sm bg-paper-50 sm:col-span-2" />
+                  </div>
+                  <div className="h-5 w-64 rounded-sm bg-paper-50" />
+                  <div className="h-12 w-40 rounded-sm bg-paper-50" />
+                </div>
+              }
+            >
               <ContactForm />
             </Suspense>
           </div>

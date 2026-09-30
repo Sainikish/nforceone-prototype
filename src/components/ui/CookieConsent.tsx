@@ -5,11 +5,32 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 
 const STORAGE_KEY = "nf1-cookie-consent";
+const GA = process.env.NEXT_PUBLIC_GA_ID;
+
+function grantConsent() {
+  if (typeof window === "undefined") return;
+  if ("gtag" in window) {
+    // @ts-expect-error gtag global injected by layout
+    window.gtag("consent", "update", { analytics_storage: "granted", ad_storage: "denied" });
+  }
+  // Load the GA script on first acceptance (not loaded by default to avoid pre-consent requests)
+  if (GA && !document.getElementById("ga-script")) {
+    const s = document.createElement("script");
+    s.id = "ga-script";
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA}`;
+    s.async = true;
+    document.head.appendChild(s);
+    // @ts-expect-error gtag global injected by layout
+    if ("gtag" in window) window.gtag("js", new Date());
+    // @ts-expect-error gtag global injected by layout
+    if ("gtag" in window) window.gtag("config", GA, { send_page_view: false });
+  }
+}
 
 /**
- * Cookie consent banner (GDPR/CCPA). Defers GA initialisation until the user
- * accepts. Renders only on the client, after hydration, to avoid SSR mismatch.
- * Consent is stored in localStorage so the banner stays dismissed across visits.
+ * Cookie consent banner (GDPR/CCPA). The GA script is loaded only after the
+ * user accepts, and consent is restored on every return visit automatically.
+ * In development the banner always shows so the UI can be reviewed.
  */
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -21,25 +42,29 @@ export function CookieConsent() {
       return;
     }
     try {
-      if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === "accepted") {
+        // Returning visitor who already accepted — restore consent and load GA without showing the banner
+        grantConsent();
+        return;
+      }
+      if (!stored) setVisible(true);
     } catch {
       setVisible(true);
     }
   }, []);
 
+  // Allow the footer "Cookie preferences" link to reopen the banner at any time
+  useEffect(() => {
+    const show = () => setVisible(true);
+    window.addEventListener("show-cookie-consent", show);
+    return () => window.removeEventListener("show-cookie-consent", show);
+  }, []);
+
   const accept = () => {
-    try {
-      localStorage.setItem(STORAGE_KEY, "accepted");
-    } catch { /* ignore */ }
+    try { localStorage.setItem(STORAGE_KEY, "accepted"); } catch { /* ignore */ }
     setVisible(false);
-    // Unblock GA: fire the consent update if gtag is already loaded
-    if (typeof window !== "undefined" && "gtag" in window) {
-      // @ts-expect-error gtag global injected by layout
-      window.gtag("consent", "update", {
-        analytics_storage: "granted",
-        ad_storage: "denied",
-      });
-    }
+    grantConsent();
   };
 
   const decline = () => {
@@ -54,7 +79,6 @@ export function CookieConsent() {
   return (
     <div
       role="dialog"
-      aria-live="polite"
       aria-label="Cookie consent"
       className="fixed bottom-[72px] left-4 right-4 z-[80] md:bottom-6 md:left-6 md:right-auto md:max-w-[420px]"
     >
@@ -76,5 +100,21 @@ export function CookieConsent() {
         </div>
       </div>
     </div>
+  );
+}
+
+/** Renders a "Cookie preferences" button for the footer. Clears stored choice and reopens the banner. */
+export function CookiePreferencesLink({ className }: { className?: string }) {
+  return (
+    <button
+      type="button"
+      className={className}
+      onClick={() => {
+        try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
+        window.dispatchEvent(new Event("show-cookie-consent"));
+      }}
+    >
+      Cookie preferences
+    </button>
   );
 }

@@ -53,9 +53,9 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section aria-labelledby="culture" className="bg-paper-50 py-20 md:py-28">
+      <section aria-labelledby="careers-culture" className="bg-paper-50 py-20 md:py-28">
         <div className="container-x">
-          <SectionHeading eyebrow="How we work" title={<span id="culture">Engineering culture, learning and innovation</span>} />
+          <SectionHeading eyebrow="How we work" title={<span id="careers-culture">Engineering culture, learning and innovation</span>} />
           <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {culture.map((c, i) => (
               <li key={c.name} data-reveal style={{ "--reveal-i": i } as React.CSSProperties} className="border-t border-black pt-6">

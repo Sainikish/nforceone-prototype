@@ -75,16 +75,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd).replace(/</g, "\u003c") }}
         />
         {GA && (
-          <>
-            {/* Consent default: denied until user accepts via CookieConsent banner */}
-            <Script id="ga-consent-default" strategy="beforeInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});`}
-            </Script>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA}`} strategy="afterInteractive" />
-            <Script id="ga" strategy="afterInteractive">
-              {`gtag('js',new Date());gtag('config','${GA}',{send_page_view:false});`}
-            </Script>
-          </>
+          // Consent default: denied until user accepts via CookieConsent banner.
+          // The gtag.js script itself is loaded dynamically by CookieConsent only after acceptance,
+          // so no request is made to Google's servers before the user consents.
+          <Script id="ga-consent-default" strategy="beforeInteractive">
+            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});`}
+          </Script>
         )}
       </body>
     </html>

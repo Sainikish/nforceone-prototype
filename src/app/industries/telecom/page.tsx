@@ -97,7 +97,8 @@ export default function TelecomPage() {
 
       <section aria-label="Telecom capability areas" className="bg-white">
         {telecomAreas.map((a, i) => {
-          const pillar = pillars.find((p) => p.slug === pillarFor[a.id])!;
+          const pillar = pillars.find((p) => p.slug === pillarFor[a.id]);
+          if (!pillar) return null;
           return (
             <article
               key={a.id}

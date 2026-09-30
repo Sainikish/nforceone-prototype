@@ -31,7 +31,7 @@ export function MobileNavigation({
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key !== "Tab" || !panel.current) return;
-      const f = panel.current.querySelectorAll<HTMLElement>("a, button");
+      const f = panel.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])');
       const first = f[0];
       const last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) {

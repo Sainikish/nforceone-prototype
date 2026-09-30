@@ -57,7 +57,7 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
   return (
     <>
       <TrackView event="capability_view" label={p.slug} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "<") }} />
 
       {/* 1 · Hero + the problems this pillar solves */}
       <PageHero

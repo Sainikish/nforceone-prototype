@@ -3,6 +3,7 @@ import Link from "next/link";
 import { pillars } from "@/content/capabilities";
 import { site } from "@/content/site";
 import { CopyEmail } from "@/components/ui/CopyEmail";
+import { CookiePreferencesLink } from "@/components/ui/CookieConsent";
 import { ArrowUpRight } from "@/components/ui/icons";
 import { Phone } from "@/components/ui/Phone";
 
@@ -29,9 +30,9 @@ export function Footer() {
               </p>
             </div>
 
-            <nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-8">
+            <nav aria-label="Site links" className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-8">
               <div>
-                <h2 className="t-label text-gray-500">Capabilities</h2>
+                <p className="t-label text-gray-500">Capabilities</p>
                 <ul className="mt-5 space-y-3">
                   {pillars.map((p) => (
                     <li key={p.slug}>
@@ -43,7 +44,7 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <h2 className="t-label text-gray-500">Company</h2>
+                <p className="t-label text-gray-500">Company</p>
                 <ul className="mt-5 space-y-3">
                   {company.map((l) => (
                     <li key={l.href}>
@@ -55,7 +56,7 @@ export function Footer() {
                 </ul>
               </div>
               <div className="col-span-2 sm:col-span-1">
-                <h2 className="t-label text-gray-500">Contact</h2>
+                <p className="t-label text-gray-500">Contact</p>
                 <ul className="mt-5 space-y-3 t-small">
                   <li>
                     <CopyEmail email={site.email} tone="dark" />
@@ -101,6 +102,7 @@ export function Footer() {
               <Link href="/terms" className="hover:text-white">
                 Terms
               </Link>
+              <CookiePreferencesLink className="hover:text-white" />
             </div>
           </div>
         </div>

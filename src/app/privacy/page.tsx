@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy notice"
-      need="Draft — pending review and approval by NForce One legal before this notice is finalised."
+      need="Draft, pending review and approval by NForce One legal before this notice is finalised."
     >
       <div className="space-y-8 t-body text-gray-700">
         <p className="t-small text-gray-500">Last updated: 30 September 2026</p>
@@ -22,18 +22,18 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="text-[16px] font-semibold text-black">1. Information we collect</h2>
           <p>
-            <span className="font-medium text-black">Contact forms</span> — When you submit a contact, enquiry or job
+            <span className="font-medium text-black">Contact forms:</span> When you submit a contact, enquiry or job
             application form we collect your name, email address, company name and the message or file you provide.
             This information is used solely to respond to your request.
           </p>
           <p>
-            <span className="font-medium text-black">Website analytics</span> — Subject to your consent via the cookie
-            banner, we use Google Analytics to collect anonymised data about how you use this website — including pages
+            <span className="font-medium text-black">Website analytics:</span> Subject to your consent via the cookie
+            banner, we use Google Analytics to collect anonymised data about how you use this website, including pages
             visited, referrer and interactions such as button clicks and form submissions. This data is aggregated and
             does not personally identify you.
           </p>
           <p>
-            <span className="font-medium text-black">NForce AI assistant</span> — When you use the website assistant,
+            <span className="font-medium text-black">NForce AI assistant:</span> When you use the website assistant,
             the text of your questions is processed to return a response from our approved knowledge base. No
             conversation content is stored or associated with you after your session ends.
           </p>

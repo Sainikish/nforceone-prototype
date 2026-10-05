@@ -256,7 +256,7 @@ export function ContactForm() {
             {...a("message")}
           />
           <p className="mt-1.5 t-small text-gray-500">
-            {careers ? "What you've worked on, what you enjoy, and what you're looking for." : "Share as much as you can — it helps us route to the right specialist."}
+            {careers ? "What you've worked on, what you enjoy, and what you're looking for." : "Share as much as you can; it helps us route to the right specialist."}
           </p>
           {err("message")}
         </div>

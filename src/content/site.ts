@@ -23,7 +23,7 @@ export const site = {
   positioning: ["AI.", "Quality Engineering.", "Digital Engineering.", "Delivered from the US and India."],
   positioningLine: "AI. Quality Engineering. Digital Engineering. Delivered from the US and India.",
   description:
-    "NForce One is a technology and delivery partner built on twenty years of Quality Engineering — extended into AI, Digital Engineering and Telecom, and delivered from the US and India.",
+    "NForce One is a technology and delivery partner built on twenty years of Quality Engineering, extended into AI, Digital Engineering and Telecom, and delivered from the US and India.",
   // Matches the official nforceone.com footer. Confirm lead-routing owner (LEAD-004).
   email: "contact@nforceone.com",
   // Job applications, as listed on the official careers page.

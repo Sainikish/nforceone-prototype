@@ -46,7 +46,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About NForce One"
         title="Engineers who build, test and ship"
-        lead="NForce One is a technology and delivery partner built on twenty years of Quality Engineering — extended into AI, Digital Engineering and Telecom, and delivered from the United States and India."
+        lead="NForce One is a technology and delivery partner built on twenty years of Quality Engineering, extended into AI, Digital Engineering and Telecom, and delivered from the United States and India."
         actions={
           <Button href="/careers" tone="dark" variant="secondary" size="lg" track="about_careers">
             Join the team

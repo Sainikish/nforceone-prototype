@@ -7,7 +7,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of use"
-      need="Draft — pending review and approval by NForce One legal before these terms are finalised."
+      need="Draft, pending review and approval by NForce One legal before these terms are finalised."
     >
       <div className="space-y-8 t-body text-gray-700">
         <p className="t-small text-gray-500">Last updated: 30 September 2026</p>
@@ -32,7 +32,7 @@ export default function TermsPage() {
         <section className="space-y-3">
           <h2 className="text-[16px] font-semibold text-black">2. Intellectual property</h2>
           <p>
-            All content on this website — including text, graphics, logos, images and software — is owned by NForce
+            All content on this website, including text, graphics, logos, images and software, is owned by NForce
             One or its licensors and is protected by copyright, trade mark and other intellectual property laws. You
             may not reproduce, distribute, modify or create derivative works from any content without our prior written
             consent.
@@ -43,7 +43,7 @@ export default function TermsPage() {
           <h2 className="text-[16px] font-semibold text-black">3. Accuracy of information</h2>
           <p>
             We aim to keep information on this website accurate and current. However, we make no warranty or
-            representation — express or implied — as to the completeness, accuracy, reliability, suitability or
+            representation, express or implied, as to the completeness, accuracy, reliability, suitability or
             availability of any content. Any reliance you place on such content is at your own risk.
           </p>
         </section>

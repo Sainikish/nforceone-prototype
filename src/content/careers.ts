@@ -142,7 +142,7 @@ export const roles: Role[] = [
 export const values = [
   {
     name: "Growth",
-    line: "We embrace continuous learning and development, personally and professionally, so every team member keeps moving — not just doing the same job for longer.",
+    line: "We embrace continuous learning and development, personally and professionally, so every team member keeps moving, not just doing the same job for longer.",
   },
   {
     name: "Responsibility",

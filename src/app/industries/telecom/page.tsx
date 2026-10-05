@@ -81,7 +81,7 @@ export default function TelecomPage() {
           <SectionHeading
             eyebrow="Telecom solutions"
             title={<span id="tel-solutions">Built for how operators run today</span>}
-            lead="From modernizing infrastructure to automating customer service and turning network data into operational decisions — built for an industry being reshaped by 5G, AI and automation."
+            lead="From modernizing infrastructure to automating customer service and turning network data into operational decisions, built for an industry being reshaped by 5G, AI and automation."
           />
           <ul className="mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2">
             {telecomSolutions.map((sol, i) => (

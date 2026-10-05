@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { CopyEmail } from "@/components/ui/CopyEmail";
 import { PendingField } from "@/components/ui/Pending";
 import { site } from "@/content/site";

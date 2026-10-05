@@ -17,7 +17,7 @@ export function PeopleDelivery() {
             </h2>
           </div>
           <p data-reveal className="t-lead text-gray-600 lg:col-span-4 lg:col-start-9">
-            Client-facing teams in Plano. Scalable engineering in Hyderabad. The model that fits your program.
+            Client leads in Plano. Engineers in Hyderabad. Onshore, Offshore or Hybrid — whichever model your program calls for.
           </p>
         </div>
 

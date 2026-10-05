@@ -19,7 +19,7 @@ export function DeliveryBand() {
             </h2>
           </div>
           <p data-reveal className="t-lead text-gray-600 lg:col-span-5">
-            Client-facing teams in {site.offices[0].city}. Scalable engineering and delivery in {site.offices[1].city}. One
+            Client-facing teams in {site.offices[0].city}. Engineers in {site.offices[1].city}. One
             team, accountable end to end.
           </p>
         </div>

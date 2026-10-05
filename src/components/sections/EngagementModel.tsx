@@ -14,7 +14,7 @@ export function EngagementModel() {
         <SectionHeading
           eyebrow="How we engage"
           title={<span id="eng-title">One partner. The delivery model that fits.</span>}
-          lead="From US-based client teams to India-based scalable engineering, with commercial models that match how you want to buy."
+          lead="US-based client teams, India-based engineering delivery, and commercial models that work the way your program does."
         />
 
         {/* Desktop: expanding panels */}

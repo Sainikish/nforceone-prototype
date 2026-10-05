@@ -7,8 +7,8 @@ export const innovationAreas = [
   { name: "Agentic Automation", line: "Agents that carry out multi-step operational work." },
   { name: "Testing Accelerators", line: "Reusable assets that shorten the path to coverage." },
   { name: "Enterprise Automation", line: "Workflow automation across enterprise systems." },
-  { name: "AI Agents", line: "Purpose-built agents for business functions." },
-  { name: "Digital Platforms", line: "Platforms NForce One designs, builds and operates." },
+  { name: "AI Agents", line: "Specialist agents for sales, support, operations and domain-specific workflows." },
+  { name: "Digital Platforms", line: "Customer-facing and operational products engineered and run by NForce One." },
   { name: "Reusable Engineering Frameworks", line: "Proven foundations every engagement starts from." },
 ] as const;
 
@@ -21,14 +21,14 @@ export const products: Product[] = [
     slug: "qforce-ai",
     name: "QForce AI",
     status: "approved",
-    summary: "An AI-powered quality engineering platform that generates, maintains and evaluates automated test suites using agentic AI — built on NForce One's two-decade QE heritage.",
+    summary: "QForce AI brings agentic AI into the testing lifecycle — generating test suites from requirements, repairing them when the application changes, and flagging regressions before a human has to look. Built on NForce One's two decades of QE delivery.",
     image: stock.codeScreens,
   },
   {
     slug: "aiktra",
     name: "AIKTRA",
     status: "approved",
-    summary: "An AI-driven knowledge and tracking platform that gives enterprise teams real-time visibility into operational workflows, decisions and outcomes.",
+    summary: "AIKTRA gives enterprise teams a single, live view of what is happening across their operations — which decisions were made, by whom, on what basis, and what resulted. The information teams need to act instead of investigate.",
     image: stock.engineersCoding,
   },
   { slug: "onehr", name: "OneHR", status: "pending" },

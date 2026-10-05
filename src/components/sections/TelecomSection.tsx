@@ -12,11 +12,10 @@ export function TelecomSection({ headingLevel = "h2", numbered = true }: { headi
           <div className="max-w-[40rem] xl:sticky xl:top-28">
             <Eyebrow tone="dark">Where we stand apart · Telecom</Eyebrow>
             <H id="tel-title" data-reveal className="t-h2 mt-6 text-balance">
-              Engineering the systems behind connected experiences
+              Engineering the OSS/BSS, customer and network systems carriers depend on
             </H>
             <p data-reveal className="t-lead mt-6 text-gray-400">
-              Our deepest domain. AI, Quality Engineering and engineering come together across OSS/BSS, customer
-              experience, network and data.
+              Telecom is where we run deepest. AI, Quality Engineering and digital engineering converge across OSS/BSS, customer experience, network and data.
             </p>
             <div className="mt-10 flex flex-col items-start gap-5">
               <Button href="/contact?intent=telecom" tone="dark" track="telecom_discuss">

@@ -19,7 +19,7 @@ export function InnovationStrip() {
             </h2>
           </div>
           <p data-reveal className="t-lead text-gray-400 lg:col-span-4 lg:col-start-9">
-            Our own products, accelerators and AI platforms, and what we learn from them goes into every engagement.
+            Our own products, accelerators and AI platforms — and what we learn building them goes into every client engagement.
           </p>
         </div>
 

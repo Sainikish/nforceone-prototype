@@ -153,7 +153,7 @@ export const pillars: Pillar[] = [
     differentiators: [
       {
         title: "Quality Engineering heritage",
-        line: "Over 20 years of technology and quality engineering leadership sit behind every test strategy we design.",
+        line: "Twenty years of technology and quality engineering inform every test strategy we design — from a team that has been doing this since before automated testing was the default.",
       },
       {
         title: "AI Assurance as a discipline",
@@ -202,7 +202,7 @@ export const pillars: Pillar[] = [
     index: "03",
     name: "Digital Engineering",
     short: "Digital Engineering",
-    tagline: "Modern applications, engineered to last",
+    tagline: "Applications built and tested by the same team",
     summary:
       "We build and modernize the applications enterprises run on, from customer-facing web and mobile products to the APIs, services and enterprise systems behind them.",
     problems: [
@@ -299,16 +299,16 @@ export const pillars: Pillar[] = [
     ],
     differentiators: [
       {
-        title: "AI-ready by design",
-        line: "Data and cloud foundations are built with the AI use cases that will run on them in mind.",
+        title: "Built for what you'll run on it",
+        line: "Data and cloud foundations are designed around the AI and analytics workloads they will carry — not retrofitted to support them later.",
       },
       {
         title: "Automation over tickets",
         line: "CI/CD, infrastructure as code and environment automation replace manual hand-offs.",
       },
       {
-        title: "Platform depth",
-        line: "Hands-on SAP and Pega delivery, alongside cloud-native engineering.",
+        title: "SAP, Pega and cloud-native",
+        line: "Hands-on SAP and Pega delivery alongside AWS, Azure and GCP — the full platform breadth most clients need in one team.",
       },
     ],
     technologies: [

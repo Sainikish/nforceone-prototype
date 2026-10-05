@@ -42,7 +42,7 @@ export default function CareersPage() {
       {/* Life at NForce One: photo-led */}
       <section aria-labelledby="life" className="bg-white py-20 md:py-28">
         <div className="container-x">
-          <SectionHeading eyebrow="Life at NForce One" title={<span id="life">We put our people first</span>} />
+          <SectionHeading eyebrow="Life at NForce One" title={<span id="life">What it&apos;s like to work here</span>} />
           <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4">
             <PhotoSlot brief="Engineers pairing at a workstation" image={stock.engineersCoding} treatment="Full color" ratio="4/5" className="col-span-2 md:row-span-2 md:aspect-auto! md:h-full" />
             <PhotoSlot brief="QA team stand-up" image={stock.colleaguesLaptop} treatment="Black & white" ratio="1/1" sizes="25vw" />

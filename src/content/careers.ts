@@ -142,7 +142,7 @@ export const roles: Role[] = [
 export const values = [
   {
     name: "Growth",
-    line: "We embrace continuous learning and development, personally and professionally, so every team member can unlock their full potential.",
+    line: "We embrace continuous learning and development, personally and professionally, so every team member keeps moving — not just doing the same job for longer.",
   },
   {
     name: "Responsibility",
@@ -150,7 +150,7 @@ export const values = [
   },
   {
     name: "Optimism",
-    line: "We tackle every challenge believing there's a better way forward. Optimism fuels our innovation, resilience and drive for meaningful outcomes.",
+    line: "We tackle every challenge believing there's a better way forward. Optimism fuels our innovation, resilience and the belief that a better solution exists even when the first one didn't work.",
   },
   {
     name: "Wisdom",

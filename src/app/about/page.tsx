@@ -46,7 +46,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About NForce One"
         title="Engineers who build, test and ship"
-        lead="NForce One is a technology and delivery partner. We combine AI, Quality Engineering, Digital Engineering and deep Telecom expertise, delivered from the United States and India."
+        lead="NForce One is a technology and delivery partner built on twenty years of Quality Engineering — extended into AI, Digital Engineering and Telecom, and delivered from the United States and India."
         actions={
           <Button href="/careers" tone="dark" variant="secondary" size="lg" track="about_careers">
             Join the team
@@ -93,8 +93,7 @@ export default function AboutPage() {
               <span className="sr-only">20+ </span>Years of Technology &amp; Quality Engineering Leadership
             </h2>
             <p className="t-lead mt-6 text-gray-400">
-              Our leadership brings more than two decades of experience in technology delivery and quality engineering to every
-              engagement.
+              More than two decades of technology delivery and quality engineering, across enterprise, Telecom and AI programs.
             </p>
           </div>
         </div>
@@ -105,8 +104,8 @@ export default function AboutPage() {
         <div className="container-x">
           <SectionHeading
             eyebrow="US + India delivery"
-            title="Close to our clients. Built to scale."
-            lead="Client-facing teams in the United States, with scalable engineering and delivery from India, combined in whichever model fits."
+            title="Close to our clients. Ready to scale."
+            lead="Client-facing teams in the United States, engineering delivery from India, combined in whichever model fits your program."
           />
           <div className="mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2">
             {site.offices.map((o, i) => (

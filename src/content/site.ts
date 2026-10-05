@@ -20,10 +20,10 @@ export const site = {
   name: "NForce One",
   legalName: "NForce One",
   url: resolveSiteUrl(),
-  positioning: ["AI.", "Quality Engineering.", "Digital Transformation.", "Built to Scale at Speed."],
-  positioningLine: "AI. Quality Engineering. Digital Transformation. Built to Scale at Speed.",
+  positioning: ["AI.", "Quality Engineering.", "Digital Engineering.", "Delivered from the US and India."],
+  positioningLine: "AI. Quality Engineering. Digital Engineering. Delivered from the US and India.",
   description:
-    "NForce One is a technology and delivery partner combining AI, Quality Engineering, Digital Engineering and deep Telecom expertise, delivered at scale from the US and India.",
+    "NForce One is a technology and delivery partner built on twenty years of Quality Engineering — extended into AI, Digital Engineering and Telecom, and delivered from the US and India.",
   // Matches the official nforceone.com footer. Confirm lead-routing owner (LEAD-004).
   email: "contact@nforceone.com",
   // Job applications, as listed on the official careers page.
@@ -68,7 +68,7 @@ export const nav = {
 export const credibility = [
   { value: "20+", label: "Years of Technology & Quality Engineering Leadership" },
   { value: "US + India", label: "Delivery across two continents" },
-  { value: "Telecom", label: "Deep-domain expertise" },
+  { value: "Telecom", label: "OSS/BSS to field operations" },
   { value: "AI + QE", label: "Engineering and assurance, together" },
   { value: "Onshore · Offshore · Hybrid", label: "Delivery models" },
 ] as const;

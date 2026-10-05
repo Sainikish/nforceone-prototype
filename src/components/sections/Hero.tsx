@@ -21,8 +21,7 @@ export function Hero() {
           </h1>
 
           <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-400">
-            <span className="text-white">Deep Telecom expertise.</span> Engineering rigor from our Quality Engineering
-            heritage. Onshore, Offshore or Hybrid delivery.
+            Built on two decades of Quality Engineering, extended into AI, Digital Engineering and deep Telecom expertise.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">

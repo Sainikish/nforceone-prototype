@@ -23,7 +23,7 @@ export default function InnovationPage() {
       <PageHero
         eyebrow="Innovation & Products"
         title="Products, platforms and accelerators, built by NForce One"
-        lead="NForce One designs, builds and operates its own products, accelerators and AI-driven platforms, and brings what we learn to every client engagement."
+        lead="NForce One builds and operates its own products and AI platforms. What we learn doing it goes into every client engagement."
         actions={
           <Button href="/contact?intent=demo" tone="dark" size="lg" track="innovation_demo" >
             Request a Product Demo

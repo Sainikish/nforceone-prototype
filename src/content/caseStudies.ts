@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2024",
     title: "AI-driven outreach",
     solution:
-      "An AI-driven outreach system that now handles all of the client's outbound communications, enabling them to connect with more potential customers.",
+      "An AI-driven outreach system that handles the client's full outbound communication pipeline — from prospect identification through personalised messaging — running continuously at a scale that wasn't possible with a human-led process.",
     categories: ["Client", "AI"],
     capabilities: ["ai-agentic-solutions"],
     visual: "Product UI screenshot of the outreach workflow",
@@ -53,7 +53,7 @@ export const caseStudies: CaseStudy[] = [
     year: "2024",
     title: "AI travel planner",
     solution:
-      "A scalable multi-agent AI system that automated complex workflows, improved turnaround time and reduced operational overhead across key functions.",
+      "A multi-agent AI system that handles the end-to-end itinerary workflow — planning, booking sequencing and exception handling — reducing the work that previously required manual coordination for each trip.",
     categories: ["Client", "AI", "Digital Engineering"],
     capabilities: ["ai-agentic-solutions", "digital-engineering"],
     visual: "Mobile / web screens of the trip-planning experience",

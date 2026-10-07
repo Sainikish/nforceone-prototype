@@ -8,25 +8,25 @@ export function MegaMenu({ id, open, onNavigate }: { id: string; open: boolean; 
     <div
       id={id}
       hidden={!open}
-      className="mega-in absolute inset-x-0 top-full border-b border-white/10 bg-black"
+      className="mega-in absolute left-1/2 top-full z-10 mt-3 -translate-x-1/2 w-[900px] max-w-[calc(100vw-32px)] overflow-hidden rounded-xl border border-line bg-white"
     >
-      {/* Shared rows (subgrid): number, title and list line up across all four columns however the titles wrap */}
-      <div className="container-x grid grid-cols-4 grid-rows-[auto_auto_1fr] gap-x-px py-8">
+      {/* Four pillar columns with dividers */}
+      <div className="grid grid-cols-4 divide-x divide-line p-2">
         {pillars.map((p) => (
           <Link
             key={p.slug}
             href={`/capabilities/${p.slug}`}
             onClick={onNavigate}
-            className="group relative row-span-3 grid grid-rows-subgrid rounded-md p-5 transition-colors duration-(--duration-base) hover:bg-white/[0.04]"
+            className="group relative flex flex-col gap-0 rounded-lg p-5 transition-colors duration-(--duration-base) hover:bg-paper-50"
           >
-            <span className="t-label text-gray-500 transition-colors group-hover:text-red-on-dark">{p.index}</span>
-            <span className="mt-4 flex items-start justify-between gap-3 text-[17px] font-semibold leading-snug tracking-[-0.015em] text-white">
+            <span className="t-label text-gray-400 transition-colors group-hover:text-red">{p.index}</span>
+            <span className="mt-4 flex items-start justify-between gap-3 text-[16px] font-semibold leading-snug tracking-[-0.015em] text-black">
               {p.name}
-              <ArrowRight className="arrow mt-1 shrink-0 text-gray-500 group-hover:text-white" size={15} />
+              <ArrowRight className="arrow mt-0.5 shrink-0 text-gray-400 group-hover:text-black" size={14} />
             </span>
-            <ul className="mt-5 space-y-2 self-start border-t border-white/10 pt-4">
+            <ul className="mt-4 space-y-2 border-t border-line pt-4">
               {p.highlights.map((h) => (
-                <li key={h} className="text-[13px] text-gray-400">
+                <li key={h} className="text-[12.5px] text-gray-500">
                   {h}
                 </li>
               ))}
@@ -34,15 +34,16 @@ export function MegaMenu({ id, open, onNavigate }: { id: string; open: boolean; 
           </Link>
         ))}
       </div>
-      <div className="border-t border-white/10">
-        <div className="container-x flex items-center justify-between py-4 text-[13px]">
-          <Link href="/capabilities" onClick={onNavigate} className="group inline-flex items-center gap-2 text-gray-400 hover:text-white">
+      {/* Footer bar */}
+      <div className="border-t border-line">
+        <div className="flex items-center justify-between px-7 py-3.5 text-[13px]">
+          <Link href="/capabilities" onClick={onNavigate} className="group inline-flex items-center gap-2 text-gray-500 hover:text-black">
             All capabilities <ArrowRight className="arrow" size={13} />
           </Link>
           <Link
             href="/industries/telecom"
             onClick={onNavigate}
-            className="group inline-flex items-center gap-2 text-gray-400 hover:text-white"
+            className="group inline-flex items-center gap-2 text-gray-500 hover:text-black"
           >
             <span className="size-1.5 rounded-full bg-red" aria-hidden />
             Telecom: our deep-domain specialism

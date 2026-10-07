@@ -24,9 +24,9 @@ export function Footer() {
         <div className="border-t border-white/10 pt-14 pb-14 md:pt-16 md:pb-16">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-4">
-              <Image src="/brand/nforceone-logo.webp" alt="NForce One: Let's Do IT!" width={640} height={365} className="h-auto w-[132px]" />
+              <Image src="/brand/nforceone-logo.webp" alt="NForce One" width={640} height={365} className="h-auto w-[132px]" />
               <p className="mt-6 max-w-[18rem] t-small text-gray-400">
-                AI. Quality Engineering. Digital Transformation. Built to Scale at Speed.
+                {site.description}
               </p>
             </div>
 

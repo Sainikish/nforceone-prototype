@@ -138,7 +138,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
-              className={`hidden h-9 items-center rounded-sm px-3 text-[14px] transition-colors xl:flex ${
+              className={`hidden h-9 items-center rounded-sm px-3 text-[14px] transition-colors lg:flex ${
                 isActive(item.href) ? "text-white" : "text-gray-400 hover:text-white"
               }`}
             >
@@ -167,5 +167,5 @@ export function Navbar() {
 }
 
 function ActiveDot() {
-  return <span aria-hidden className="absolute bottom-1 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-red" />;
+  return <span aria-hidden className="absolute bottom-1 left-1/2 h-[3px] w-5 -translate-x-1/2 rounded-full bg-red" />;
 }

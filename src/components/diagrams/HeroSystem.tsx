@@ -125,17 +125,17 @@ function Diagram({ l, className }: { l: Layout; className: string }) {
         <circle cx={l.outcome.w / 2 - 24} cy="0" r="4.5" fill="#d40a0a" />
       </g>
 
-      <g className="motion-only">
-        {[
-          { r: 16, fill: `url(#hs-glow-${l.id})` },
-          { r: 3.5, fill: "#ff4436" },
-        ].map((c) => (
-          <circle key={c.r} r={c.r} fill={c.fill}>
-            <animateMotion dur={`${CYCLE}s`} repeatCount="indefinite" keyPoints="0;1;1" keyTimes={`0;${TRAVEL};1`} calcMode="linear">
-              <mpath href={`#${pid}`} />
-            </animateMotion>
-          </circle>
-        ))}
+      {/* CSS offset-path keeps dot and box-highlight keyframes in the same engine — no SMIL/CSS drift */}
+      <g
+        className="motion-only"
+        style={{
+          offsetPath: `path("${l.path}")`,
+          offsetRotate: "0deg",
+          animation: `hs-dot-${l.id} ${CYCLE}s linear infinite`,
+        }}
+      >
+        <circle r={16} fill={`url(#hs-glow-${l.id})`} />
+        <circle r={3.5} fill="#ff4436" />
       </g>
       <style>{stageKeyframes(l)}</style>
     </svg>
@@ -149,7 +149,8 @@ function Diagram({ l, className }: { l: Layout; className: string }) {
  * reduced motion (animations cut short) the diagram renders complete and readable.
  */
 function stageKeyframes(l: Layout) {
-  return l.nodes
+  const dot = `@keyframes hs-dot-${l.id}{0%{offset-distance:0%}${(TRAVEL * 100).toFixed(2)}%{offset-distance:100%}100%{offset-distance:100%}}`;
+  return dot + l.nodes
     .map((n, i) => {
       const a = +(n.t * TRAVEL * 100).toFixed(2);
       const before = a > 0 ? `0%, ${Math.max(0, a - 1.5)}% { X_DIM }` : "";

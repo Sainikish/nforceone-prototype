@@ -54,14 +54,12 @@ export const nav = {
   primary: [
     { label: "Capabilities", href: "/capabilities", mega: true },
     { label: "Industries", href: "/industries" },
-    { label: "Innovation & Products", href: "/innovation" },
+    { label: "Innovation", href: "/innovation" },
     { label: "Case Studies", href: "/case-studies" },
     { label: "About", href: "/about" },
-  ],
-  utility: [
     { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact" },
   ],
+  utility: [],
 } as const;
 
 /** PRD HOME-003 / BR-003 / BR-004 */

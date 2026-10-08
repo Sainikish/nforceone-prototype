@@ -15,16 +15,23 @@ export const metadata = pageMeta({
 });
 
 export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
-  // Candidates arriving from a careers "Apply" link get a careers-specific header
-  const careers = (await searchParams).intent === "careers";
+  const intent = (await searchParams).intent;
+  const careers = intent === "careers";
+  const expert  = intent === "expert";
   return (
     <>
       <PageHero
         eyebrow={careers ? "Careers" : "Contact"}
-        title={careers ? "Apply to join NForce One" : "Talk to the right team"}
+        title={
+          careers ? "Apply to join NForce One"
+          : expert  ? "Talk to an NForce One Expert"
+          : "Talk to the right team"
+        }
         lead={
           careers
             ? "Tell us about yourself and the role you're interested in"
+            : expert
+            ? "Tell us what you're working on and our experts will reach out within 24 hours. No commitment required."
             : "Tell us what you're working on and we'll route it straight to our AI, Quality Engineering, Digital Engineering, Data & Cloud or Telecom specialists"
         }
       />

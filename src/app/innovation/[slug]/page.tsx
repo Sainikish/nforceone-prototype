@@ -8,7 +8,7 @@ import { ContentChecklist } from "@/components/ui/ContentChecklist";
 import { PendingBadge } from "@/components/ui/Pending";
 import { TrackView } from "@/components/ui/TrackView";
 import { getProduct, productTemplate, products } from "@/content/innovation";
-import { isVisible } from "@/lib/content";
+import { isVisible, reviewMode } from "@/lib/content";
 import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -62,15 +62,17 @@ export default async function ProductPage({ params }: PageProps<"/innovation/[sl
       />
 
       {/* Product stories publish section by section (Appendix B); until then one checklist replaces eight empty blocks */}
-      <section aria-label="Product story" className="bg-white py-16 md:py-24">
-        <div className="container-x">
-          <ContentChecklist
-            title="Product story in preparation"
-            intro={`The full ${p.name} case study covers these sections. Each is needed before it can be published.`}
-            items={productTemplate}
-          />
-        </div>
-      </section>
+      {reviewMode && (
+        <section aria-label="Product story" className="bg-white py-16 md:py-24">
+          <div className="container-x">
+            <ContentChecklist
+              title="Product story in preparation"
+              intro={`The full ${p.name} case study covers these sections. Each is needed before it can be published.`}
+              items={productTemplate}
+            />
+          </div>
+        </section>
+      )}
 
       <FinalCTA title={`See ${p.name} in action`} lead="Book a walkthrough with the team that built it." primary="demo" />
     </>

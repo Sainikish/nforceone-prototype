@@ -33,7 +33,7 @@ export default function InnovationPage() {
 
       <section aria-labelledby="areas" className="bg-white py-20 md:py-28">
         <div className="container-x">
-          <SectionHeading eyebrow="Where we innovate" title={<span id="areas">Seven areas of engineering innovation</span>} />
+          <SectionHeading eyebrow="Where we innovate" title={<span id="areas">Focus areas of engineering innovation</span>} />
           <ol className="mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {innovationAreas.map((a, i) => (
               <li key={a.name} data-reveal style={{ "--reveal-i": i % 4 } as React.CSSProperties} className="flex flex-col justify-between gap-6 bg-white p-6 sm:min-h-[200px] md:p-8">
@@ -67,7 +67,7 @@ export default function InnovationPage() {
               />
               {reviewMode && <PendingBadge tone="dark">Publication pending approval</PendingBadge>}
             </div>
-            <ul className="mt-14 grid gap-px overflow-hidden rounded-md border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className={`mt-14 grid gap-px overflow-hidden rounded-md border border-white/10 bg-white/10 ${list.length >= 4 ? "sm:grid-cols-2 lg:grid-cols-4" : list.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
               {list.map((p, i) => {
                 const inner = (
                   <>

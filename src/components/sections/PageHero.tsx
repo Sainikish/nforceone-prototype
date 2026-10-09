@@ -25,8 +25,8 @@ export function PageHero({
           <div className={aside ? "lg:col-span-7" : "max-w-[62rem]"}>
             <Eyebrow tone="dark">{eyebrow}</Eyebrow>
             <h1 className="t-h1 mt-7 text-balance">{title}</h1>
-            {lead && <p className="t-lead mt-7 max-w-[40rem] text-gray-400">{lead}</p>}
-            {actions && <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">{actions}</div>}
+            {lead && <p className="t-lead mt-7 max-w-[40rem] text-gray-300">{lead}</p>}
+            {actions && <div className="mt-10 md:mt-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">{actions}</div>}
           </div>
           {aside && <div className="lg:col-span-5">{aside}</div>}
         </div>

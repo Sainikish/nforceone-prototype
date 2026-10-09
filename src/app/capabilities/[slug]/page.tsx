@@ -82,12 +82,12 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
           </>
         }
         aside={
-          <div className="rounded-md border border-white/10 bg-white/[0.03] p-6 md:p-8">
-            <h2 className="t-label text-gray-500">The problems we solve</h2>
+          <div className="rounded-md border border-white/15 bg-white/[0.07] p-6 md:p-8">
+            <h2 className="t-label text-gray-400">The problems we solve</h2>
             <ul className="mt-5 space-y-4">
               {p.problems.map((x) => (
-                <li key={x} className="flex gap-3 text-[15px] leading-snug text-gray-400">
-                  <span aria-hidden className="mt-2 size-1 shrink-0 bg-red-on-dark" />
+                <li key={x} className="flex gap-3 text-[15px] leading-snug text-gray-300">
+                  <span aria-hidden className="mt-[7px] size-1.5 shrink-0 rounded-full bg-red-on-dark" />
                   {x}
                 </li>
               ))}
@@ -111,10 +111,18 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
                   {g.items.map((c) => (
                     <li
                       key={c.name}
-                      className={`grid gap-1 border-b border-line py-5 ${threeGroups ? "" : "sm:grid-cols-[minmax(0,16rem)_1fr] sm:gap-6"}`}
+                      className={`grid border-b border-line ${
+                        threeGroups
+                          ? "gap-0.5 py-3"
+                          : "gap-1 py-5 sm:grid-cols-[minmax(0,16rem)_1fr] sm:gap-6"
+                      }`}
                     >
-                      <span className="text-[16px] font-semibold tracking-[-0.01em]">{c.name}</span>
-                      <span className="t-small text-gray-600">{c.line}</span>
+                      <span className={threeGroups ? "text-[14px] font-semibold tracking-[-0.005em]" : "text-[18px] font-semibold tracking-[-0.015em]"}>
+                        {c.name}
+                      </span>
+                      <span className={threeGroups ? "text-[12px] leading-snug text-gray-500" : "t-small text-gray-600"}>
+                        {c.line}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -173,7 +181,7 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
           <ul className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {p.differentiators.map((d, i) => (
               <li key={d.title} data-reveal style={{ "--reveal-i": i } as React.CSSProperties} className="border-t border-black pt-6">
-                <h3 className="t-h4 text-[20px]">{d.title}</h3>
+                <h3 className="text-[22px] font-semibold tracking-[-0.02em] leading-snug">{d.title}</h3>
                 <p className="mt-3 t-body text-gray-600">{d.line}</p>
               </li>
             ))}
@@ -183,7 +191,7 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
               <h3 className="t-label text-gray-600 lg:col-span-3">Technologies &amp; tools</h3>
               <ul className="flex flex-wrap gap-2 lg:col-span-9">
                 {p.technologies.map((t) => (
-                  <li key={t} className="rounded-xs border border-line px-3 py-1.5 text-[14px] text-gray-700">
+                  <li key={t} className="rounded-xs border border-line bg-paper-50 px-3 py-1.5 text-[14px] text-gray-700">
                     {t}
                   </li>
                 ))}
@@ -198,32 +206,36 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
         <div className="container-x">
           <SectionHeading eyebrow="Proof" title={<span id="proof">Where this work shows up</span>} />
           {/* Phones: swipeable row instead of a tall stack; tablet/desktop: grid */}
-          <div className={`no-scrollbar mt-14 gap-4 max-md:-mx-(--gutter) max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-(--gutter) md:grid md:grid-cols-2 ${proofCount >= 3 ? "lg:grid-cols-3" : ""}`}>
-            {related.map((c) => (
-              <div key={c.slug} className="max-md:w-[84%] max-md:shrink-0 max-md:snap-start flex">
-                <CaseStudyCard c={c} />
-              </div>
-            ))}
-            {quote && (
-              <figure className="max-md:w-[84%] max-md:shrink-0 max-md:snap-start flex flex-col justify-between rounded-md bg-black p-8 text-white">
-                <div>
-                  <span aria-hidden className="block text-[44px] leading-none text-red-on-dark">“</span>
-                  <blockquote className="mt-2 text-[19px] font-medium leading-snug tracking-[-0.015em]">{quote.quote}</blockquote>
+          {proofCount > 0 ? (
+            <div className={`no-scrollbar mt-14 gap-4 max-md:-mx-(--gutter) max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-(--gutter) md:grid md:grid-cols-2 ${proofCount >= 3 ? "lg:grid-cols-3" : ""}`}>
+              {related.map((c) => (
+                <div key={c.slug} className="max-md:w-[84%] max-md:shrink-0 max-md:snap-start flex">
+                  <CaseStudyCard c={c} />
                 </div>
-                <figcaption className="mt-8 border-t border-white/10 pt-5">
-                  {!quote.sample && <span className="block text-[15px] font-semibold">{quote.name}</span>}
-                  <span className="t-label text-gray-500">
-                    {quote.role} · {quote.company}
-                  </span>
-                  {quote.sample && (
-                    <span className="mt-3 block">
-                      <PendingBadge tone="dark">Sample testimonial</PendingBadge>
+              ))}
+              {quote && (
+                <figure className="max-md:w-[84%] max-md:shrink-0 max-md:snap-start flex flex-col justify-between rounded-md bg-black p-8 text-white">
+                  <div>
+                    <span aria-hidden className="block text-[44px] leading-none text-red-on-dark">"</span>
+                    <blockquote className="mt-2 text-[19px] font-medium leading-snug tracking-[-0.015em]">{quote.quote}</blockquote>
+                  </div>
+                  <figcaption className="mt-8 border-t border-white/10 pt-5">
+                    {!quote.sample && <span className="block text-[15px] font-semibold">{quote.name}</span>}
+                    <span className="t-label text-gray-500">
+                      {quote.role} · {quote.company}
                     </span>
-                  )}
-                </figcaption>
-              </figure>
-            )}
-          </div>
+                    {quote.sample && (
+                      <span className="mt-3 block">
+                        <PendingBadge tone="dark">Sample testimonial</PendingBadge>
+                      </span>
+                    )}
+                  </figcaption>
+                </figure>
+              )}
+            </div>
+          ) : (
+            <p className="mt-14 t-body text-gray-500">Case studies for this capability are coming soon.</p>
+          )}
 
           <nav aria-label="Related capabilities and industry" className="mt-14">
             <ul
@@ -247,7 +259,7 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
                   <Link href={`/capabilities/${o.slug}`} className="group flex h-full items-center justify-between gap-4 bg-white p-6 hover:bg-paper-50">
                     <span>
                       <span className="t-label text-gray-500">{o.index}</span>
-                      <span className="mt-2 block text-[16px] font-semibold">{o.name}</span>
+                      <span className="mt-2 block text-[18px] font-semibold tracking-[-0.01em]">{o.name}</span>
                     </span>
                     <ArrowRight className="arrow shrink-0" size={16} />
                   </Link>

@@ -70,11 +70,6 @@ export function ProofSection() {
                 <span className="t-label text-gray-500">
                   {t.role} · {t.company}
                 </span>
-                {t.sample && (
-                  <span className="mt-4 block">
-                    <PendingBadge tone="dark">Sample testimonial</PendingBadge>
-                  </span>
-                )}
               </figcaption>
             </figure>
           )}

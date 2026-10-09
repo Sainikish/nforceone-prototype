@@ -98,7 +98,7 @@ export function CapabilityExplorer() {
                   className="group mt-8 inline-flex items-center gap-2 self-start text-sm font-medium"
                 >
                   <span className="underline decoration-current/25 underline-offset-[5px] group-hover:decoration-current">
-                    Explore {p.name}
+                    Explore {p.short} services
                   </span>
                   <ArrowRight className="arrow" size={15} />
                 </Link>

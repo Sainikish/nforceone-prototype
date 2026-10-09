@@ -19,7 +19,7 @@ export function CredibilityStrip() {
             >
               <span className="flex flex-col gap-1.5 md:gap-2">
                 <span className="text-[17px] font-semibold tracking-[-0.02em] md:text-[19px]">
-                  {c.value === "20+" ? <CountUp to={20} suffix="+" /> : c.value}
+                  {c.value === "20+" ? <CountUp to={20} suffix="+" /> : c.value === "150+" ? <CountUp to={150} suffix="+" /> : c.value}
                 </span>
                 <span className="t-small text-gray-500">{c.label}</span>
               </span>

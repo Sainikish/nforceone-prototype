@@ -63,9 +63,9 @@ export const nav = {
 
 /** PRD HOME-003 / BR-003 / BR-004 */
 export const credibility = [
-  { value: "20+", label: "Years of Technology & Quality Engineering Leadership" },
-  { value: "US + India", label: "Delivery across two continents" },
-  { value: "Telecom", label: "OSS/BSS to field operations" },
-  { value: "AI + QE", label: "Engineering and assurance, together" },
-  { value: "Onshore · Offshore · Hybrid", label: "Delivery models" },
+  { value: "20+", label: "Years of Quality Engineering leadership" },
+  { value: "150+", label: "Engineers and delivery specialists" },
+  { value: "US + India", label: "Two-continent delivery" },
+  { value: "AI · QE · Digital", label: "Three core engineering disciplines" },
+  { value: "Telecom", label: "OSS/BSS, CX and network systems" },
 ] as const;

@@ -40,6 +40,26 @@ export const clientTestimonials: Testimonial[] = [
     role: "CTO",
     company: "US Technology Company",
   },
+  {
+    status: "pending",
+    sample: true,
+    context: ["digital"],
+    quote:
+      "We went from a monolith to independently deployable services in under a year without a single production incident. The team moved fast and quality stayed high throughout.",
+    name: "Sample attribution",
+    role: "VP Engineering",
+    company: "US Technology Company",
+  },
+  {
+    status: "pending",
+    sample: true,
+    context: ["data"],
+    quote:
+      "We finally have a data platform our AI and analytics teams can actually build on. The migration was cleaner than we expected and the pipelines have been rock solid since go-live.",
+    name: "Sample attribution",
+    role: "Head of Data Engineering",
+    company: "Enterprise Software Company",
+  },
 ];
 
 export const employeeTestimonials: Testimonial[] = [

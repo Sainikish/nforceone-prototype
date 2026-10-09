@@ -9,7 +9,6 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PageHero } from "@/components/sections/PageHero";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, ArrowUpRight } from "@/components/ui/icons";
-import { PendingBadge } from "@/components/ui/Pending";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TrackView } from "@/components/ui/TrackView";
 import { getPillar, pillars } from "@/content/capabilities";
@@ -37,7 +36,11 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
   if (!p) notFound();
 
   const related = visible(caseStudies).filter((c) => p.related.caseStudies.includes(c.slug));
-  const quoteContext = p.slug === "ai-agentic-solutions" ? "ai" : p.slug === "quality-engineering-ai-assurance" ? "qe" : null;
+  const quoteContext =
+    p.slug === "ai-agentic-solutions" ? "ai" :
+    p.slug === "quality-engineering-ai-assurance" ? "qe" :
+    p.slug === "digital-engineering" ? "digital" :
+    p.slug === "data-cloud-enterprise-platforms" ? "data" : null;
   const quote = quoteContext ? visible(clientTestimonials).find((t) => t.context.includes(quoteContext)) : undefined;
   const others = pillars.filter((o) => o.slug !== p.slug);
   const proofCount = related.length + (quote ? 1 : 0);
@@ -207,7 +210,7 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
           <SectionHeading eyebrow="Proof" title={<span id="proof">Where this work shows up</span>} />
           {/* Phones: swipeable row instead of a tall stack; tablet/desktop: grid */}
           {proofCount > 0 ? (
-            <div className={`no-scrollbar mt-14 gap-4 max-md:-mx-(--gutter) max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-(--gutter) md:grid md:grid-cols-2 ${proofCount >= 3 ? "lg:grid-cols-3" : ""}`}>
+            <div className={`no-scrollbar mt-14 gap-4 max-md:-mx-(--gutter) max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-(--gutter) ${proofCount >= 3 ? "md:grid md:grid-cols-2 lg:grid-cols-3" : proofCount === 2 ? "md:grid md:grid-cols-2" : ""}`}>
               {related.map((c) => (
                 <div key={c.slug} className="max-md:w-[84%] max-md:shrink-0 max-md:snap-start flex">
                   <CaseStudyCard c={c} />
@@ -224,11 +227,6 @@ export default async function PillarPage({ params }: PageProps<"/capabilities/[s
                     <span className="t-label text-gray-500">
                       {quote.role} · {quote.company}
                     </span>
-                    {quote.sample && (
-                      <span className="mt-3 block">
-                        <PendingBadge tone="dark">Sample testimonial</PendingBadge>
-                      </span>
-                    )}
                   </figcaption>
                 </figure>
               )}

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "@/components/ui/icons";
-import { PendingBadge } from "@/components/ui/Pending";
 import { reviewMode } from "@/lib/content";
 import type { CaseStudy } from "@/content/types";
 
@@ -64,7 +63,6 @@ export function CaseStudyCard({ c, href }: { c: CaseStudy; href?: string }) {
             {c.kind} · {c.industry}
             {c.year ? ` · ${c.year}` : ""}
           </span>
-          {c.status === "pending" && <PendingBadge />}
         </div>
         <h3 className="t-h4 mt-3 text-[19px]">{c.title}</h3>
         <p className="mt-2 t-small text-gray-600">{clientLabel(c)}</p>

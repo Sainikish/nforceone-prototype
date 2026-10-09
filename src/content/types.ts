@@ -75,7 +75,7 @@ export type Testimonial = {
   /** Illustrative copy for design review only: never publishable, always marked "Sample". */
   sample?: boolean;
   /** Where the quote is most relevant; pages pick the first match. */
-  context: ("general" | "telecom" | "qe" | "ai" | "delivery" | "careers")[];
+  context: ("general" | "telecom" | "qe" | "ai" | "digital" | "data" | "delivery" | "careers")[];
   quote: string;
   name: string;
   role: string;

@@ -59,11 +59,27 @@ export const caseStudies: CaseStudy[] = [
     visual: "Mobile / web screens of the trip-planning experience",
     image: stock.teamReview,
   },
+  {
+    slug: "cloud-data-platform-modernization",
+    status: "pending",
+    kind: "Client",
+    client: "Enterprise Technology Company",
+    nameApproved: false,
+    industry: "Technology",
+    year: "2024",
+    title: "Cloud migration and data platform for AI-ready analytics",
+    solution:
+      "Migrated fragmented on-premise systems to a unified AWS cloud estate, with data pipelines rebuilt to serve analytics and AI workloads reliably. Infrastructure as code and CI/CD automation replaced manual environment and release processes across the platform.",
+    categories: ["Client", "Data & Cloud"],
+    capabilities: ["data-cloud-enterprise-platforms"],
+    visual: "Architecture diagram showing source systems, pipeline, cloud platform and analytics layer",
+    image: stock.networkCabling,
+  },
 ];
 
 export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug);
 
-export const caseFilters = ["All", "Client", "Product", "Telecom", "AI", "Quality Engineering", "Digital Engineering"] as const;
+export const caseFilters = ["All", "Client", "Product", "Telecom", "AI", "Quality Engineering", "Digital Engineering", "Data & Cloud"] as const;
 
 /** Appendix A: the sections every client case study must cover. */
 export const caseTemplate = [

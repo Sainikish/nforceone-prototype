@@ -326,7 +326,7 @@ export const pillars: Pillar[] = [
       "Pega Deployment Manager",
       "PegaUnit",
     ],
-    related: { industries: ["telecom"], caseStudies: [] },
+    related: { industries: ["telecom"], caseStudies: ["cloud-data-platform-modernization"] },
     cta: { label: "Schedule a Capability Discussion", intent: "expert" },
     seo: {
       title: "Data, Cloud & Enterprise Platforms",

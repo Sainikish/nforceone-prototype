@@ -21,7 +21,7 @@ export default function CapabilitiesPage() {
       <PageHero
         eyebrow="Capabilities"
         title="Start from the problem"
-        lead="Four capability pillars, one standard of engineering. Find the one that matches what's in your way."
+        lead="Four capability pillars, one standard of engineering. Find the one built for your challenge."
         actions={
           <Button href="/contact?intent=expert" tone="dark" size="lg" track="capabilities_talk_to_expert">
             Talk to an Expert
@@ -36,9 +36,9 @@ export default function CapabilitiesPage() {
             title={<span id="cap-choose">Which capability fits your problem?</span>}
             lead="Start from the challenge. Each pillar is built for a different kind of work."
           />
-          <div className="mt-14 hidden grid-cols-12 gap-8 border-b border-black pb-4 lg:grid lg:px-4">
-            <p className="t-label col-span-6 text-gray-600">If your challenge is…</p>
-            <p className="t-label col-span-6 text-gray-600">…start here</p>
+          <div className="mt-14 hidden grid-cols-12 gap-8 border-b border-line pb-4 lg:grid lg:px-4">
+            <p className="t-label col-span-6 text-gray-500">If your challenge is…</p>
+            <p className="t-label col-span-6 text-gray-500">…start here</p>
           </div>
           <ol>
             {pillars.map((p) => (
@@ -49,7 +49,24 @@ export default function CapabilitiesPage() {
                   data-track-label={p.slug}
                   className="group grid gap-6 py-10 transition-colors hover:bg-paper-50 lg:grid-cols-12 lg:gap-8 lg:px-4"
                 >
-                  <ul className="space-y-2.5 lg:col-span-6">
+                  {/* Mobile: pillar name first so users know which capability before reading problems */}
+                  <div className="order-1 flex items-start justify-between gap-6 lg:order-2 lg:col-span-6">
+                    <div>
+                      <span className="t-label font-semibold text-gray-600 transition-colors group-hover:text-red">{p.index}</span>
+                      <p className="t-h3 mt-2">{p.name}</p>
+                      <p className="mt-2 t-body text-gray-600">{p.tagline}</p>
+                      <div className="mt-4 flex flex-wrap gap-1.5">
+                        {p.highlights.map((h) => (
+                          <span key={h} className="rounded-xs border border-line bg-paper-50 px-2 py-1 text-[12px] text-gray-600">{h}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <span className="grid size-10 shrink-0 place-items-center rounded-sm border border-line transition-colors group-hover:border-black group-hover:bg-black group-hover:text-white">
+                      <ArrowRight className="arrow" size={15} />
+                    </span>
+                  </div>
+                  {/* Mobile: problems second */}
+                  <ul className="order-2 space-y-2.5 lg:order-1 lg:col-span-6">
                     {p.problems.slice(0, 3).map((x) => (
                       <li key={x} className="flex gap-3 text-[16px] leading-snug text-gray-700">
                         <span aria-hidden className="mt-2 size-1 shrink-0 bg-red" />
@@ -57,16 +74,6 @@ export default function CapabilitiesPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex items-start justify-between gap-6 lg:col-span-6">
-                    <div>
-                      <span className="t-label text-gray-500 transition-colors group-hover:text-red">{p.index}</span>
-                      <p className="t-h3 mt-2">{p.name}</p>
-                      <p className="mt-2 t-body text-gray-600">{p.tagline}</p>
-                    </div>
-                    <span className="grid size-10 shrink-0 place-items-center rounded-sm border border-line transition-colors group-hover:border-black group-hover:bg-black group-hover:text-white">
-                      <ArrowRight className="arrow" size={15} />
-                    </span>
-                  </div>
                 </Link>
               </li>
             ))}

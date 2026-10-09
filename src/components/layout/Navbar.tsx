@@ -133,18 +133,6 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-1">
-          {nav.utility.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={isActive(item.href) ? "page" : undefined}
-              className={`hidden h-9 items-center rounded-sm px-3 text-[14px] transition-colors lg:flex ${
-                isActive(item.href) ? "text-white" : "text-gray-400 hover:text-white"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
           <Button href="/contact?intent=expert" tone="dark" track="nav_talk_to_expert" className="ml-2 h-9! sm:inline-flex">
             Talk to an Expert
           </Button>

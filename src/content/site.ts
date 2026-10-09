@@ -59,7 +59,6 @@ export const nav = {
     { label: "About", href: "/about" },
     { label: "Careers", href: "/careers" },
   ],
-  utility: [],
 } as const;
 
 /** PRD HOME-003 / BR-003 / BR-004 */

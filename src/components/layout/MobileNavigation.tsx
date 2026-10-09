@@ -96,7 +96,7 @@ export function MobileNavigation({
               </li>
             </ul>
           </li>
-          {[...nav.primary.filter((i) => !("mega" in i)), ...nav.utility].map((item) => (
+          {nav.primary.filter((i) => !("mega" in i)).map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}

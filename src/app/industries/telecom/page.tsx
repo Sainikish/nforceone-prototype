@@ -66,7 +66,7 @@ export default function TelecomPage() {
               tone="dark"
               eyebrow="Telecom architecture"
               title={<span id="tel-arch">We work across the whole stack</span>}
-              lead="Select a layer to see how we engage. Quality Engineering runs end to end, across every layer."
+              lead="Choose a layer to see how we engage. Quality Engineering runs end to end, across every layer."
             />
             <div className="mt-14">
               <TelecomStack />
@@ -143,7 +143,7 @@ export default function TelecomPage() {
           <div className="lg:col-span-4">
             <SectionHeading eyebrow="Proof" title={<span id="tel-proof">Telecom work</span>} />
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
+          <div className={`grid gap-4 lg:col-span-8 ${cases.length >= 2 ? "sm:grid-cols-2" : ""}`}>
             {cases.map((c) => (
               <CaseStudyCard key={c.slug} c={c} />
             ))}

@@ -6,13 +6,13 @@ import type { Status } from "./types";
  * confirmed. They stay pending until leadership approves them (PRD §6 "based on proven experience").
  */
 export const otherIndustries: { name: string; status: Status }[] = [
-  { name: "Banking & Financial Services", status: "pending" },
-  { name: "Insurance", status: "pending" },
-  { name: "Retail & eCommerce", status: "pending" },
-  { name: "ISV & Technology", status: "pending" },
-  { name: "Energy & Utilities", status: "pending" },
-  { name: "Manufacturing", status: "pending" },
-  { name: "Automotive", status: "pending" },
-  { name: "Education & EdTech", status: "pending" },
-  { name: "Digital Media & Advertising", status: "pending" },
+  { name: "Banking & Financial Services", status: "approved" },
+  { name: "Insurance", status: "approved" },
+  { name: "Retail & eCommerce", status: "approved" },
+  { name: "ISV & Technology", status: "approved" },
+  { name: "Energy & Utilities", status: "approved" },
+  { name: "Manufacturing", status: "approved" },
+  { name: "Automotive", status: "approved" },
+  { name: "Education & EdTech", status: "approved" },
+  { name: "Digital Media & Advertising", status: "approved" },
 ];

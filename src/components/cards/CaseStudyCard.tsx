@@ -79,7 +79,9 @@ export function CaseStudyCard({ c, href }: { c: CaseStudy; href?: string }) {
                 </span>
               ))}
           </span>
-          <ArrowRight className="arrow shrink-0" size={16} />
+          <span className="grid size-9 shrink-0 place-items-center rounded-sm border border-line transition-colors duration-(--duration-base) group-hover:border-black group-hover:bg-black group-hover:text-white">
+              <ArrowRight className="arrow" size={14} />
+            </span>
         </span>
       </div>
     </Link>

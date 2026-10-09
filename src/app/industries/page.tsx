@@ -33,11 +33,12 @@ export default function IndustriesPage() {
 
       <section aria-labelledby="tel-feature" className="bg-white py-20 md:py-28">
         <div className="container-x">
-          <Link
-            href="/industries/telecom"
-            className="group grid overflow-hidden rounded-md border border-line lg:grid-cols-12"
-          >
-            <div className="flex flex-col justify-between gap-10 bg-black p-8 text-white md:p-12 lg:col-span-6">
+          <div className="grid overflow-hidden rounded-md border border-line lg:grid-cols-12">
+            {/* Left panel — links to the telecom page */}
+            <Link
+              href="/industries/telecom"
+              className="group flex flex-col justify-between gap-10 bg-black p-8 text-white transition-colors hover:bg-ink-900 md:p-12 lg:col-span-6"
+            >
               <div>
                 <p className="t-label flex items-center gap-2.5 text-red-on-dark">
                   <span aria-hidden className="size-1.5 rounded-full bg-red-on-dark" /> Featured specialism
@@ -49,22 +50,31 @@ export default function IndustriesPage() {
                   OSS/BSS, customer experience, network operations and data, engineered end to end.
                 </p>
               </div>
-              <span className="inline-flex items-center gap-2 text-sm font-medium">
+              <span className="inline-flex items-center gap-2 text-sm font-medium underline decoration-white/30 underline-offset-4 group-hover:decoration-white">
                 Explore Telecom <ArrowRight className="arrow" size={15} />
               </span>
-            </div>
+            </Link>
+            {/* Right panel — each area links to its anchor on the telecom page */}
             <ol className="divide-y divide-line lg:col-span-6">
               {telecomAreas.map((a, i) => (
-                <li key={a.id} className="flex items-start gap-6 p-6 md:px-10 md:py-7">
-                  <span className="t-label pt-1 text-gray-500">{String(i + 1).padStart(2, "0")}</span>
-                  <span>
-                    <span className="block text-[17px] font-semibold">{a.name}</span>
-                    <span className="mt-1 block t-small text-gray-600">{a.points.slice(0, 4).join(" · ")}</span>
-                  </span>
+                <li key={a.id}>
+                  <Link
+                    href={`/industries/telecom#${a.id}`}
+                    className="group flex items-start gap-6 p-6 transition-colors hover:bg-paper-50 md:px-10 md:py-7"
+                  >
+                    <span className="t-label pt-1 text-gray-500">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="flex-1">
+                      <span className="block text-[17px] font-semibold">{a.name}</span>
+                      <span className="mt-1 block t-small text-gray-600">{a.points.slice(0, 4).join(" · ")}</span>
+                    </span>
+                    <span className="grid size-9 shrink-0 place-items-center rounded-sm border border-line transition-colors duration-(--duration-base) group-hover:border-black group-hover:bg-black group-hover:text-white">
+                      <ArrowRight className="arrow" size={14} />
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ol>
-          </Link>
+          </div>
         </div>
       </section>
 
@@ -102,7 +112,7 @@ export default function IndustriesPage() {
 
       <FinalCTA
         title="Bring us your industry's hardest problem"
-        lead="Our capabilities travel. Tell us where you operate and what's in the way."
+        lead="Our capabilities travel. Tell us where you operate and we'll show you where to start."
       />
     </>
   );

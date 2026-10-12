@@ -1,4 +1,3 @@
-import { HeroSystem } from "@/components/diagrams/HeroSystem";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/content/site";
 
@@ -10,9 +9,9 @@ import { site } from "@/content/site";
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative overflow-hidden bg-black text-white">
-      <div aria-hidden className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_40%,black_20%,transparent_70%)]" />
-      <div className="container-x relative grid items-center gap-14 pt-[128px] pb-16 lg:min-h-[min(calc(100svh-96px),880px)] lg:grid-cols-12 lg:gap-8 lg:pt-[104px] lg:pb-12">
-        <div className="lg:col-span-7">
+      <div aria-hidden className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_50%_40%,black_20%,transparent_70%)]" />
+      <div className="container-x relative pt-[128px] pb-16 lg:min-h-[min(calc(100svh-96px),880px)] lg:pt-[104px] lg:pb-12 flex items-center">
+        <div className="max-w-[52rem]">
           <h1 id="hero-title" className="t-display">
             <span className="block">AI.</span>
             <span className="block">Quality Engineering.</span>
@@ -32,10 +31,6 @@ export function Hero() {
               Explore Our Capabilities
             </Button>
           </div>
-        </div>
-
-        <div className="mx-auto w-full max-w-[420px] lg:col-span-5 lg:mx-0 lg:max-w-[480px] lg:justify-self-end">
-          <HeroSystem />
         </div>
       </div>
       <p className="sr-only">{site.description}</p>

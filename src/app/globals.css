@@ -58,6 +58,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   scroll-padding-top: calc(var(--nav-h) + 16px);
+  background-color: var(--color-black);
 }
 body {
   background: var(--color-white);

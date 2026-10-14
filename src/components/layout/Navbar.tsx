@@ -101,7 +101,7 @@ export function Navbar() {
                     aria-controls="mega-capabilities"
                     onClick={clickToggle}
                     className={`relative flex h-9 items-center gap-1 rounded-sm px-3 text-[14px] transition-colors ${
-                      megaOpen || isActive(item.href) ? "text-white" : "text-gray-400 hover:text-white"
+                      megaOpen || isActive(item.href) ? "text-white" : solid ? "text-gray-400 hover:text-white" : "text-white/75 hover:text-white"
                     }`}
                   >
                     {item.label}
@@ -120,7 +120,7 @@ export function Navbar() {
                     href={item.href}
                     aria-current={isActive(item.href) ? "page" : undefined}
                     className={`relative flex h-9 items-center rounded-sm px-3 text-[14px] transition-colors ${
-                      isActive(item.href) ? "text-white" : "text-gray-400 hover:text-white"
+                      isActive(item.href) ? "text-white" : solid ? "text-gray-400 hover:text-white" : "text-white/75 hover:text-white"
                     }`}
                   >
                     {item.label}

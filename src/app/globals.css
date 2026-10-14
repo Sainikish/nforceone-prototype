@@ -182,6 +182,17 @@ body {
 }
 .page-in { animation: page-in var(--duration-slow) var(--ease-out) both; }
 
+/* Hero entrance — text lines rise up and fade in */
+@keyframes rise-in {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+/* Hero entrance — background elements fade in only (no movement) */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 /* Diagram primitives */
 @keyframes dash-flow { to { stroke-dashoffset: -48; } }
 .flow-line { stroke-dasharray: 3 9; animation: dash-flow 2.4s linear infinite; }

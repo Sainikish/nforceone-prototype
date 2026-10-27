@@ -1,5 +1,6 @@
 import { HeroSystem } from "@/components/diagrams/HeroSystem";
 import { Button } from "@/components/ui/Button";
+import { HeroBackground } from "@/components/ui/HeroBackground";
 import { site } from "@/content/site";
 
 /**
@@ -10,7 +11,7 @@ import { site } from "@/content/site";
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative overflow-hidden bg-black text-white">
-      <div aria-hidden className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_40%,black_20%,transparent_70%)]" />
+      <HeroBackground />
       <div className="container-x relative grid items-center gap-14 pt-[128px] pb-16 lg:min-h-[min(calc(100svh-96px),880px)] lg:grid-cols-12 lg:gap-8 lg:pt-[104px] lg:pb-12">
         <div className="lg:col-span-7">
           <h1 id="hero-title" className="t-display">

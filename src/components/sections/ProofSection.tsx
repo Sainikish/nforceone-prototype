@@ -37,7 +37,7 @@ export function ProofSection() {
               data-track-label={c.slug}
               className="group flex flex-col overflow-hidden rounded-md border border-line bg-white p-3 transition-colors hover:border-black/30 lg:col-span-7"
             >
-              <CaseVisual c={c} />
+              <CaseVisual c={c} sizes="(min-width: 1024px) 58vw, 100vw" />
               <div className="flex flex-1 items-end justify-between gap-6 px-3 pt-6 pb-3">
                 <div>
                   <div className="flex flex-wrap items-center gap-3">

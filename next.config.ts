@@ -39,7 +39,7 @@ const legacy: Record<string, string> = {
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  images: { formats: ["image/avif", "image/webp"] },
+  images: { formats: ["image/avif", "image/webp"], qualities: [75, 90] },
   async redirects() {
     return Object.entries(legacy).map(([source, destination]) => ({ source, destination, permanent: true }));
   },

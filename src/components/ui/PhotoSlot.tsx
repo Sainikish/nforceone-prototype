@@ -34,7 +34,9 @@ export function PhotoSlot({
   sizes?: string;
   className?: string;
 }) {
-  if (!reviewMode) return null;
+  const isStock = image?.license === "Unsplash License";
+  // NForce One's own photography renders in production; stock stand-ins and briefs are review-only.
+  if (!reviewMode && (!image || isStock)) return null;
   const dark = tone === "dark";
 
   if (image) {
@@ -45,15 +47,18 @@ export function PhotoSlot({
           alt={image.alt}
           fill
           sizes={sizes}
+          quality={isStock ? 75 : 90}
           className={`zoom-media object-cover ${filters[treatment]}`}
         />
         {treatment === "Monochrome overlay" && <span aria-hidden className="absolute inset-0 bg-black/25 mix-blend-multiply" />}
         {treatment === "Grayscale + accent" && <span aria-hidden className="absolute inset-x-0 bottom-0 h-[3px] bg-red" />}
-        <figcaption className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xs bg-black/70 px-1.5 py-1 text-[10px] font-medium uppercase tracking-[0.04em] text-white backdrop-blur-sm">
-          <span aria-hidden className="size-1 rounded-full bg-red-on-dark" />
-          Stock<span className="hidden md:inline"> · {image.credit}</span>
-          <span className="sr-only"> (Unsplash). Placeholder for: {brief}</span>
-        </figcaption>
+        {isStock && (
+          <figcaption className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xs bg-black/70 px-1.5 py-1 text-[10px] font-medium uppercase tracking-[0.04em] text-white backdrop-blur-sm">
+            <span aria-hidden className="size-1 rounded-full bg-red-on-dark" />
+            Stock<span className="hidden md:inline"> · {image.credit}</span>
+            <span className="sr-only"> (Unsplash). Placeholder for: {brief}</span>
+          </figcaption>
+        )}
       </figure>
     );
   }

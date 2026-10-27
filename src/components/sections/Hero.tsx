@@ -27,17 +27,17 @@ export function Hero() {
       <div className="container-x relative pt-24 pb-16 lg:min-h-[min(calc(100svh-200px),820px)] lg:pt-[104px] lg:pb-12 flex items-center">
         <div className="max-w-[52rem]">
           <h1 id="hero-title" className="t-display">
-            <span className="block [animation:rise-in_0.7s_var(--ease-out)_80ms_both]">AI.</span>
-            <span className="block [animation:rise-in_0.7s_var(--ease-out)_180ms_both]">Quality Engineering.</span>
-            <span className="block [animation:rise-in_0.7s_var(--ease-out)_280ms_both]">Digital Transformation.</span>
-            <span className="block text-gray-400 [animation:rise-in_0.7s_var(--ease-out)_380ms_both]">Built to Scale at Speed.</span>
+            <span className="block [animation:rise-in_0.85s_var(--ease-out)_200ms_both]">AI.</span>
+            <span className="block [animation:rise-in_0.85s_var(--ease-out)_650ms_both]">Quality Engineering.</span>
+            <span className="block [animation:rise-in_0.85s_var(--ease-out)_1100ms_both]">Digital Transformation.</span>
+            <span className="block text-gray-400 [animation:rise-in_0.85s_var(--ease-out)_1550ms_both]">Built to Scale at Speed.</span>
           </h1>
 
-          <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-500 [animation:rise-in_0.7s_var(--ease-out)_510ms_both]">
+          <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-500 [animation:rise-in_0.8s_var(--ease-out)_2100ms_both]">
             Built on two decades of Quality Engineering, extended into AI, Digital Engineering and deep Telecom expertise.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-4 [animation:rise-in_0.7s_var(--ease-out)_640ms_both]">
+          <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-4 [animation:rise-in_0.8s_var(--ease-out)_2400ms_both]">
             <Button href="/contact?intent=expert" tone="dark" size="lg" track="hero_talk_to_expert" className="max-sm:w-full">
               Talk to an Expert
             </Button>

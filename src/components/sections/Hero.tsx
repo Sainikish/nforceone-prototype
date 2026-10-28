@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/content/site";
+import { HeroGlobe } from "./HeroGlobe";
 
 /**
  * Homepage hero (HOME-001/002). Each line adds new information: the headline states the positioning,
@@ -10,19 +10,6 @@ import { site } from "@/content/site";
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative overflow-hidden bg-black text-white">
-      {/* Globe background image — fades in slowly for a dramatic entrance */}
-      <div aria-hidden className="absolute inset-0 pointer-events-none [animation:fade-in_1.4s_var(--ease-out)_both]">
-        <Image
-          src="/hero-globe.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-right opacity-100"
-          sizes="100vw"
-        />
-        {/* Thin left fade to protect text legibility */}
-        <div className="absolute inset-0 [background:linear-gradient(to_right,#000_20%,transparent_55%)] lg:[background:linear-gradient(to_right,#000_16%,transparent_38%)] xl:[background:linear-gradient(to_right,#000_18%,transparent_44%)]" />
-      </div>
       <div aria-hidden className="bg-grid-dark absolute inset-0 opacity-30 [mask-image:linear-gradient(to_right,black_20%,transparent_55%)] lg:[mask-image:linear-gradient(to_right,black_16%,transparent_38%)] xl:[mask-image:linear-gradient(to_right,black_18%,transparent_44%)]" />
       <div className="container-x relative pt-24 pb-16 lg:min-h-[min(calc(100svh-200px),820px)] lg:pt-[104px] lg:pb-12 flex items-center">
         <div className="max-w-[52rem]">
@@ -47,6 +34,7 @@ export function Hero() {
           </div>
         </div>
       </div>
+      <HeroGlobe />
       <p className="sr-only">{site.description}</p>
     </section>
   );

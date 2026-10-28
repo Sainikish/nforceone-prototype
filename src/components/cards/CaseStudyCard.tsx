@@ -7,12 +7,14 @@ import type { CaseStudy } from "@/content/types";
 export const clientLabel = (c: CaseStudy) => (c.nameApproved && c.clientName ? c.clientName : c.client);
 
 /** Visual area for a case study. It shows the approved visual or, in review mode, the brief for it. */
-export function CaseVisual({ c, large = false }: { c: CaseStudy; large?: boolean }) {
+export function CaseVisual({ c, large = false, sizes }: { c: CaseStudy; large?: boolean; sizes?: string }) {
   // Product images are NForce One's own — show in production. Client images are stand-ins, review-only.
-  const showImage = !!c.image && (reviewMode || c.kind === "Product");
+  const isStock = c.image?.license === "Unsplash License";
+  const showImage = !!c.image && (reviewMode || c.kind === "Product" || !isStock);
   return (
     <div
-      className={`relative overflow-hidden rounded-md bg-ink-900 text-gray-500 ${large ? "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[480px]" : "aspect-[16/10]"}`}
+      style={showImage && !isStock ? { aspectRatio: `${c.image!.width} / ${c.image!.height}` } : undefined}
+      className={`relative overflow-hidden rounded-md bg-ink-900 text-gray-500 ${showImage && !isStock ? "" : large ? "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[480px]" : "aspect-[16/10]"}`}
     >
       <div className="zoom-media absolute inset-0 bg-grid-dark" />
       {showImage && (
@@ -21,11 +23,12 @@ export function CaseVisual({ c, large = false }: { c: CaseStudy; large?: boolean
             src={c.image!.src}
             alt={c.image!.alt}
             fill
-            sizes={large ? "(min-width: 1024px) 58vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
-            className="zoom-media object-cover grayscale"
+            sizes={sizes ?? (large ? "(min-width: 1024px) 58vw, 100vw" : "(min-width: 1024px) 33vw, 100vw")}
+            quality={isStock ? 75 : 90}
+            className={`zoom-media object-cover ${isStock ? "grayscale" : ""}`}
           />
-          <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-          {reviewMode && c.kind === "Client" && (
+          {isStock && <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />}
+          {reviewMode && c.kind === "Client" && isStock && (
             <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-xs bg-black/70 px-1.5 py-1 text-[10px] font-medium uppercase tracking-[0.04em] text-white">
               <span aria-hidden className="size-1 rounded-full bg-red-on-dark" />
               Stock<span className="hidden md:inline"> · {c.image!.credit}</span>

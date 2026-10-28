@@ -1,7 +1,7 @@
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { engagementModels } from "@/content/engagement";
-import { stock } from "@/content/media";
+import { own } from "@/content/media";
 
 /** People + How We Engage in one section: photography first, then the six models as one compact index. */
 export function PeopleDelivery() {
@@ -24,26 +24,24 @@ export function PeopleDelivery() {
         <div className="mt-14 grid grid-cols-6 gap-3">
           <PhotoSlot
             brief="NForce One Hyderabad delivery team in a working session"
-            image={stock.teamMeeting}
-            ratio="16/10"
+            image={own.teamCollaboration}
+            ratio="4080/1880"
             sizes="(min-width: 1024px) 66vw, 100vw"
             className="col-span-6 lg:col-span-4 lg:row-span-2 lg:aspect-auto! lg:h-full"
           />
           <PhotoSlot
-            brief="Design review at the whiteboard"
-            image={stock.whiteboard}
-            treatment="Black & white"
-            ratio="16/10"
-            sizes="(min-width: 1024px) 33vw, 50vw"
-            className="col-span-3 lg:col-span-2"
+            brief="Engineers at their workstations"
+            image={own.teamWorkstations}
+            ratio="4080/1880"
+            sizes="(min-width: 1024px) 33vw, 100vw"
+            className="col-span-6 sm:col-span-3 lg:col-span-2"
           />
           <PhotoSlot
             brief="Engineers at work"
-            image={stock.engineersCoding}
-            treatment="Grayscale + accent"
-            ratio="16/10"
-            sizes="(min-width: 1024px) 33vw, 50vw"
-            className="col-span-3 lg:col-span-2"
+            image={own.teamSupportDesk}
+            ratio="4080/1880"
+            sizes="(min-width: 1024px) 33vw, 100vw"
+            className="col-span-6 sm:col-span-3 lg:col-span-2"
           />
         </div>
 

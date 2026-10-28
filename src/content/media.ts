@@ -10,8 +10,48 @@ export type StockImage = {
   alt: string;
   credit: string;
   source: string;
-  license: "Unsplash License";
+  license: "Unsplash License" | "NForce One";
 };
+
+/** NForce One's own photography. Unlike stock, it renders in production without a Stock tag. */
+export const own = {
+  teamOffice: {
+    src: "/team/nforceone-team-office.jpg",
+    width: 6400,
+    height: 2947,
+    alt: "NForce One engineers reviewing work together on a laptop at the Hyderabad delivery center",
+    credit: "NForce One",
+    source: "",
+    license: "NForce One",
+  },
+  teamCollaboration: {
+    src: "/team/team-collaboration.jpg",
+    width: 4080,
+    height: 1880,
+    alt: "NForce One engineers collaborating around their workstations in the Hyderabad delivery center",
+    credit: "NForce One",
+    source: "",
+    license: "NForce One",
+  },
+  teamWorkstations: {
+    src: "/team/team-workstations.jpg",
+    width: 4080,
+    height: 1880,
+    alt: "NForce One engineers working at their desks in the Hyderabad delivery center",
+    credit: "NForce One",
+    source: "",
+    license: "NForce One",
+  },
+  teamSupportDesk: {
+    src: "/team/team-support-desk.jpg",
+    width: 4080,
+    height: 1880,
+    alt: "NForce One team members at their workstations, some wearing headsets, in the delivery center",
+    credit: "NForce One",
+    source: "",
+    license: "NForce One",
+  },
+} satisfies Record<string, StockImage>;
 
 const u = (id: string) => `https://unsplash.com/photos/${id}`;
 

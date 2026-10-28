@@ -1,4 +1,4 @@
-import { stock } from "./media";
+import { own, stock } from "./media";
 import type { CaseStudy, Product } from "./types";
 
 /**
@@ -23,7 +23,7 @@ export const caseStudies: CaseStudy[] = [
     categories: ["Client", "Telecom", "Quality Engineering"],
     capabilities: ["quality-engineering-ai-assurance"],
     visual: "Sanitized test-architecture diagram or delivery dashboard, approved by the client",
-    image: stock.fiberSwitch,
+    image: own.teamOffice,
   },
   {
     slug: "ai-driven-outreach",

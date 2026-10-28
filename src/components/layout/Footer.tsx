@@ -4,8 +4,8 @@ import { pillars } from "@/content/capabilities";
 import { site } from "@/content/site";
 import { CopyEmail } from "@/components/ui/CopyEmail";
 import { CookiePreferencesLink } from "@/components/ui/CookieConsent";
-import { ArrowUpRight } from "@/components/ui/icons";
 import { Phone } from "@/components/ui/Phone";
+import { AnimatedSocialIcon } from "@/components/ui/AnimatedSocialIcon";
 
 const company = [
   { label: "Industries", href: "/industries" },
@@ -78,19 +78,10 @@ export function Footer() {
           </div>
 
           <div className="mt-14 flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            <ul className="flex items-center gap-6">
               {site.social.map((s) => (
-                <li key={s.href}>
-                  <a
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-1 t-small text-gray-400 hover:text-white"
-                  >
-                    {s.label}
-                    <ArrowUpRight className="arrow-diag" size={12} />
-                    <span className="sr-only">(opens in a new tab)</span>
-                  </a>
+                <li key={s.href} className="inline-flex items-center">
+                  <AnimatedSocialIcon platform={s.label} href={s.href} size={22} />
                 </li>
               ))}
             </ul>

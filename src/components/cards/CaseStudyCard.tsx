@@ -62,14 +62,14 @@ export function CaseStudyCard({ c, href }: { c: CaseStudy; href?: string }) {
       <CaseVisual c={c} />
       <div className="flex flex-1 flex-col px-3 pt-6 pb-4">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <span className="t-label text-gray-500">
+          <span className="t-label text-gray-600">
             {c.kind} · {c.industry}
             {c.year ? ` · ${c.year}` : ""}
           </span>
         </div>
         <h3 className="t-h4 mt-3 text-[19px]">{c.title}</h3>
         <p className="mt-2 t-small text-gray-600">{clientLabel(c)}</p>
-        <p className="mt-4 t-small text-gray-500">
+        <p className="mt-4 t-small text-gray-600">
           {c.outcomes?.[0] ?? c.solution ?? c.challenge ?? "Challenge and validated outcomes to be published on approval."}
         </p>
         <span className="mt-auto flex items-center justify-between pt-6">

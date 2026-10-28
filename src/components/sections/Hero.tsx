@@ -33,11 +33,11 @@ export function Hero() {
             <span className="block text-gray-400 [animation:rise-in_0.85s_var(--ease-out)_1550ms_both]">Built to Scale at Speed.</span>
           </h1>
 
-          <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-500 [animation:rise-in_0.8s_var(--ease-out)_2100ms_both]">
+          <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-400 [animation:rise-in_0.8s_var(--ease-out)_1300ms_both]">
             Built on two decades of Quality Engineering, extended into AI, Digital Engineering and deep Telecom expertise.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-4 [animation:rise-in_0.8s_var(--ease-out)_2400ms_both]">
+          <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-4 [animation:rise-in_0.8s_var(--ease-out)_1500ms_both]">
             <Button href="/contact?intent=expert" tone="dark" size="lg" track="hero_talk_to_expert" className="max-sm:w-full">
               Talk to an Expert
             </Button>

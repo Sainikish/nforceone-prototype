@@ -93,9 +93,9 @@ body {
   font-weight: 600;
 }
 @utility t-h2 {
-  font-size: clamp(2rem, 1.3rem + 2.2vw, 3.25rem);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  font-size: clamp(1.75rem, 1.15rem + 1.6vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   font-weight: 600;
 }
 @utility t-h3 {
@@ -173,6 +173,36 @@ body {
   [data-reveal].is-in {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Eyebrow colour: a red ↔ black gradient that slowly flows through the text. On dark sections black would vanish,
+   so the gradient runs red ↔ white there. The gradient repeats every 200% so the loop is seamless. */
+@keyframes eyebrow-flow { to { background-position: 200% 0; } }
+.eyebrow-flow-light,
+.eyebrow-flow-dark {
+  color: transparent;
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: eyebrow-flow 7s linear infinite;
+}
+.eyebrow-flow-light { background-image: linear-gradient(90deg, var(--color-red) 0%, #000 50%, var(--color-red) 100%); }
+.eyebrow-flow-dark { background-image: linear-gradient(90deg, var(--color-red-on-dark) 0%, #fff 50%, var(--color-red-on-dark) 100%); }
+
+/* Eyebrow "writing" motion: the text is revealed left to right in one step per character (45ms each) when the
+   eyebrow scrolls into view. It is a clip wipe on the gradient span, so it works together with the colour flow. */
+@keyframes eyebrow-write {
+  from { clip-path: inset(-0.3em 100% -0.3em 0); }
+  to { clip-path: inset(-0.3em 0 -0.3em 0); }
+}
+.eyebrow-text { display: inline-block; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-type] .eyebrow-text { clip-path: inset(-0.3em 100% -0.3em 0); }
+  [data-type].is-in .eyebrow-text {
+    animation:
+      eyebrow-flow 7s linear infinite,
+      eyebrow-write calc(var(--n, 24) * 45ms) steps(var(--n, 24), end) 150ms both;
   }
 }
 

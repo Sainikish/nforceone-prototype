@@ -23,7 +23,7 @@ export function RevealObserver() {
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
     );
-    const scan = () => document.querySelectorAll("[data-reveal]:not(.is-in)").forEach((el) => io.observe(el));
+    const scan = () => document.querySelectorAll("[data-reveal]:not(.is-in), [data-type]:not(.is-in)").forEach((el) => io.observe(el));
     scan();
     const mo = new MutationObserver(scan);
     mo.observe(document.body, { childList: true, subtree: true });

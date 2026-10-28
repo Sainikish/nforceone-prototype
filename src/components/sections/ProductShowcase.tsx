@@ -13,10 +13,10 @@ export function ProductShowcase() {
     <section aria-labelledby="inn-title" className="relative overflow-hidden bg-ink-900 py-24 text-white md:py-32">
       <div aria-hidden className="bg-dots-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_80%_20%,black,transparent_65%)]" />
       <div className="container-x relative">
+        <Eyebrow tone="dark" center className="mb-10">Innovation &amp; Products</Eyebrow>
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <Eyebrow tone="dark">Innovation &amp; Products</Eyebrow>
-            <h2 id="inn-title" data-reveal className="t-h2 mt-6 text-balance">
+            <h2 id="inn-title" data-reveal className="t-h2 text-balance">
               We don&apos;t only deliver technology. <span className="text-gray-500">We build it.</span>
             </h2>
           </div>

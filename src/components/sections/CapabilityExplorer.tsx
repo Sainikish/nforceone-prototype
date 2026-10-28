@@ -1,122 +1,133 @@
-"use client";
-
-import Link from "next/link";
-import { useRef, useState } from "react";
-import { ArchitectureDiagram } from "@/components/diagrams/ArchitectureDiagram";
-import { FlowGrid } from "@/components/diagrams/FlowGrid";
-import { ArrowRight } from "@/components/ui/icons";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { Eyebrow } from "@/components/ui/SectionHeading";
+import { SpotlightLink } from "@/components/ui/SpotlightLink";
 import { pillars } from "@/content/capabilities";
 
+/** One look per tile. The four tiles alternate black / paper / signal red / ink so the grid reads as a composition, not a list. */
+const looks = [
+  {
+    span: "lg:col-span-7",
+    tile: "bg-black text-white",
+    sub: "text-gray-400",
+    chip: "border-white/20 text-gray-300",
+    arrow: "border-white/25 group-hover:border-white group-hover:bg-white group-hover:text-black",
+    numeral: "text-white/[0.06] group-hover:text-white/[0.1]",
+    pattern: "bg-grid-dark [mask-image:radial-gradient(ellipse_at_85%_15%,black,transparent_65%)] opacity-40",
+    glow: "bg-[radial-gradient(circle_at_85%_10%,rgb(255_68_54/0.28),transparent_55%)]",
+    spot: "rgb(255 255 255 / 0.14)",
+    lit: "bg-grid-dark",
+  },
+  {
+    span: "lg:col-span-5",
+    tile: "bg-paper-100 text-black border border-line",
+    sub: "text-gray-600",
+    chip: "border-black/15 bg-white text-gray-700",
+    arrow: "border-black/20 group-hover:border-black group-hover:bg-black group-hover:text-white",
+    numeral: "text-black/[0.05] group-hover:text-black/[0.09]",
+    pattern: "bg-grid-light [mask-image:radial-gradient(ellipse_at_90%_10%,black,transparent_60%)] opacity-70",
+    glow: "bg-[radial-gradient(circle_at_90%_5%,rgb(212_10_10/0.14),transparent_55%)]",
+    spot: "rgb(212 10 10 / 0.12)",
+    lit: "bg-grid-light",
+  },
+  {
+    span: "lg:col-span-5",
+    tile: "bg-red text-white",
+    sub: "text-white/90",
+    chip: "border-white/40 text-white",
+    arrow: "border-white/50 group-hover:border-white group-hover:bg-white group-hover:text-red",
+    numeral: "text-white/[0.1] group-hover:text-white/[0.18]",
+    pattern: "bg-grid-dark [mask-image:radial-gradient(ellipse_at_90%_10%,black,transparent_60%)] opacity-50",
+    glow: "bg-[radial-gradient(circle_at_90%_5%,rgb(255_255_255/0.22),transparent_55%)]",
+    spot: "rgb(255 255 255 / 0.22)",
+    lit: "bg-grid-dark",
+  },
+  {
+    span: "lg:col-span-7",
+    tile: "bg-ink-800 text-white",
+    sub: "text-gray-400",
+    chip: "border-white/20 text-gray-300",
+    arrow: "border-white/25 group-hover:border-white group-hover:bg-white group-hover:text-black",
+    numeral: "text-white/[0.06] group-hover:text-white/[0.1]",
+    pattern: "bg-grid-dark [mask-image:radial-gradient(ellipse_at_85%_15%,black,transparent_65%)] opacity-40",
+    glow: "bg-[radial-gradient(circle_at_85%_10%,rgb(255_255_255/0.12),transparent_55%)]",
+    spot: "rgb(255 255 255 / 0.12)",
+    lit: "bg-grid-dark",
+  },
+] as const;
+
 /**
- * "What we do": the four capability pillars as one tabbed explorer (WAI-ARIA tabs pattern).
- * Every panel stays in the DOM, so all content is crawlable and works without JS.
+ * "What we do": the four capability pillars as a bento grid. Each tile links to its pillar page,
+ * so every pillar stays one click away and fully crawlable without JS.
  */
 export function CapabilityExplorer() {
-  const [active, setActive] = useState(0);
-  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-
-  const onKey = (e: React.KeyboardEvent, i: number) => {
-    const n = pillars.length;
-    const next = e.key === "ArrowRight" ? (i + 1) % n : e.key === "ArrowLeft" ? (i - 1 + n) % n : e.key === "Home" ? 0 : e.key === "End" ? n - 1 : -1;
-    if (next < 0) return;
-    e.preventDefault();
-    setActive(next);
-    tabs.current[next]?.focus();
-  };
-
   return (
-    <section aria-labelledby="wwd-title" className="bg-white py-24 md:py-32">
+    <section aria-labelledby="wwd-title" className="bg-white py-14 md:py-20">
       <div className="container-x">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8">
-          <div className="lg:col-span-8">
-            <Eyebrow>What we do</Eyebrow>
-            <h2 id="wwd-title" data-reveal className="t-h2 mt-6 text-balance">
-              Engineering intelligence into every layer of the enterprise
-            </h2>
-          </div>
-          <p data-reveal className="t-lead text-gray-600 lg:col-span-4">
+        <Eyebrow center className="mb-6">What we do</Eyebrow>
+        <div className="mx-auto max-w-[48rem] text-center">
+          <h2 id="wwd-title" data-reveal className="t-h2 text-balance">
+            Engineering intelligence into every layer of the enterprise
+          </h2>
+          <p data-reveal className="t-lead mt-6 text-gray-600">
             Four capability pillars. One standard of engineering rigor.
           </p>
         </div>
 
-        <div role="tablist" aria-label="Capability pillars" className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-line bg-line md:mt-10 lg:grid-cols-4">
+        <ul className="mt-12 grid gap-3 md:mt-14 lg:grid-cols-12">
           {pillars.map((p, i) => {
-            const on = i === active;
+            const l = looks[i % looks.length];
             return (
-              <button
-                key={p.slug}
-                ref={(el) => {
-                  tabs.current[i] = el;
-                }}
-                role="tab"
-                id={`cap-tab-${p.slug}`}
-                aria-selected={on}
-                aria-controls={`cap-panel-${p.slug}`}
-                tabIndex={on ? 0 : -1}
-                onClick={() => setActive(i)}
-                onKeyDown={(e) => onKey(e, i)}
-                className={`relative flex flex-col items-start gap-2 border-t-2 px-5 py-5 text-left transition-colors duration-(--duration-base) ${
-                  on ? "border-red bg-white text-black" : "border-transparent bg-paper-50 text-gray-500 hover:bg-white hover:text-gray-700"
-                }`}
-              >
-                <span className={`t-label ${on ? "text-red" : "text-gray-500"}`}>{p.index}</span>
-                <span className="text-[16px] font-semibold leading-snug tracking-[-0.015em] md:text-[18px]">
-                  <span className="lg:hidden">{p.short}</span>
-                  <span className="hidden lg:inline">{p.name}</span>
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {pillars.map((p, i) => (
-          <div
-            key={p.slug}
-            role="tabpanel"
-            id={`cap-panel-${p.slug}`}
-            aria-labelledby={`cap-tab-${p.slug}`}
-            hidden={i !== active}
-          >
-            {/* key changes when this panel becomes active, triggering the page-in animation re-mount */}
-            <div key={i === active ? `anim-${active}` : `panel-${i}`} className={`mt-10 grid gap-10 lg:grid-cols-12 lg:gap-8 ${i === active ? "page-in" : ""}`}>
-              <div className="flex flex-col lg:col-span-5">
-                <h3 className="t-h3 text-balance">{p.tagline}</h3>
-                <p className="mt-4 t-body text-gray-600">{p.pitch}</p>
-                <ul className="mt-8 border-t border-line">
-                  {p.highlights.map((h) => (
-                    <li key={h} className="flex items-center gap-3 border-b border-line py-3 text-[15px]">
-                      <span aria-hidden className="size-1 shrink-0 bg-red" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-                <Link
+              <li key={p.slug} data-reveal style={{ "--reveal-i": i } as React.CSSProperties} className={l.span}>
+                <SpotlightLink
                   href={`/capabilities/${p.slug}`}
                   data-track="capability_view"
                   data-track-label={p.slug}
-                  className="group mt-8 inline-flex items-center gap-2 self-start text-sm font-medium"
+                  className={`group relative flex h-full min-h-[250px] flex-col justify-between overflow-hidden rounded-lg p-6 md:min-h-[290px] md:p-8 ${l.tile}`}
                 >
-                  <span className="underline decoration-current/25 underline-offset-[5px] group-hover:decoration-current">
-                    Explore {p.short} services
+                  <span aria-hidden className={`pointer-events-none absolute inset-0 ${l.pattern}`} />
+                  <span aria-hidden className={`pointer-events-none absolute inset-0 opacity-70 transition-opacity duration-(--duration-slower) group-hover:opacity-100 ${l.glow}`} />
+                  {/* Cursor spotlight: a soft light plus the grid lighting up under the pointer */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-(--duration-base) group-hover:opacity-100"
+                    style={{ background: `radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), ${l.spot}, transparent 70%)` }}
+                  />
+                  <span
+                    aria-hidden
+                    className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-(--duration-base) group-hover:opacity-100 [mask-image:radial-gradient(220px_circle_at_var(--mx,50%)_var(--my,50%),black,transparent)] ${l.lit}`}
+                  />
+                  <span
+                    aria-hidden
+                    className={`pointer-events-none absolute -bottom-8 right-4 select-none text-[8rem] font-semibold leading-none tracking-[-0.06em] transition-all duration-(--duration-slower) ease-(--ease-out) group-hover:-translate-y-2 md:text-[11rem] ${l.numeral}`}
+                  >
+                    {p.index}
                   </span>
-                  <ArrowRight className="arrow" size={15} />
-                </Link>
-              </div>
-              <div className="lg:col-span-6 lg:col-start-7">
-                <div className="rounded-md bg-paper-50 p-5 md:p-8">
-                  {p.slug === "digital-engineering" ? (
-                    <ArchitectureDiagram variant="digital" animate={false} />
-                  ) : p.slug === "data-cloud-enterprise-platforms" ? (
-                    <ArchitectureDiagram variant="data" animate={false} />
-                  ) : p.flow ? (
-                    <FlowGrid steps={p.flow} />
-                  ) : null}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+
+                  <div className="relative flex items-start justify-between gap-4">
+                    <span className="t-label rounded-full border border-current/25 px-3 py-1.5 opacity-80">{p.index}</span>
+                    <span className={`grid size-10 shrink-0 place-items-center rounded-full border transition-colors duration-(--duration-base) ${l.arrow}`}>
+                      <ArrowUpRight className="arrow-diag" size={18} />
+                    </span>
+                  </div>
+
+                  <div className="relative mt-8">
+                    <h3 className="max-w-[20ch] text-[1.375rem] font-semibold leading-[1.1] tracking-[-0.03em] text-balance md:text-[1.75rem]">
+                      {p.name}
+                    </h3>
+                    <p className={`mt-3 max-w-[34rem] t-small ${l.sub}`}>{p.tagline}</p>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {p.highlights.map((h) => (
+                        <li key={h} className={`rounded-full border px-2.5 py-1 text-[12.5px] font-medium ${l.chip}`}>
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </SpotlightLink>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );

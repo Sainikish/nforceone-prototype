@@ -81,7 +81,7 @@ body {
 /* ───────────────────────── Typography ───────────────────────── */
 @utility t-display {
   /* min(8.6vw) keeps "Digital Transformation." on one line on phones */
-  font-size: min(8.6vw, clamp(2.5rem, 0.5rem + 4.2vw, 4.625rem));
+  font-size: min(8vw, clamp(2.25rem, 0.5rem + 3.6vw, 4rem));
   line-height: 0.96;
   letter-spacing: -0.045em;
   font-weight: 600;

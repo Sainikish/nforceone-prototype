@@ -23,6 +23,7 @@ const CITIES: [number, number, number, number, number][] = [
 /** City index pairs joined by arcs; the first five are kept on small screens. */
 const ARCS: [number, number][] = [
   [0, 7], [17, 19], [7, 15], [15, 17], [22, 1], [19, 23], [0, 5], [9, 14],
+  [19, 20], [20, 22], [17, 22], [13, 14], [15, 11], [1, 4],
 ];
 
 const RED = new THREE.Color(1, 0.2, 0.15);
@@ -66,18 +67,26 @@ void main() {
   float fres = pow(1.0 - ndv, 3.0);
   vec3 R = reflect(-L, N);
   float spec = max(dot(R, V), 0.0);
+  // Cool fill from the right so the shadow side never disappears
+  float fill = pow(max(dot(N, normalize(vec3(0.85, -0.05, 0.5))), 0.0), 1.4);
 
   // Ocean: near-black, glossy, with a soft environment sheen at grazing angles
-  vec3 ocean = vec3(0.012, 0.014, 0.02) + vec3(0.02, 0.024, 0.034) * ndl;
+  vec3 ocean = vec3(0.016, 0.018, 0.026) + vec3(0.02, 0.024, 0.034) * ndl + vec3(0.03, 0.04, 0.06) * fill;
   ocean += vec3(0.6, 0.63, 0.7) * pow(spec, 80.0) * 0.55;
   ocean += vec3(0.09, 0.1, 0.13) * fres * (0.4 + 0.6 * ndl);
 
   // Land: graphite to brushed silver by elevation
   float relief = smoothstep(0.05, 0.85, h);
   vec3 tone = mix(vec3(0.16, 0.17, 0.19), vec3(0.7, 0.72, 0.77), relief * 0.7 + 0.1);
-  vec3 landCol = tone * (0.2 + 1.0 * ndl) + vec3(0.7, 0.72, 0.78) * pow(spec, 18.0) * 0.12;
+  vec3 landCol = tone * (0.2 + 1.0 * ndl + 0.5 * fill) + vec3(0.7, 0.72, 0.78) * pow(spec, 18.0) * 0.12;
 
   vec3 col = mix(ocean, landCol, land);
+
+  // Fine latitude / longitude lines (every 15 degrees)
+  vec2 gp = vUv * vec2(24.0, 12.0);
+  vec2 gd = abs(fract(gp - 0.5) - 0.5) / max(fwidth(gp), vec2(0.0001));
+  float grid = 1.0 - min(min(gd.x, gd.y), 1.0);
+  col += vec3(0.5, 0.56, 0.68) * grid * (0.045 + 0.05 * fill + 0.05 * ndl) * (1.0 - 0.5 * land);
 
   // Silver coastline
   float edge = smoothstep(0.0, 0.5, land) * (1.0 - smoothstep(0.5, 1.0, land));
@@ -91,7 +100,7 @@ void main() {
   // Limb light
   float rim = pow(1.0 - ndv, 2.6);
   col += vec3(0.55, 0.06, 0.05) * rim * (0.07 + 0.1 * uBreath);
-  col += vec3(0.5, 0.55, 0.62) * rim * 0.05 * ndl;
+  col += vec3(0.5, 0.55, 0.62) * rim * (0.05 * ndl + 0.14 * fill);
 
   gl_FragColor = vec4(col, 1.0);
 }`;
@@ -123,7 +132,7 @@ void main() {
   float d = uPhase - vT;
   float trail = d > 0.0 ? exp(-d * 7.0) : exp(d * 45.0);
   float ends = sin(3.14159 * vT);
-  float a = (0.2 + 0.8 * trail) * ends;
+  float a = (0.3 + 0.8 * trail) * ends;
   gl_FragColor = vec4(uColor * a, 1.0);
 }`;
 
@@ -307,8 +316,10 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
 
     // ── Assemble the globe (tilted axis, spinning inside) and a mirrored copy for the floor reflection ──
     const spins: THREE.Group[] = [];
+    const tilts: THREE.Group[] = [];
     function build(mat: THREE.ShaderMaterial) {
       const tilt = new THREE.Group();
+      tilts.push(tilt);
       tilt.rotation.set(0.28, 0, 0.16);
       const spin = new THREE.Group();
       spins.push(spin);
@@ -359,7 +370,7 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
 
     // ── Layout (full scene on desktop, tighter without reflection on small screens) ──
     let compact = compactMq.matches;
-    const maxArcs = () => (compact ? 5 : arcs.length);
+    const maxArcs = () => (compact ? 7 : arcs.length);
     function applyLayout() {
       mirrorRoot.visible = veil.visible = pool.visible = !compact;
       const visH = compact ? 2.75 : 3.2;
@@ -387,12 +398,40 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
     let visible = true;
     const light = new THREE.Vector3();
     const START = -2.45; // India / Middle East facing the viewer
+    let angle = START;
 
-    function update() {
+    // Mouse: the globe leans toward the cursor, a highlight follows it, and hovering it quickens the spin and the glow
+    const ptr = { x: 0, y: 0, over: 0 };
+    const sm = { x: 0, y: 0, over: 0 };
+    const onPointer = (e: PointerEvent) => {
+      if (e.pointerType === "touch" || !visible) return;
+      const r = host!.getBoundingClientRect();
+      const visH = compact ? 2.75 : 3.2;
+      const R = r.height / visH;
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height * (compact ? 0.5 : (1.45 - GLOBE_Y) / 3.2);
+      const dx = e.clientX - cx, dy = e.clientY - cy;
+      // Only reacts while the cursor is on the globe itself; anywhere else it eases back to rest
+      const over = Math.hypot(dx, dy) < R;
+      ptr.x = over ? dx / R : 0;
+      ptr.y = over ? dy / R : 0;
+      ptr.over = over ? 1 : 0;
+    };
+    const onLeave = () => { ptr.x = ptr.y = ptr.over = 0; };
+    window.addEventListener("pointermove", onPointer);
+    document.documentElement.addEventListener("pointerleave", onLeave);
+
+    function update(dt = 0) {
+      const k = 1 - Math.exp(-dt * 5);
+      sm.x += (ptr.x - sm.x) * k;
+      sm.y += (ptr.y - sm.y) * k;
+      sm.over += (ptr.over - sm.over) * k;
+      angle += dt * (0.055 + 0.09 * sm.over);
       shared.uTime.value = t;
-      shared.uBreath.value = 0.5 + 0.5 * Math.sin(t * 0.7);
-      for (const s of spins) s.rotation.y = START + t * 0.055;
-      light.set(-0.6 + 0.45 * Math.sin(t * 0.13), 0.5 + 0.12 * Math.sin(t * 0.09), 0.65).normalize();
+      shared.uBreath.value = Math.min(1, 0.5 + 0.5 * Math.sin(t * 0.7) + 0.45 * sm.over);
+      for (const s of spins) s.rotation.y = angle;
+      for (const g of tilts) g.rotation.set(0.28 + sm.y * 0.22, sm.x * 0.3, 0.16);
+      light.set(-0.6 + 0.45 * Math.sin(t * 0.13) + sm.x * 1.1, 0.5 + 0.12 * Math.sin(t * 0.09) - sm.y * 0.8, 0.65).normalize();
       globeUniforms.uLight.value.copy(light);
       (globeMatMirror.uniforms.uLight.value as THREE.Vector3).set(light.x, -light.y, light.z);
 
@@ -420,7 +459,7 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
       const dt = THREE.MathUtils.clamp((now - last) / 1000, 0, 0.1);
       last = now;
       t += dt;
-      update();
+      update(dt);
       draw();
       raf = requestAnimationFrame(frame);
     }
@@ -475,6 +514,8 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
       io.disconnect();
       ro.disconnect();
       document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("pointermove", onPointer);
+      document.documentElement.removeEventListener("pointerleave", onLeave);
       compactMq.removeEventListener("change", onMq);
       [sphereGeo, atmoGeo, cityGeo, trav, veilGeo, poolGeo, ...arcs.map((a) => a.geo)].forEach((g) => g.dispose());
       [globeMat, globeMatMirror, atmoMat, dotMat, veilMat, poolMat, ...arcs.map((a) => a.mat)].forEach((m) => m.dispose());

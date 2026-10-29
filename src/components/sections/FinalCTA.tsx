@@ -38,7 +38,7 @@ export function FinalCTA({
   return (
     <section aria-labelledby="cta-title" className="relative overflow-hidden bg-black text-white">
       <div aria-hidden className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_60%_70%_at_20%_45%,black,transparent_75%)]" />
-      <div className="container-x relative grid gap-16 pt-24 pb-20 md:pt-32 md:pb-24 lg:grid-cols-12 lg:gap-8">
+      <div className="container-x relative grid gap-16 pt-14 pb-12 md:pt-20 md:pb-16 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-7">
           <h2 id="cta-title" data-reveal className="t-h1 max-w-[14ch] text-balance">
             {title}

@@ -15,18 +15,13 @@ export function ProofSection() {
   if (!c && !t) return null;
 
   return (
-    <section aria-labelledby="proof-title" className="bg-paper-50 py-24 md:py-32">
+    <section aria-labelledby="proof-title" className="bg-paper-50 py-14 md:py-20">
       <div className="container-x">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <Eyebrow>Real outcomes</Eyebrow>
-            <h2 id="proof-title" data-reveal className="t-h2 mt-6">
-              Proof, not promises
-            </h2>
-          </div>
-          <ArrowLink href="/case-studies" className="shrink-0" track="home_all_case_studies">
-            All case studies
-          </ArrowLink>
+        <Eyebrow center className="mb-10">Real outcomes</Eyebrow>
+        <div className="mx-auto max-w-[48rem] text-center">
+          <h2 id="proof-title" data-reveal className="t-h2 text-balance">
+            Proof, not promises
+          </h2>
         </div>
 
         <div className="mt-14 grid gap-3 lg:grid-cols-12">
@@ -41,7 +36,7 @@ export function ProofSection() {
               <div className="flex flex-1 items-end justify-between gap-6 px-3 pt-6 pb-3">
                 <div>
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="t-label text-gray-500">
+                    <span className="t-label text-gray-600">
                       {c.industry} · {c.year}
                     </span>
                     {c.status === "pending" && <PendingBadge />}
@@ -73,6 +68,12 @@ export function ProofSection() {
               </figcaption>
             </figure>
           )}
+        </div>
+
+        <div className="mt-10 flex justify-start">
+          <ArrowLink href="/case-studies" track="home_all_case_studies">
+            All case studies
+          </ArrowLink>
         </div>
       </div>
     </section>

@@ -1,10 +1,29 @@
 import type { ReactNode } from "react";
 
-export function Eyebrow({ children, tone = "light", className = "" }: { children: ReactNode; tone?: "light" | "dark"; className?: string }) {
+export function Eyebrow({
+  children,
+  tone = "light",
+  center = false,
+  className = "",
+}: {
+  children: ReactNode;
+  tone?: "light" | "dark";
+  center?: boolean;
+  className?: string;
+}) {
+  const text = typeof children === "string" ? children : Array.isArray(children) && children.every((c) => typeof c === "string") ? children.join("") : null;
   return (
-    <p className={`t-label flex items-center gap-2.5 ${tone === "dark" ? "text-gray-500" : "text-gray-600"} ${className}`}>
-      <span aria-hidden className="inline-block h-px w-5 bg-red" />
-      {children}
+    <p
+      data-type
+      className={`t-label flex items-center gap-3 font-sans! text-[0.9375rem]! font-bold! tracking-[0.14em]! md:text-[1.0625rem]! ${center ? "justify-center" : ""} ${className}`}
+    >
+      {/* The gradient and the "writing" wipe live on this span, so both follow the text's own width. */}
+      <span
+        className={`eyebrow-text ${tone === "dark" ? "eyebrow-flow-dark" : "eyebrow-flow-light"}`}
+        style={{ "--n": text?.length ?? 24 } as React.CSSProperties}
+      >
+        {children}
+      </span>
     </p>
   );
 }

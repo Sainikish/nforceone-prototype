@@ -8,17 +8,15 @@ const featured = ["AI-powered Quality Engineering", "Agentic Automation", "Testi
 export function InnovationStrip() {
   const areas = innovationAreas.filter((a) => featured.includes(a.name));
   return (
-    <section aria-labelledby="inn-title" className="relative overflow-hidden bg-ink-900 py-24 text-white md:py-28">
+    <section aria-labelledby="inn-title" className="relative overflow-hidden bg-ink-900 py-14 text-white md:py-20">
       <div aria-hidden className="bg-dots-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_85%_10%,black,transparent_60%)]" />
       <div className="container-x relative">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8">
-          <div className="lg:col-span-7">
-            <Eyebrow tone="dark">Innovation &amp; Products</Eyebrow>
-            <h2 id="inn-title" data-reveal className="t-h2 mt-6 text-balance">
-              We don&apos;t only deliver technology. <span className="text-gray-500">We build it.</span>
-            </h2>
-          </div>
-          <p data-reveal className="t-lead text-gray-400 lg:col-span-4 lg:col-start-9">
+        <Eyebrow tone="dark" center className="mb-10">Innovation &amp; Products</Eyebrow>
+        <div className="mx-auto max-w-[48rem] text-center">
+          <h2 id="inn-title" data-reveal className="t-h2 text-balance">
+            We don&apos;t only deliver technology. <span className="text-gray-500">We build it.</span>
+          </h2>
+          <p data-reveal className="t-lead mt-6 text-gray-400">
             Our own products, accelerators and AI platforms. What we learn building them goes into every client engagement.
           </p>
         </div>

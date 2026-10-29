@@ -7,16 +7,14 @@ import { own } from "@/content/media";
 export function PeopleDelivery() {
   const groups = ["Where we deliver", "How we engage"] as const;
   return (
-    <section aria-labelledby="people-title" className="bg-white py-24 md:py-32">
+    <section aria-labelledby="people-title" className="bg-white py-14 md:py-20">
       <div className="container-x">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8">
-          <div className="lg:col-span-7">
-            <Eyebrow>People &amp; delivery</Eyebrow>
-            <h2 id="people-title" data-reveal className="t-h2 mt-6 text-balance">
-              One team across the US and India
-            </h2>
-          </div>
-          <p data-reveal className="t-lead text-gray-600 lg:col-span-4 lg:col-start-9">
+        <Eyebrow center className="mb-10">People &amp; delivery</Eyebrow>
+        <div className="mx-auto max-w-[48rem] text-center">
+          <h2 id="people-title" data-reveal className="t-h2 text-balance">
+            One team across the US and India
+          </h2>
+          <p data-reveal className="t-lead mt-6 text-gray-600">
             Client leads in Plano. Engineers in Hyderabad. Onshore, Offshore or Hybrid, whichever model your program calls for.
           </p>
         </div>

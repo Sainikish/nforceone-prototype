@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { site } from "@/content/site";
 import { HeroGlobe } from "./HeroGlobe";
+import { HeroScrollZoom } from "./HeroScrollZoom";
 
 /**
  * Homepage hero (HOME-001/002). Each line adds new information: the headline states the positioning,
@@ -9,9 +10,11 @@ import { HeroGlobe } from "./HeroGlobe";
  */
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative overflow-hidden bg-black text-white">
+    <section aria-labelledby="hero-title" className="relative z-0 overflow-hidden bg-black text-white lg:sticky lg:top-0">
+      <HeroScrollZoom />
+      <div className="hero-zoom relative">
       <div aria-hidden className="bg-grid-dark absolute inset-0 opacity-30 [mask-image:linear-gradient(to_right,black_20%,transparent_55%)] lg:[mask-image:linear-gradient(to_right,black_16%,transparent_38%)] xl:[mask-image:linear-gradient(to_right,black_18%,transparent_44%)]" />
-      <div className="container-x relative pt-24 pb-16 lg:min-h-[min(calc(100svh-200px),820px)] lg:pt-[104px] lg:pb-12 flex items-center">
+      <div className="container-x relative pt-24 pb-16 lg:min-h-[min(calc(100svh-160px),860px)] lg:pt-[104px] lg:pb-12 flex items-center">
         <div className="max-w-[52rem]">
           <h1 id="hero-title" className="t-display">
             <span className="block [animation:rise-in_0.85s_var(--ease-out)_200ms_both]">AI.</span>
@@ -20,11 +23,11 @@ export function Hero() {
             <span className="block text-gray-400 [animation:rise-in_0.85s_var(--ease-out)_1550ms_both]">Built to Scale at Speed.</span>
           </h1>
 
-          <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-400 [animation:rise-in_0.8s_var(--ease-out)_1300ms_both]">
+          <p className="t-lead mt-7 max-w-[36rem] text-balance text-gray-400 [animation:rise-in_0.8s_var(--ease-out)_2050ms_both]">
             Built on two decades of Quality Engineering, extended into AI, Digital Engineering and deep Telecom expertise.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-4 [animation:rise-in_0.8s_var(--ease-out)_1500ms_both]">
+          <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-4 [animation:rise-in_0.8s_var(--ease-out)_2500ms_both]">
             <Button href="/contact?intent=expert" tone="dark" size="lg" track="hero_talk_to_expert" className="max-sm:w-full">
               Talk to an Expert
             </Button>
@@ -35,6 +38,7 @@ export function Hero() {
         </div>
       </div>
       <HeroGlobe />
+      </div>
       <p className="sr-only">{site.description}</p>
     </section>
   );

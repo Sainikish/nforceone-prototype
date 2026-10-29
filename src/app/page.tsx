@@ -37,13 +37,16 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <CredibilityStrip />
-      <CapabilityExplorer />
-      <TelecomSection numbered={false} />
-      <ProofSection />
-      <InnovationStrip />
-      <PeopleDelivery />
-      <FinalCTA prompts={suggestedQuestions.slice(0, 3)} />
+      {/* Everything after the hero sits above it, so on desktop it slides up and covers the pinned hero */}
+      <div className="relative z-10">
+        <CredibilityStrip />
+        <CapabilityExplorer />
+        <TelecomSection numbered={false} />
+        <ProofSection />
+        <InnovationStrip />
+        <PeopleDelivery />
+        <FinalCTA prompts={suggestedQuestions.slice(0, 3)} />
+      </div>
     </>
   );
 }

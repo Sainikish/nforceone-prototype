@@ -98,7 +98,7 @@ export function CapabilityExplorer() {
                   />
                   <span
                     aria-hidden
-                    className={`pointer-events-none absolute -bottom-8 right-4 select-none text-[8rem] font-semibold leading-none tracking-[-0.06em] transition-all duration-(--duration-slower) ease-(--ease-out) group-hover:-translate-y-2 md:text-[11rem] ${l.numeral}`}
+                    className={`pointer-events-none absolute -top-3 right-14 select-none text-[6rem] font-semibold leading-none tracking-[-0.06em] transition-all duration-(--duration-slower) ease-(--ease-out) group-hover:translate-y-2 md:-top-5 md:right-20 md:text-[9rem] ${l.numeral}`}
                   >
                     {p.index}
                   </span>

@@ -80,9 +80,9 @@ export function CookieConsent() {
     <div
       role="dialog"
       aria-label="Cookie consent"
-      className="fixed bottom-[72px] left-4 right-4 z-[80] md:bottom-6 md:left-6 md:right-auto md:max-w-[420px]"
+      className="fixed bottom-[72px] left-4 right-4 z-[80] md:bottom-6 md:left-6 md:right-auto md:max-w-[560px]"
     >
-      <div className="rounded-md border border-white/10 bg-ink-800 p-5 shadow-2xl">
+      <div className="flex flex-col gap-3 rounded-md border border-white/10 bg-ink-800 p-4 shadow-2xl md:flex-row md:items-center md:gap-5">
         <p className="t-small text-gray-400">
           We use cookies to understand how visitors use our site (Google Analytics). No personal data is sold.{" "}
           <Link href="/privacy" className="underline underline-offset-2 hover:text-white">
@@ -90,7 +90,7 @@ export function CookieConsent() {
           </Link>
           .
         </p>
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="flex shrink-0 flex-wrap gap-2">
           <Button tone="dark" onClick={accept} arrow={false}>
             Accept
           </Button>

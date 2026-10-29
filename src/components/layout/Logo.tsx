@@ -4,7 +4,7 @@ import Link from "next/link";
 /** Official NF1 mark (unaltered, per PRD §4.2) paired with the typeset company name. */
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <Link href="/" aria-label="NForce One, home" className={`group flex items-center gap-3 ${className}`}>
+    <Link href="/" aria-label="NForce One, home" className={`group flex shrink-0 items-center gap-3 whitespace-nowrap ${className}`}>
       <Image
         src="/brand/nf1-mark-480.webp"
         alt=""

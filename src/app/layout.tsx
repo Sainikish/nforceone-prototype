@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <RevealObserver />
         <TrackListener />
         <BackToTop />
-        <CookieConsent />
+        {/* Cookie banner is switched off for now; restore <CookieConsent /> to bring it back */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd).replace(/</g, "\u003c") }}

@@ -18,9 +18,16 @@ export function CredibilityStrip() {
               } ${i % 2 === 1 ? "max-md:pl-4" : ""} ${i % 3 !== 0 ? "md:max-xl:pl-6" : ""}`}
             >
               <span className="flex flex-col gap-1.5 md:gap-2">
-                <span className="text-[17px] font-semibold tracking-[-0.02em] md:text-[19px]">
-                  {c.value === "20+" ? <CountUp to={20} suffix="+" /> : c.value === "150+" ? <CountUp to={150} suffix="+" /> : c.value}
-                </span>
+                {/* Real figures are shown large; descriptive items stay a step smaller so the numbers lead */}
+                {c.value === "20+" || c.value === "150+" ? (
+                  <span className="text-[2.25rem] leading-none font-semibold tracking-[-0.04em] md:flex md:h-[3rem] md:items-end md:text-[3rem]">
+                    <CountUp to={c.value === "20+" ? 20 : 150} suffix="+" />
+                  </span>
+                ) : (
+                  <span className="text-[1.125rem] leading-tight font-semibold tracking-[-0.02em] md:flex md:h-[3rem] md:items-end md:text-[1.375rem]">
+                    {c.value}
+                  </span>
+                )}
                 <span className="t-small text-gray-500">{c.label}</span>
               </span>
             </li>

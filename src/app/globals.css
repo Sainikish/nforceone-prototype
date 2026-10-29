@@ -206,6 +206,16 @@ body {
   }
 }
 
+/* Hero zoom-in while the next section covers it (driven by --hz from HeroScrollZoom) */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .hero-zoom {
+    transform: scale(calc(1 + var(--hz, 0) * 0.3));
+    transform-origin: 50% 45%;
+    opacity: calc(1 - var(--hz, 0) * 0.6);
+    will-change: transform, opacity;
+  }
+}
+
 /* Page transition (app/template.tsx) */
 @keyframes page-in {
   from { opacity: 0; transform: translate3d(0, 6px, 0); }

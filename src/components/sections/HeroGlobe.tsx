@@ -29,7 +29,7 @@ export function HeroGlobe() {
   return (
     <div
       aria-hidden
-      className={`pointer-events-none relative mx-auto -mt-2 mb-2 w-full max-w-[34rem] aspect-[1.25] transition-opacity duration-[1400ms] ease-out sm:max-w-[40rem] lg:absolute lg:right-[-5vw] lg:top-[calc(3%+2.5vw)] lg:m-0 lg:max-w-none lg:w-[58vw] lg:aspect-[1.1] ${ready ? "opacity-100" : "opacity-0"}`}
+      className={`pointer-events-none relative mx-auto -mt-2 mb-2 w-full max-w-[34rem] aspect-[1.25] transition-opacity duration-[1400ms] ease-out sm:max-w-[40rem] lg:absolute lg:right-[-3vw] lg:top-[calc(min(100svh-200px,820px)*0.03+3.7vw)] lg:m-0 lg:max-w-none lg:w-[54vw] lg:aspect-[1.1] ${ready ? "opacity-100" : "opacity-0"}`}
     >
       <GlobeScene onReady={onReady} onFail={onFail} />
     </div>

@@ -27,7 +27,7 @@ export function TelecomStack({ numbered = true }: { numbered?: boolean }) {
             active === "quality" ? "border-red-on-dark/60 bg-red/10" : "border-white/12 hover:border-white/30"
           }`}
         >
-          <span className="t-label whitespace-nowrap text-[10px] text-gray-400 [writing-mode:vertical-rl] rotate-180 group-aria-pressed:text-white">
+          <span className="t-label whitespace-nowrap text-[11px] text-gray-300 [writing-mode:vertical-rl] rotate-180 group-aria-pressed:text-white">
             Quality Engineering · End to End
           </span>
         </button>

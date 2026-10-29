@@ -133,7 +133,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-1">
-          <Button href="/contact?intent=expert" tone="dark" track="nav_talk_to_expert" className="ml-2 h-9! sm:inline-flex">
+          <Button href="/contact?intent=expert" tone="dark" track="nav_talk_to_expert" className="ml-2 h-9! max-[479px]:hidden!">
             Talk to an Expert
           </Button>
           <button

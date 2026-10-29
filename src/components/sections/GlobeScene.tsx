@@ -426,7 +426,7 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
       sm.x += (ptr.x - sm.x) * k;
       sm.y += (ptr.y - sm.y) * k;
       sm.over += (ptr.over - sm.over) * k;
-      angle += dt * (0.055 + 0.09 * sm.over);
+      angle += dt * (0.07 + 0.09 * sm.over);
       shared.uTime.value = t;
       shared.uBreath.value = Math.min(1, 0.5 + 0.5 * Math.sin(t * 0.7) + 0.45 * sm.over);
       for (const s of spins) s.rotation.y = angle;
@@ -455,7 +455,8 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
     }
     function frame(now: number) {
       raf = 0;
-      if (!visible || document.hidden) return;
+      // The hero stays pinned while the next section covers it, so stop drawing once it is fully hidden
+      if (!visible || document.hidden || window.scrollY > window.innerHeight) return;
       const dt = THREE.MathUtils.clamp((now - last) / 1000, 0, 0.1);
       last = now;
       t += dt;
@@ -475,6 +476,8 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
     });
     io.observe(host);
     const onVis = () => { if (!document.hidden) start(); };
+    const onScroll = () => { if (window.scrollY <= window.innerHeight) start(); };
+    window.addEventListener("scroll", onScroll, { passive: true });
     document.addEventListener("visibilitychange", onVis);
     const ro = new ResizeObserver(resize);
     ro.observe(host);
@@ -514,6 +517,7 @@ export default function GlobeScene({ onReady, onFail }: { onReady: () => void; o
       io.disconnect();
       ro.disconnect();
       document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pointermove", onPointer);
       document.documentElement.removeEventListener("pointerleave", onLeave);
       compactMq.removeEventListener("change", onMq);

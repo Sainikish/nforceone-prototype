@@ -290,8 +290,8 @@ function WebGLRendererConfig() {
 
 /**
  * Makes the globe react to the cursor: it tilts toward the pointer, swells slightly and spins up as
- * the pointer gets close. Listens on window because the canvas sits behind the hero copy and would
- * otherwise miss pointer events.
+ * the pointer gets close. Only reacts while the pointer is inside the canvas bounds. Listens on window
+ * (and hit-tests the canvas rect) because hero copy can overlap the canvas and swallow pointer events.
  */
 function PointerTilt({ children, baseSpeed }: { children: React.ReactNode; baseSpeed: number }) {
   const group = useRef<Group>(null);
@@ -301,19 +301,24 @@ function PointerTilt({ children, baseSpeed }: { children: React.ReactNode; baseS
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const onMove = (e: PointerEvent) => {
-      target.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      target.current.y = (e.clientY / window.innerHeight) * 2 - 1;
-
-      // 1 when the pointer is over the globe's centre, fading to 0 about one globe-width away.
-      const rect = gl.domElement.getBoundingClientRect();
-      const d = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
-      target.current.near = MathUtils.clamp(1 - d / (rect.width * 0.9), 0, 1);
-    };
     const onLeave = () => {
       target.current.x = 0;
       target.current.y = 0;
       target.current.near = 0;
+    };
+    const onMove = (e: PointerEvent) => {
+      // Only react while the pointer is inside the canvas; anywhere else in the hero it settles back.
+      const rect = gl.domElement.getBoundingClientRect();
+      const inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+      if (!inside) return onLeave();
+
+      const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+      const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+      target.current.x = MathUtils.clamp(dx, -1, 1);
+      target.current.y = MathUtils.clamp(dy, -1, 1);
+
+      // 1 when the pointer is over the globe's centre, fading to 0 at the canvas edge.
+      target.current.near = MathUtils.clamp(1 - Math.hypot(dx, dy), 0, 1);
     };
     window.addEventListener("pointermove", onMove);
     document.documentElement.addEventListener("pointerleave", onLeave);
